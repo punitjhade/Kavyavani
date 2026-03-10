@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hi"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin Login — Kavyavani</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"/>
+</head><body>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand"><div class="auth-brand-en">KAVYAVANI</div><div class="auth-brand-ur">Admin Panel</div></div>
+    <div class="auth-title">Admin Login</div>
+    <p class="auth-sub">Kavyavani Control Panel</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in messages %}<div class="flash flash-{{ cat }}" style="position:relative;top:0;margin-bottom:.8rem"><span>❌</span>{{ msg }}</div>{% endfor %}
+    {% endwith %}
+    <form method="post" action="{{ url_for('admin_login') }}">
+      <div class="fg"><label>Username</label><input type="text" name="username" required autofocus/></div>
+      <div class="fg"><label>Password</label><input type="password" name="password" required/></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Login →</button>
+    </form>
+    <p style="text-align:center;margin-top:1rem"><a href="{{ url_for('index') }}" style="color:var(--muted);font-size:.78rem;font-family:var(--sans)">← वापस Site पर जाएँ</a></p>
+  </div>
+</div>
+</body></html>

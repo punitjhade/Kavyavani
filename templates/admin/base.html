@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hi"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{% block title %}Admin{% endblock %} — Kavyavani Admin</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body id="bd" style="padding-bottom:0">
+<div class="adm-wrap">
+  <aside class="adm-side">
+    <div class="adm-logo">
+      <div class="al-en">KAVYAVANI</div>
+      <div class="al-sub">Admin Panel</div>
+    </div>
+    <nav class="adm-nav">
+      <a href="{{ url_for('admin_dashboard') }}" class="{{ 'active' if request.endpoint=='admin_dashboard' }}">📊 Dashboard</a>
+      <a href="{{ url_for('admin_analytics') }}" class="{{ 'active' if request.endpoint=='admin_analytics' }}">📈 Analytics</a>
+      <hr/>
+      <a href="{{ url_for('admin_poems') }}" class="{{ 'active' if request.endpoint=='admin_poems' }}">📜 Poems</a>
+      <a href="{{ url_for('admin_users') }}" class="{{ 'active' if request.endpoint=='admin_users' }}">👥 Users</a>
+      <a href="{{ url_for('admin_comments') }}" class="{{ 'active' if request.endpoint=='admin_comments' }}">💬 Comments</a>
+      <hr/>
+      <a href="{{ url_for('admin_reports') }}" class="{{ 'active' if request.endpoint=='admin_reports' }}">🚨 Reports</a>
+      <a href="{{ url_for('admin_announcements') }}" class="{{ 'active' if request.endpoint=='admin_announcements' }}">📢 Announcements</a>
+      <a href="{{ url_for('admin_categories') }}" class="{{ 'active' if request.endpoint=='admin_categories' }}">🏷 Categories</a>
+      <hr/>
+      <a href="{{ url_for('admin_change_password') }}" class="{{ 'active' if request.endpoint=='admin_change_password' }}">🔑 Password</a>
+      <a href="{{ url_for('index') }}" target="_blank">🌐 Site देखें ↗</a>
+      <a href="{{ url_for('admin_logout') }}" style="color:var(--rose)">🚪 Logout</a>
+    </nav>
+  </aside>
+  <main class="adm-main">
+    <div class="flashes" style="position:relative;top:0;max-width:100%;margin-bottom:1rem">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in messages %}
+      <div class="flash flash-{{ cat }}">
+        <span>{{ '✅' if cat=='success' else '❌' if cat=='error' else 'ℹ️' }}</span>
+        {{ msg }}
+        <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:inherit;cursor:pointer">✕</button>
+      </div>{% endfor %}
+    {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+<script>
+setTimeout(()=>{document.querySelectorAll('.flash').forEach(el=>{el.style.transition='opacity .5s';el.style.opacity='0';setTimeout(()=>el.remove(),500);});},5000);
+</script>
+</body></html>

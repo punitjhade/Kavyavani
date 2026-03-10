@@ -1,0 +1,16 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.categories }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div><div class="sec-sub">Browse</div><div class="sec-title">🏷 {{ t.categories }}</div></div></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem">
+    {% for cat in categories %}
+    <a href="{{ url_for('category',cat=cat.name) }}" style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem;text-decoration:none;transition:all .22s;display:block;position:relative;overflow:hidden"
+       onmouseover="this.style.borderColor='var(--border2)';this.style.transform='translateY(-2px)';this.style.boxShadow='var(--sh)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+      <div style="font-family:var(--display);font-size:1rem;color:var(--gold);margin-bottom:.28rem;font-weight:600;letter-spacing:1px">{{ cat.name }}</div>
+      <div style="font-size:.7rem;color:var(--muted);font-family:var(--sans);font-weight:700;letter-spacing:.5px">{{ cat.poem_count }} {% if session.get('lang')=='en' %}poems{% else %}कविताएँ{% endif %}</div>
+      {% if cat.description %}<div style="font-size:.82rem;color:var(--muted2);margin-top:.3rem;font-style:italic">{{ cat.description }}</div>{% endif %}
+    </a>{% endfor %}
+  </div>
+</div>{% endblock %}

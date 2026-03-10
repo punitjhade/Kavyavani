@@ -1,0 +1,23 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.edit_profile }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-sm">
+  <div class="sec-hdr"><div><div class="sec-title">{{ t.edit_profile }}</div></div></div>
+  <div class="form-card">
+    <form method="post" action="{{ url_for('edit_profile',username=user.username) }}" enctype="multipart/form-data">
+      <div class="fg"><label>{% if session.get('lang')=='en' %}Profile Picture{% else %}Profile फ़ोटो{% endif %}</label>
+        {% if user.profile_pic %}<div style="margin-bottom:.6rem;display:flex;align-items:center;gap:.8rem"><img src="{{ url_for('static',filename='uploads/'+user.profile_pic) }}" style="width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);cursor:pointer" onclick="openLb(this.src)" alt=""/><span style="color:var(--muted);font-size:.76rem;font-family:var(--sans)">Current</span></div>{% endif %}
+        <input type="file" name="profile_pic" accept="image/*"/></div>
+      <div class="fg"><label>{% if session.get('lang')=='en' %}Cover Photo{% else %}Cover फ़ोटो{% endif %}</label>
+        {% if user.cover_pic %}<div style="margin-bottom:.6rem"><img src="{{ url_for('static',filename='uploads/'+user.cover_pic) }}" style="width:100%;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border);cursor:pointer" onclick="openLb(this.src)" alt=""/></div>{% endif %}
+        <input type="file" name="cover_pic" accept="image/*"/></div>
+      <div class="fg"><label>Bio</label>
+        <textarea name="bio" placeholder="{% if session.get('lang')=='en' %}About yourself…{% else %}अपने बारे में लिखें…{% endif %}" style="min-height:100px">{{ user.bio or '' }}</textarea></div>
+      <div style="display:flex;gap:.7rem;margin-top:1rem">
+        <button type="submit" class="btn btn-primary">✅ {% if session.get('lang')=='en' %}Save{% else %}Save करें{% endif %}</button>
+        <a href="{{ url_for('profile',username=user.username) }}" class="btn btn-ghost">{% if session.get('lang')=='en' %}Cancel{% else %}रद्द करें{% endif %}</a>
+      </div>
+    </form>
+  </div>
+</div>{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ title }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-sm">
+  <a href="{{ url_for('profile',username=back) }}" style="color:var(--muted);font-size:.73rem;font-family:var(--sans);font-weight:700">{{ t.back }} — {{ back }}</a>
+  <div class="sec-hdr" style="margin-top:1rem"><div><div class="sec-title">{{ title }} ({{ users|length }})</div></div></div>
+  {% if users %}<div class="fu-list">{% for u in users %}
+  <div class="fu-card">
+    <div class="fu-av" onclick="{% if u.profile_pic %}openLb('{{ url_for('static',filename='uploads/'+u.profile_pic) }}'){% else %}window.location='{{ url_for('profile',username=u.username) }}'{% endif %}">{% if u.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+u.profile_pic) }}" alt=""/>{% else %}{{ u.username[0]|upper }}{% endif %}</div>
+    <div style="flex:1">
+      <a href="{{ url_for('profile',username=u.username) }}" class="fu-name">{{ u.username }}{% if u.poet_of_week %} 👑{% endif %}</a>
+      {% if u.bio %}<div class="fu-bio">{{ u.bio[:55] }}{% if u.bio|length>55 %}…{% endif %}</div>{% endif %}
+    </div>
+    {% if session.user_id and session.user_id != u.id %}<form method="post" action="{{ url_for('follow',user_id=u.id) }}" style="flex-shrink:0"><button type="submit" class="btn btn-outline btn-sm">{{ t.follow }}</button></form>{% endif %}
+  </div>{% endfor %}</div>
+  {% else %}<div class="empty"><h3>{% if session.get('lang')=='en' %}Nobody found{% else %}कोई नहीं मिला{% endif %}</h3></div>{% endif %}
+</div>{% endblock %}

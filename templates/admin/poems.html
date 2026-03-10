@@ -1,0 +1,33 @@
+{% extends "admin/base.html" %}
+{% block title %}Poems{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>📜 Poems ({{ poems|length }})</h1></div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow-x:auto">
+<form method="post" action="{{ url_for('admin_bulk_delete') }}">
+<input type="hidden" name="kind" value="poems"/>
+<div style="padding:.6rem .85rem;border-bottom:1px solid var(--border)">
+  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete selected?')">🗑 Delete Selected</button>
+</div>
+<table class="adm-tbl">
+<thead><tr>
+  <th><input type="checkbox" onchange="document.querySelectorAll('.rcb').forEach(c=>c.checked=this.checked)"/></th>
+  <th>Title</th><th>Author</th><th>Category</th><th>Likes</th><th>Views</th><th>Status</th><th>Date</th><th>Actions</th>
+</tr></thead><tbody>
+{% for p in poems %}
+<tr>
+  <td><input type="checkbox" name="selected_ids" value="{{ p.id }}" class="rcb"/></td>
+  <td><a href="{{ url_for('poem',poem_id=p.id) }}" target="_blank" style="color:var(--text2);font-family:var(--sans);font-size:.78rem" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text2)'">{{ p.title[:32] }}{% if p.title|length>32 %}…{% endif %}</a></td>
+  <td><a href="{{ url_for('profile',username=p.username) }}" target="_blank" style="color:var(--muted);font-family:var(--sans);font-size:.78rem">{{ p.username }}</a></td>
+  <td><span class="ab ab-user">{{ p.category }}</span></td>
+  <td style="color:var(--rose);font-family:var(--sans);font-size:.78rem;font-weight:700">❤ {{ p.like_count }}</td>
+  <td style="color:var(--muted);font-family:var(--sans);font-size:.78rem">{{ p.views }}</td>
+  <td>{% if p.is_draft %}<span class="ab ab-pend">Draft</span>{% elif p.is_featured %}<span class="ab ab-ok">Featured</span>{% else %}<span class="ab ab-user">Published</span>{% endif %}</td>
+  <td style="color:var(--muted);font-family:var(--sans);font-size:.75rem">{{ p.created_at[:10] }}</td>
+  <td><div style="display:flex;gap:.3rem">
+    <form method="post" action="{{ url_for('admin_feature_poem',pid=p.id) }}" style="display:inline">
+      <button type="submit" class="btn btn-xs btn-ghost">{% if p.is_featured %}Unfeature{% else %}⭐ Feature{% endif %}</button></form>
+    <form method="post" action="{{ url_for('admin_delete_poem',pid=p.id) }}" style="display:inline" onsubmit="return confirm('Delete?')">
+      <button type="submit" class="btn btn-xs btn-danger">🗑</button></form>
+  </div></td>
+</tr>{% endfor %}
+</tbody></table></form></div>{% endblock %}

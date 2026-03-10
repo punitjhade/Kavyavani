@@ -1,0 +1,26 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.privacy }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="static-page">
+  <h1>{{ t.privacy }}</h1>
+  <p class="lead">{% if session.get('lang')=='en' %}Kavyavani takes your privacy seriously.{% else %}Kavyavani आपकी Privacy को गंभीरता से लेता है।{% endif %}</p>
+  <div class="div-ornament">✦</div>
+  <h2>{% if session.get('lang')=='en' %}What We Collect{% else %}हम क्या जानकारी इकट्ठा करते हैं?{% endif %}</h2>
+  <ul>
+    <li>{% if session.get('lang')=='en' %}<strong>Account info:</strong> Username, Email, Password (encrypted){% else %}<strong>Account जानकारी:</strong> Username, Email, Password (encrypted){% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}<strong>Profile info:</strong> Bio, Profile picture, Cover photo{% else %}<strong>Profile जानकारी:</strong> Bio, Profile picture, Cover photo{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}<strong>Content:</strong> Poems you write, Comments, Messages{% else %}<strong>Content:</strong> आपकी कविताएँ, Comments, Messages{% endif %}</li>
+  </ul>
+  <h2>{% if session.get('lang')=='en' %}How We Use It{% else %}जानकारी का उपयोग{% endif %}</h2>
+  <ul>
+    <li>{% if session.get('lang')=='en' %}To manage your account{% else %}Account manage करने के लिए{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}To improve the platform{% else %}Platform को बेहतर बनाने के लिए{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}To send notifications{% else %}आपको Notifications भेजने के लिए{% endif %}</li>
+  </ul>
+  <h2>{% if session.get('lang')=='en' %}Data Security{% else %}Data Security{% endif %}</h2>
+  <p>{% if session.get('lang')=='en' %}Passwords are stored in encrypted form. We follow industry standard security practices.{% else %}Passwords encrypted form में store होते हैं। हम industry standard security practices follow करते हैं।{% endif %}</p>
+  <h2>Contact</h2>
+  <p><a href="mailto:privacy@kavyavani.com">privacy@kavyavani.com</a></p>
+  <div class="div-ornament">✦</div>
+</div>{% endblock %}

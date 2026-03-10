@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang','hi') }}" id="html-root">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+{% set t = get_t() %}
+<meta name="description" content="Kavyavani — {{ t.site_desc }}"/>
+<title>{% block title %}Kavyavani — {{ t.site_tagline }}{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body id="bd">
+{% set t = get_t() %}
+
+{% set ann = get_active_announcement() %}
+{% if ann %}
+<div class="ann-bar">📢 <strong>{{ ann.title }}</strong> — {{ ann.message }}</div>
+{% endif %}
+
+<nav class="navbar">
+  <div class="nb-inner">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-en">KAVYAVANI</span>
+      <span class="brand-sub">काव्यवाणी · کاویاوانی</span>
+    </a>
+    <div class="nb-div"></div>
+
+    <div class="nav-links" id="navlinks">
+      <a href="{{ url_for('index') }}">{{ t.home }}</a>
+      <a href="{{ url_for('categories_page') }}">{{ t.categories }}</a>
+      <a href="{{ url_for('trending') }}">🔥 {{ t.trending }}</a>
+      <a href="{{ url_for('leaderboard') }}">🏆 {{ t.leaderboard }}</a>
+      <a href="{{ url_for('search') }}">{{ t.search }}</a>
+      {% if session.user_id %}
+        <a href="{{ url_for('feed') }}">{{ t.feed }}</a>
+        <a href="{{ url_for('write') }}" class="nav-write">✍ {{ t.write }}</a>
+        <a href="{{ url_for('notifications') }}" style="position:relative">
+          🔔{% set nc=get_unread_notif_count() %}{% if nc %}<span class="nbadge">{{ nc }}</span>{% endif %}
+        </a>
+        <a href="{{ url_for('messages') }}" style="position:relative">
+          💌{% set mc=get_unread_msg_count() %}{% if mc %}<span class="nbadge">{{ mc }}</span>{% endif %}
+        </a>
+        <a href="{{ url_for('profile', username=session.username) }}" style="color:var(--gold);font-weight:700">{{ session.username }}</a>
+        <a href="{{ url_for('logout') }}" style="color:var(--muted)">{{ t.logout }}</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">{{ t.login }}</a>
+        <a href="{{ url_for('signup') }}" class="nav-write">{{ t.join_now }}</a>
+      {% endif %}
+    </div>
+
+    <div class="nb-right">
+      <button class="nb-icon" onclick="document.getElementById('lang-modal').classList.add('open')" title="Language">
+        🌐 <span style="font-family:var(--sans);font-size:.68rem;letter-spacing:1px">{{ session.get('lang','HI')|upper }}</span>
+      </button>
+      <button class="nb-icon" onclick="toggleTheme()" id="tbtn">🌙</button>
+      <button class="hburger nb-icon" onclick="toggleNav()">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- LANGUAGE MODAL -->
+<div class="lang-modal" id="lang-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="lang-box">
+    <h3>Select Language</h3>
+    <div class="lang-grid">
+      {% for l, label, sub in [('hi','हिंदी','Hindi'),('en','English','अंग्रेज़ी'),('ur','اردو','Urdu'),('pa','ਪੰਜਾਬੀ','Punjabi')] %}
+      <form method="post" action="{{ url_for('set_language') }}">
+        <input type="hidden" name="lang" value="{{ l }}"/>
+        <button type="submit" class="lang-opt {{ 'active' if session.get('lang','hi')==l else '' }}">
+          <div style="font-size:1.1rem;margin-bottom:.15rem">{{ label }}</div>
+          <div style="font-size:.65rem;opacity:.6;font-family:var(--sans);letter-spacing:.5px">{{ sub }}</div>
+        </button>
+      </form>
+      {% endfor %}
+    </div>
+    <button onclick="document.getElementById('lang-modal').classList.remove('open')"
+      style="display:block;margin:.9rem auto 0;background:none;border:1px solid var(--border2);color:var(--muted);border-radius:8px;padding:.38rem 1.2rem;font-family:var(--sans);font-size:.74rem;cursor:pointer">
+      Close
+    </button>
+  </div>
+</div>
+
+<!-- FLASH -->
+<div class="flashes">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for cat, msg in messages %}
+  <div class="flash flash-{{ cat }}">
+    <span>{{ '✅' if cat=='success' else '❌' if cat=='error' else 'ℹ️' if cat=='info' else '⚠️' }}</span>
+    {{ msg }}
+  </div>
+  {% endfor %}
+{% endwith %}
+</div>
+
+{% block content %}{% endblock %}
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="fb-en">KAVYAVANI</div>
+      <div class="fb-sub">काव्यवाणी · The Art of Expression</div>
+      <div class="fb-ur">کاویاوانی</div>
+      <p>{{ t.site_desc }} — {% if session.get('lang','hi')=='en' %}Where every word emerges from the heart.{% elif session.get('lang','hi')=='ur' %}جہاں ہر لفظ دل سے نکلتا ہے{% else %}जहाँ हर शब्द एक दिल से निकलता है{% endif %}</p>
+      <div class="social-links" style="margin-top:1rem">
+        <a href="#" class="soc-btn">📘</a>
+        <a href="#" class="soc-btn">📸</a>
+        <a href="#" class="soc-btn">🐦</a>
+        <a href="#" class="soc-btn">▶️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kavyavani</h4>
+      <a href="{{ url_for('index') }}">{{ t.home }}</a>
+      <a href="{{ url_for('categories_page') }}">{{ t.categories }}</a>
+      <a href="{{ url_for('trending') }}">{{ t.trending }}</a>
+      <a href="{{ url_for('leaderboard') }}">{{ t.leaderboard }}</a>
+      <a href="{{ url_for('search') }}">{{ t.search }}</a>
+    </div>
+    <div class="footer-col">
+      <h4>{{ t.about }}</h4>
+      <a href="{{ url_for('write') }}">{{ t.write_poem }}</a>
+      <a href="{{ url_for('about') }}">{{ t.about }}</a>
+      <a href="{{ url_for('terms') }}">{{ t.terms }}</a>
+      <a href="{{ url_for('privacy') }}">{{ t.privacy }}</a>
+      <a href="{{ url_for('admin_login') }}">Admin</a>
+    </div>
+    <div class="footer-col">
+      <h4>{{ t.categories }}</h4>
+      <a href="{{ url_for('category', cat='प्रेम') }}">{% if session.get('lang')=='en' %}Love Poetry{% else %}प्रेम{% endif %}</a>
+      <a href="{{ url_for('category', cat='उदासी') }}">{% if session.get('lang')=='en' %}Melancholy{% else %}उदासी{% endif %}</a>
+      <a href="{{ url_for('category', cat='सूफ़ी') }}">{% if session.get('lang')=='en' %}Sufi{% else %}सूफ़ी{% endif %}</a>
+      <a href="{{ url_for('category', cat='क्रांति') }}">{% if session.get('lang')=='en' %}Revolution{% else %}क्रांति{% endif %}</a>
+      <a href="{{ url_for('category', cat='दर्शन') }}">{% if session.get('lang')=='en' %}Philosophy{% else %}दर्शन{% endif %}</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Kavyavani. All rights reserved. Made with ♥ for poetry lovers.</div>
+    <div class="footer-copy">
+      <a href="{{ url_for('terms') }}" style="color:var(--muted)">{{ t.terms }}</a> &nbsp;·&nbsp;
+      <a href="{{ url_for('privacy') }}" style="color:var(--muted)">{{ t.privacy }}</a> &nbsp;·&nbsp;
+      <a href="{{ url_for('about') }}" style="color:var(--muted)">{{ t.about }}</a>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <div class="bnav-inner">
+    <a href="{{ url_for('index') }}" class="bn"><span class="bn-ic">🏠</span>{{ t.home }}</a>
+    <a href="{{ url_for('search') }}" class="bn"><span class="bn-ic">🔍</span>{{ t.search }}</a>
+    {% if session.user_id %}
+    <a href="{{ url_for('write') }}" class="bn"><span class="bn-ic">✍</span>{{ t.write }}</a>
+    <a href="{{ url_for('notifications') }}" class="bn" style="position:relative">
+      <span class="bn-ic">🔔</span>{% set nc=get_unread_notif_count() %}{% if nc %}<span class="bn-badge">{{ nc }}</span>{% endif %}
+      {{ t.notifications[:5] }}
+    </a>
+    <a href="{{ url_for('profile', username=session.username) }}" class="bn"><span class="bn-ic">👤</span>{{ t.profile }}</a>
+    {% else %}
+    <a href="{{ url_for('trending') }}" class="bn"><span class="bn-ic">🔥</span>{{ t.trending }}</a>
+    <a href="{{ url_for('leaderboard') }}" class="bn"><span class="bn-ic">🏆</span>{{ t.leaderboard[:3] }}</a>
+    <a href="{{ url_for('login') }}" class="bn"><span class="bn-ic">🔑</span>{{ t.login }}</a>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- LIGHTBOX -->
+<div class="lbox" id="lbox" onclick="if(event.target===this)closeLb()">
+  <button class="lbox-x" onclick="closeLb()">✕</button>
+  <img class="lbox-img" id="lbox-img" src="" alt="photo"/>
+</div>
+<canvas id="poem-canvas" style="display:none"></canvas>
+
+<script>
+// THEME
+function toggleTheme(){
+  const on=document.getElementById('bd').classList.toggle('light');
+  document.getElementById('tbtn').textContent=on?'☀️':'🌙';
+  localStorage.setItem('kv_theme',on?'1':'0');
+}
+if(localStorage.getItem('kv_theme')==='1'){
+  document.getElementById('bd').classList.add('light');
+  const tb=document.getElementById('tbtn');if(tb)tb.textContent='☀️';
+}
+// NAV
+function toggleNav(){document.getElementById('navlinks').classList.toggle('open')}
+// LIGHTBOX
+function openLb(src){document.getElementById('lbox-img').src=src;document.getElementById('lbox').classList.add('open');document.body.style.overflow='hidden'}
+function closeLb(){document.getElementById('lbox').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLb();document.getElementById('lang-modal').classList.remove('open')}});
+// AUTO-DISMISS flash
+setTimeout(()=>{document.querySelectorAll('.flash').forEach(el=>{el.style.transition='opacity .5s';el.style.opacity='0';setTimeout(()=>el.remove(),500);});},5000);
+// DROPDOWN
+function toggleDrop(id){
+  const el=document.getElementById(id),cur=el.style.display;
+  document.querySelectorAll('.dropdown-menu').forEach(d=>d.style.display='none');
+  el.style.display=cur==='block'?'none':'block';
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('[data-drop]'))document.querySelectorAll('.dropdown-menu').forEach(d=>d.style.display='none');
+});
+// REPLY TOGGLE
+function toggleReply(id){const el=document.getElementById(id);el.classList.toggle('open');if(el.classList.contains('open'))el.querySelector('input,textarea').focus()}
+// Hero particles
+document.addEventListener('DOMContentLoaded',()=>{
+  const hero=document.querySelector('.hero');
+  if(!hero)return;
+  for(let i=0;i<8;i++){
+    const p=document.createElement('div');
+    p.className='hero-particle';
+    const sz=Math.random()*4+2;
+    p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:${Math.random()*30}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*5}s`;
+    hero.appendChild(p);
+  }
+});
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

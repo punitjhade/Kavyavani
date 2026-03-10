@@ -1,0 +1,19 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}Stats — {{ poem.title }}{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-sm">
+  <a href="{{ url_for('poem',poem_id=poem.id) }}" style="color:var(--muted);font-size:.73rem;font-family:var(--sans);font-weight:700">{{ t.back }} — {{ poem.title }}</a>
+  <div class="sec-hdr" style="margin-top:1rem"><div><div class="sec-title">📊 Stats — {{ poem.title }}</div></div></div>
+  <div class="stats-row">
+    <div class="stat-box"><span class="stat-n">{{ poem.views }}</span><div class="stat-l">{% if session.get('lang')=='en' %}Views{% else %}Views{% endif %}</div></div>
+    <div class="stat-box"><span class="stat-n" style="color:var(--burg3)">{{ likers|length }}</span><div class="stat-l">{{ t.likes_count }}</div></div>
+  </div>
+  {% if likers %}
+  <div class="sec-hdr"><div><div class="sec-title">♥ {% if session.get('lang')=='en' %}Liked by{% else %}Liked by{% endif %}</div></div></div>
+  <div class="fu-list">{% for u in likers %}
+  <div class="fu-card">
+    <div class="fu-av" onclick="window.location='{{ url_for('profile',username=u.username) }}'">{% if u.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+u.profile_pic) }}" alt=""/>{% else %}{{ u.username[0]|upper }}{% endif %}</div>
+    <a href="{{ url_for('profile',username=u.username) }}" class="fu-name">{{ u.username }}</a>
+  </div>{% endfor %}</div>{% endif %}
+</div>{% endblock %}

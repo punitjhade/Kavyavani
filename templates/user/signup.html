@@ -1,0 +1,41 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.register }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="auth-brand-en">KAVYAVANI</div>
+      <div class="auth-brand-sub">काव्यवाणी · کاویاوانی</div>
+    </div>
+    <div class="auth-title">{{ t.register }}</div>
+    <p class="auth-sub">{% if session.get('lang')=='en' %}Join thousands of poets — share your voice{% else %}हज़ारों शायरों के साथ अपनी आवाज़ उठाएँ{% endif %}</p>
+    <form method="post" action="{{ url_for('signup') }}">
+      <div class="fg">
+        <label>Username *</label>
+        <input type="text" name="username" required autofocus placeholder="{% if session.get('lang')=='en' %}Your unique username{% else %}आपका unique username{% endif %}"/>
+      </div>
+      <div class="fg">
+        <label>Email *</label>
+        <input type="email" name="email" required placeholder="your@email.com"/>
+      </div>
+      <div class="fg">
+        <label>Password *</label>
+        <input type="password" name="password" required placeholder="{% if session.get('lang')=='en' %}At least 6 characters{% else %}कम से कम 6 अक्षर{% endif %}"/>
+      </div>
+      <p style="font-size:.73rem;color:var(--muted);font-family:var(--sans);margin-bottom:1rem;line-height:1.6">
+        {% if session.get('lang')=='en' %}By creating an account you agree to our{% else %}Account बनाकर आप हमारी{% endif %}
+        <a href="{{ url_for('terms') }}" style="color:var(--gold)">{{ t.terms }}</a>
+        {% if session.get('lang')=='en' %}and{% else %}और{% endif %}
+        <a href="{{ url_for('privacy') }}" style="color:var(--gold)">{{ t.privacy }}</a>
+        {% if session.get('lang')!='en' %}से सहमत हैं।{% endif %}
+      </p>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:.84rem;padding:.72rem">
+        ✨ {{ t.join_now }}
+      </button>
+    </form>
+    <div class="auth-divider">{% if session.get('lang')=='en' %}already have an account?{% else %}पहले से account है?{% endif %}</div>
+    <a href="{{ url_for('login') }}" class="btn btn-outline" style="width:100%;justify-content:center">{{ t.login }}</a>
+  </div>
+</div>
+{% endblock %}

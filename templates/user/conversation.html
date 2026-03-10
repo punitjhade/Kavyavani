@@ -1,0 +1,46 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ other.username }} — {{ t.messages }}{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-sm">
+  <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem;padding:.9rem 1.1rem;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r)">
+    <a href="{{ url_for('messages') }}" style="color:var(--muted);font-family:var(--sans);font-size:.73rem;font-weight:700">{{ t.back }}</a>
+    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--burg),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;color:var(--ivory);overflow:hidden;border:1.5px solid var(--border2);cursor:pointer;flex-shrink:0" {% if other.profile_pic %}onclick="openLb('{{ url_for('static',filename='uploads/'+other.profile_pic) }}')"{% endif %}>
+      {% if other.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+other.profile_pic) }}" style="width:100%;height:100%;object-fit:cover" alt=""/>{% else %}{{ other.username[0]|upper }}{% endif %}
+    </div>
+    <div>
+      <a href="{{ url_for('profile',username=other.username) }}" style="font-family:var(--sans);font-weight:700;color:var(--text);font-size:.9rem">{{ other.username }}</a>
+      <div style="font-family:var(--sans);font-size:.66rem;color:var(--muted)">Kavyavani Poet</div>
+    </div>
+    <a href="{{ url_for('profile',username=other.username) }}" class="btn btn-ghost btn-sm" style="margin-left:auto">{{ t.profile }}</a>
+  </div>
+  <div class="chat-area" id="chat-box">
+    {% for m in msgs %}
+    <div style="display:flex;flex-direction:column;{% if m.sender_id==session.user_id %}align-items:flex-end{% else %}align-items:flex-start{% endif %}">
+      <div class="bubble {% if m.sender_id==session.user_id %}me{% else %}them{% endif %}">
+        {% if m.content %}{{ m.content }}{% endif %}
+        {% if m.file_path %}
+          {% if m.file_type=='image' %}<img src="{{ url_for('static',filename='uploads/'+m.file_path) }}" class="bubble-img" onclick="openLb(this.src)" alt="image"/>
+          {% else %}<a href="{{ url_for('static',filename='uploads/'+m.file_path) }}" target="_blank" style="color:var(--gold);font-family:var(--sans);font-size:.78rem">📎 File</a>{% endif %}
+        {% endif %}
+      </div>
+      <div class="b-meta">{{ m.created_at|time_ago }}</div>
+    </div>
+    {% else %}<div style="text-align:center;padding:3rem 1rem;color:var(--muted);font-style:italic">{% if session.get('lang')=='en' %}Send the first message!{% else %}पहला message भेजें! 💌{% endif %}</div>{% endfor %}
+  </div>
+  <form method="post" action="{{ url_for('conversation',other_id=other.id) }}" enctype="multipart/form-data" class="chat-send">
+    <label class="chat-file-btn" title="{% if session.get('lang')=='en' %}Attach file{% else %}File attach करें{% endif %}">
+      📎<input type="file" name="msg_file" accept="image/*,.pdf,.doc,.docx,.txt" style="display:none" onchange="showFileName(this)"/>
+    </label>
+    <input class="chat-inp" type="text" name="content" id="chat-text" placeholder="{% if session.get('lang')=='en' %}Type a message…{% else %}Message लिखें…{% endif %}" autocomplete="off"/>
+    <button type="submit" class="btn btn-primary">{% if session.get('lang')=='en' %}Send{% else %}भेजें{% endif %} ↗</button>
+  </form>
+  <div id="file-name" style="font-size:.7rem;color:var(--gold);font-family:var(--sans);padding:.2rem .5rem;display:none"></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const box=document.getElementById('chat-box');if(box)box.scrollTop=box.scrollHeight;
+function showFileName(inp){if(inp.files[0]){const el=document.getElementById('file-name');el.style.display='block';el.textContent='📎 '+inp.files[0].name;}}
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% block title %}Announcements{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>📢 Announcements</h1></div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;margin-bottom:1.5rem">
+  <div style="font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:1rem">NEW ANNOUNCEMENT</div>
+  <form method="post" action="{{ url_for('admin_announcements') }}">
+    <div class="row2"><div class="fg"><label>Title</label><input type="text" name="title" required placeholder="Announcement title…"/></div>
+      <div class="fg"><label>Schedule (Optional)</label><input type="datetime-local" name="schedule_at"/></div></div>
+    <div class="fg"><label>Message</label><textarea name="message" required placeholder="Message…" style="min-height:90px"></textarea></div>
+    <button type="submit" class="btn btn-primary">📢 Publish</button>
+  </form>
+</div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow-x:auto">
+<table class="adm-tbl"><thead><tr><th>Title</th><th>Message</th><th>By</th><th>Scheduled</th><th>Date</th><th>Action</th></tr></thead>
+<tbody>{% for a in announcements %}
+<tr>
+  <td style="color:var(--gold);font-family:var(--sans);font-size:.78rem;font-weight:700">{{ a.title }}</td>
+  <td style="color:var(--text2);max-width:250px">{{ a.message[:55] }}{% if a.message|length>55 %}…{% endif %}</td>
+  <td style="color:var(--muted)">{{ a.username }}</td>
+  <td style="color:var(--muted);font-size:.75rem">{{ a.schedule_at[:16] if a.schedule_at else '—' }}</td>
+  <td style="color:var(--muted);font-size:.75rem">{{ a.created_at[:10] }}</td>
+  <td><form method="post" action="{{ url_for('admin_delete_announcement',aid=a.id) }}" onsubmit="return confirm('Delete?')">
+    <button type="submit" class="btn btn-xs btn-danger">🗑</button></form></td>
+</tr>{% else %}<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:2rem">कोई announcement नहीं</td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

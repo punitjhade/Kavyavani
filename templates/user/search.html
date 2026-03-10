@@ -1,0 +1,45 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.search }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div><div class="sec-sub">Discover</div><div class="sec-title">🔍 {{ t.search }}</div></div></div>
+  <div class="form-card" style="margin-bottom:1.5rem">
+    <form action="{{ url_for('search') }}" method="get">
+      <input type="text" name="q" value="{{ query }}" placeholder="{% if session.get('lang')=='en' %}Search poems, poets…{% else %}कविता, शायर का नाम…{% endif %}" style="margin-bottom:.8rem" autofocus/>
+      <div class="row2" style="margin-bottom:.8rem">
+        <select name="cat"><option value="">{% if session.get('lang')=='en' %}All Categories{% else %}सभी विषय{% endif %}</option>{% for cat in cats %}<option value="{{ cat.name }}" {% if cat.name==cat_filter %}selected{% endif %}>{{ cat.name }}</option>{% endfor %}</select>
+        <select name="lang"><option value="">{% if session.get('lang')=='en' %}All Languages{% else %}सभी भाषाएँ{% endif %}</option>{% for l in ['Hindi','Urdu','Punjabi','Sanskrit','English'] %}<option value="{{ l }}" {% if l==lang_filter %}selected{% endif %}>{{ l }}</option>{% endfor %}</select>
+      </div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+        <select name="sort" style="width:auto;min-width:150px">
+          <option value="new" {% if sort=='new' %}selected{% endif %}>{% if session.get('lang')=='en' %}Newest{% else %}नई पहले{% endif %}</option>
+          <option value="likes" {% if sort=='likes' %}selected{% endif %}>{% if session.get('lang')=='en' %}Most Liked{% else %}Most Liked{% endif %}</option>
+          <option value="views" {% if sort=='views' %}selected{% endif %}>{% if session.get('lang')=='en' %}Most Viewed{% else %}Most Viewed{% endif %}</option>
+        </select>
+        <button type="submit" class="btn btn-primary">{{ t.search }} →</button>
+        {% if query or cat_filter or lang_filter %}<a href="{{ url_for('search') }}" class="btn btn-ghost btn-sm">Clear</a>{% endif %}
+      </div>
+    </form>
+  </div>
+  {% if query or cat_filter or lang_filter %}
+    {% if poets %}<div class="sec-hdr"><div><div class="sec-title">👤 {% if session.get('lang')=='en' %}Poets{% else %}शायर{% endif %} ({{ poets|length }})</div></div></div>
+    <div class="fu-list" style="margin-bottom:1.5rem">{% for u in poets %}
+    <div class="fu-card">
+      <div class="fu-av" onclick="window.location='{{ url_for('profile',username=u.username) }}'">{% if u.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+u.profile_pic) }}" alt=""/>{% else %}{{ u.username[0]|upper }}{% endif %}</div>
+      <a href="{{ url_for('profile',username=u.username) }}" class="fu-name">{{ u.username }}</a>
+    </div>{% endfor %}</div>{% endif %}
+    {% if poems %}<div class="sec-hdr"><div><div class="sec-title">📜 {% if session.get('lang')=='en' %}Poems{% else %}कविताएँ{% endif %} ({{ poems|length }})</div></div></div>
+    <div class="poems-feed">{% for p in poems %}
+    <article class="poem-card">
+      <div class="pc-top">
+        <div class="pc-av" onclick="window.location='{{ url_for('profile',username=p.username) }}'">{% if p.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+p.profile_pic) }}" alt=""/>{% else %}{{ p.username[0]|upper }}{% endif %}</div>
+        <div class="pc-meta"><a href="{{ url_for('profile',username=p.username) }}" class="pc-author">{{ p.username }}</a><div class="pc-submeta">{{ p.created_at|time_ago }}</div></div>
+        <a href="{{ url_for('category',cat=p.category) }}" class="pc-cat">{{ p.category }}</a>
+      </div>
+      <div class="pc-body"><a href="{{ url_for('poem',poem_id=p.id) }}" class="pc-title">{{ p.title }}</a><pre class="pc-poem">{{ p.content }}</pre></div>
+      <div class="pc-foot"><span class="pc-btn">♥ {{ p.like_count }}</span><a href="{{ url_for('poem',poem_id=p.id) }}" class="btn btn-xs btn-ghost" style="margin-left:.3rem">{{ t.read_more }}</a></div>
+    </article>{% endfor %}</div>
+    {% elif not poets %}<div class="empty"><h3>{% if session.get('lang')=='en' %}No results found{% else %}कोई नतीजा नहीं{% endif %}</h3></div>{% endif %}
+  {% else %}<div class="empty"><h3>🔍 {{ t.search }}</h3><p style="font-style:italic;margin-top:.5rem;color:var(--muted)">{% if session.get('lang')=='en' %}Search for poems, poets or topics{% else %}कविता, शायर, या विषय search करें{% endif %}</p></div>{% endif %}
+</div>{% endblock %}

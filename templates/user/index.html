@@ -1,0 +1,169 @@
+{% extends "user/base.html" %}
+{% block title %}Kavyavani — {{ t.site_tagline }}{% endblock %}
+{% block content %}
+{% set t = get_t() %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <!-- Particles injected by JS -->
+  <div class="hero-eyebrow">✦ &nbsp; {{ t.site_tagline }} &nbsp; ✦</div>
+  <h1 class="hero-title">{{ t.hero_title }}</h1>
+  <div class="hero-devnagri">{{ t.hero_devnagri }}</div>
+  <div class="hero-urdu">{{ t.hero_urdu }}</div>
+  <p class="hero-tagline">{{ t.hero_tagline }}</p>
+  <div class="hero-cta">
+    {% if session.user_id %}
+      <a href="{{ url_for('write') }}" class="btn btn-primary btn-lg">{{ t.start_writing }}</a>
+      <a href="{{ url_for('feed') }}" class="btn btn-outline btn-lg">{{ t.my_feed }}</a>
+    {% else %}
+      <a href="{{ url_for('signup') }}" class="btn btn-primary btn-lg">{{ t.join_now }}</a>
+      <a href="{{ url_for('login') }}" class="btn btn-outline btn-lg">{{ t.login_btn }}</a>
+    {% endif %}
+  </div>
+  <div class="hero-rule">✦ &nbsp; ✦ &nbsp; ✦</div>
+</section>
+
+<!-- STAT BAR -->
+{% if stats %}
+<div class="stat-bar">
+  <div class="sb-stat"><span class="sb-n">{{ stats.users }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Poets{% else %}शायर{% endif %}</div></div>
+  <div class="sb-stat"><span class="sb-n">{{ stats.poems }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Poems{% else %}कविताएँ{% endif %}</div></div>
+  <div class="sb-stat"><span class="sb-n">{{ stats.likes }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Likes{% else %}लाइक्स{% endif %}</div></div>
+  <div class="sb-stat"><span class="sb-n">{{ stats.comments }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Comments{% else %}टिप्पणियाँ{% endif %}</div></div>
+</div>
+{% endif %}
+
+<div class="wrap">
+  <!-- POET OF THE WEEK -->
+  {% set potw = get_poet_of_week() %}
+  {% if potw %}
+  <div class="potw">
+    <div class="potw-av" {% if potw.profile_pic %}onclick="openLb('{{ url_for('static',filename='uploads/'+potw.profile_pic) }}')"{% endif %}>
+      {% if potw.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+potw.profile_pic) }}" alt=""/>
+      {% else %}{{ potw.username[0]|upper }}{% endif %}
+    </div>
+    <div>
+      <div class="potw-label">{{ t.potw_label }}</div>
+      <div class="potw-name"><a href="{{ url_for('profile',username=potw.username) }}" style="color:inherit">{{ potw.username }}</a></div>
+    </div>
+    <a href="{{ url_for('profile',username=potw.username) }}" class="btn btn-outline btn-sm" style="margin-left:auto">{{ t.profile }} →</a>
+  </div>
+  {% endif %}
+
+  <!-- FEATURED -->
+  {% if featured %}
+  <div class="sec-hdr"><div><div class="sec-sub">Editors' Choice</div><div class="sec-title">{{ t.featured }}</div></div></div>
+  <div class="feat-grid">
+    {% for p in featured %}
+    <div class="feat-card" onclick="window.location='{{ url_for('poem',poem_id=p.id) }}'">
+      <div class="feat-title">{{ p.title }}</div>
+      <div class="feat-by">{{ p.username }} &nbsp;·&nbsp; ♥ {{ p.like_count }}</div>
+      <pre class="feat-poem">{{ p.content }}</pre>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="two-col">
+    <!-- MAIN -->
+    <main>
+      <div class="sec-hdr"><div><div class="sec-sub">Latest</div><div class="sec-title">{{ t.latest_poems }}</div></div></div>
+      {% if poems %}
+      <div class="poems-feed">
+        {% for p in poems %}
+        <article class="poem-card">
+          <div class="pc-top">
+            <div class="pc-av"
+              onclick="{% if p.profile_pic %}openLb('{{ url_for('static',filename='uploads/'+p.profile_pic) }}'){% else %}window.location='{{ url_for('profile',username=p.username) }}'{% endif %}">
+              {% if p.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+p.profile_pic) }}" alt=""/>
+              {% else %}{{ p.username[0]|upper }}{% endif %}
+            </div>
+            <div class="pc-meta">
+              <a href="{{ url_for('profile',username=p.username) }}" class="pc-author">{{ p.username }}</a>
+              <div class="pc-submeta">{{ p.created_at|time_ago }} &nbsp;·&nbsp; {{ p.language }}</div>
+            </div>
+            <a href="{{ url_for('category',cat=p.category) }}" class="pc-cat">{{ p.category }}</a>
+          </div>
+          <div class="pc-body">
+            <a href="{{ url_for('poem',poem_id=p.id) }}" class="pc-title">{{ p.title }}</a>
+            <pre class="pc-poem">{{ p.content }}</pre>
+          </div>
+          <div class="pc-foot">
+            {% if session.user_id %}
+            <form method="post" action="{{ url_for('like',poem_id=p.id) }}" style="display:inline">
+              <button type="submit" class="pc-btn {% if p.id in liked_set %}liked{% endif %}">♥ {{ p.like_count }}</button>
+            </form>
+            {% else %}<span class="pc-btn">♥ {{ p.like_count }}</span>{% endif %}
+            <a href="{{ url_for('poem',poem_id=p.id) }}#comments" class="pc-btn">💬 {{ p.comment_count }}</a>
+            {% if session.user_id %}
+            <form method="post" action="{{ url_for('bookmark',poem_id=p.id) }}" style="display:inline">
+              <button type="submit" class="pc-btn {% if p.id in bm_set %}bmd{% endif %}">🔖</button>
+            </form>
+            {% endif %}
+            <a href="{{ url_for('poem',poem_id=p.id) }}" class="btn btn-xs btn-ghost" style="margin-left:.3rem">{{ t.read_more }}</a>
+            <div class="pc-views">👁 {{ p.views }}</div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="empty">
+        <h3>{{ t.no_poems }}</h3>
+        <p style="font-style:italic;color:var(--muted);margin-top:.5rem">{{ t.no_poems_sub }}</p>
+        <a href="{{ url_for('write') }}" class="btn btn-primary" style="margin-top:1.3rem">{{ t.start_writing }}</a>
+      </div>
+      {% endif %}
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb">
+        <div class="sb-title">{{ t.trending_kalam }}</div>
+        {% for p in trending %}
+        <div class="sb-item">
+          <a href="{{ url_for('poem',poem_id=p.id) }}">{{ p.title }}</a>
+          <div class="sb-sub">♥ {{ p.like_count }} &nbsp;·&nbsp; {{ p.username }}</div>
+        </div>
+        {% else %}<p style="color:var(--muted);font-size:.82rem;font-style:italic">—</p>{% endfor %}
+        <a href="{{ url_for('trending') }}" style="font-size:.7rem;color:var(--gold);display:block;margin-top:.75rem;font-family:var(--sans);font-weight:700;letter-spacing:.8px;text-transform:uppercase">{{ t.read_more }}</a>
+      </div>
+
+      <div class="sb">
+        <div class="sb-title">🏷 {{ t.categories }}</div>
+        <div class="cat-pills">
+          {% for cat in categories %}
+          <a href="{{ url_for('category',cat=cat) }}" class="cat-pill">{{ cat }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="sb">
+        <div class="sb-title">🔍 {{ t.search }}</div>
+        <form action="{{ url_for('search') }}" method="get">
+          <div class="srch-box">
+            <input name="q" placeholder="{% if session.get('lang')=='en' %}Search poems…{% else %}कविता खोजें…{% endif %}"/>
+            <button type="submit" class="btn btn-burg btn-sm">→</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="sb">
+        <div class="sb-title">{{ t.top_shayar }}</div>
+        {% for poet in top_poets %}
+        <div class="sb-item" style="display:flex;align-items:center;gap:.6rem">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--burg),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;color:var(--ivory);font-size:.68rem;overflow:hidden;flex-shrink:0;border:1px solid var(--border2)">
+            {% if poet.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+poet.profile_pic) }}" style="width:100%;height:100%;object-fit:cover" alt=""/>{% else %}{{ poet.username[0]|upper }}{% endif %}
+          </div>
+          <div style="flex:1;min-width:0">
+            <a href="{{ url_for('profile',username=poet.username) }}" style="color:var(--text2);font-family:var(--sans);font-size:.8rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block">{{ poet.username }}</a>
+            <div class="sb-sub">♥ {{ poet.total_likes }}</div>
+          </div>
+        </div>
+        {% endfor %}
+        <a href="{{ url_for('leaderboard') }}" style="font-size:.7rem;color:var(--gold);display:block;margin-top:.75rem;font-family:var(--sans);font-weight:700;letter-spacing:.8px;text-transform:uppercase">{{ t.read_more }}</a>
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}

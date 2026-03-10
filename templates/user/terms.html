@@ -1,0 +1,31 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.terms }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="static-page">
+  <h1>{{ t.terms }}</h1>
+  <p class="lead">{% if session.get('lang')=='en' %}Please read these terms carefully before using Kavyavani.{% else %}Kavyavani पर आपका स्वागत है। यहाँ दी गई शर्तों को ध्यान से पढ़ें।{% endif %}</p>
+  <div class="div-ornament">✦</div>
+  <h2>1. {% if session.get('lang')=='en' %}Acceptance{% else %}स्वीकृति{% endif %}</h2>
+  <p>{% if session.get('lang')=='en' %}By using Kavyavani, you agree to these Terms. If you do not agree, please do not use the service.{% else %}Kavyavani का उपयोग करके आप इन Terms से सहमत होते हैं। यदि आप सहमत नहीं हैं, तो कृपया Service का उपयोग न करें।{% endif %}</p>
+  <h2>2. {% if session.get('lang')=='en' %}Account Rules{% else %}Account नियम{% endif %}</h2>
+  <ul>
+    <li>{% if session.get('lang')=='en' %}You must be at least 13 years old.{% else %}आपकी उम्र कम से कम 13 वर्ष होनी चाहिए।{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}One account per person only.{% else %}एक व्यक्ति एक से अधिक account नहीं बना सकता।{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}You are responsible for your account security.{% else %}आप अपने account की सुरक्षा के लिए जिम्मेदार हैं।{% endif %}</li>
+  </ul>
+  <h2>3. {% if session.get('lang')=='en' %}Content Policy{% else %}Content नीति{% endif %}</h2>
+  <ul>
+    <li>{% if session.get('lang')=='en' %}<strong>Allowed:</strong> Original poems, ghazals, nazms, constructive comments.{% else %}<strong>अनुमत:</strong> मौलिक कविताएँ, शायरी, ग़ज़ल, नज़्म, टिप्पणियाँ।{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}<strong>Prohibited:</strong> Obscene content, hate speech, violence, sharing others' personal data.{% else %}<strong>प्रतिबंधित:</strong> अश्लील सामग्री, नफ़रत फैलाने वाली भाषा, हिंसा, व्यक्तिगत डेटा।{% endif %}</li>
+    <li>{% if session.get('lang')=='en' %}Publishing others' poetry without permission is copyright infringement.{% else %}दूसरों की कविताएँ बिना अनुमति post करना Copyright उल्लंघन है।{% endif %}</li>
+  </ul>
+  <h2>4. {% if session.get('lang')=='en' %}Intellectual Property{% else %}बौद्धिक संपदा{% endif %}</h2>
+  <p>{% if session.get('lang')=='en' %}You retain copyright of your own poems. By publishing on Kavyavani you grant us a license to display them on the platform.{% else %}जो कविता आप लिखते हैं, उसके Copyright के आप ही मालिक हैं। Kavyavani पर publish करके आप हमें उसे Platform पर दिखाने की अनुमति देते हैं।{% endif %}</p>
+  <h2>5. {% if session.get('lang')=='en' %}Termination{% else %}Account बंद करना{% endif %}</h2>
+  <p>{% if session.get('lang')=='en' %}We may suspend or terminate accounts that violate these terms without prior notice.{% else %}नियमों का उल्लंघन करने पर हम बिना पूर्व सूचना के किसी भी account को बंद कर सकते हैं।{% endif %}</p>
+  <h2>6. Contact</h2>
+  <p><a href="mailto:support@kavyavani.com">support@kavyavani.com</a></p>
+  <div class="div-ornament">✦</div>
+  <p style="color:var(--muted);font-size:.8rem;font-family:var(--sans)">Last updated: January 2025 · Kavyavani</p>
+</div>{% endblock %}
