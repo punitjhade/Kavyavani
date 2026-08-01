@@ -1,4 +1,4 @@
-# SukhanSarai — Setup Guide 🌙
+# Kavyavani — Setup Guide 🌙
 
 ## Your Folder Structure
 ```
