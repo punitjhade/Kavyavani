@@ -74,7 +74,7 @@ You'll see:
 ## ✅ STEP 5 — Open in Browser
 - **User site:** http://127.0.0.1:5000
 - **Admin panel:** http://127.0.0.1:5000/admin-login
-
+- **Website:** kavyavani-xw1u.onrender.com
 ---
 
 ## 🔐 Admin Login Credentials
