@@ -166,6 +166,7 @@ def init_db():
                 viewer_id INTEGER,
                 viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
+<<<<<<< HEAD
             CREATE TABLE IF NOT EXISTS poets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 slug TEXT UNIQUE NOT NULL,
@@ -177,6 +178,8 @@ def init_db():
                 bio TEXT DEFAULT '',
                 notable_works TEXT DEFAULT ''
             );
+=======
+>>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
         """)
         db.commit()
 
@@ -195,7 +198,10 @@ def init_db():
             "ALTER TABLE messages ADD COLUMN file_path TEXT DEFAULT ''",
             "ALTER TABLE messages ADD COLUMN file_type TEXT DEFAULT ''",
             "ALTER TABLE users    ADD COLUMN language_pref TEXT DEFAULT 'hi'",
+<<<<<<< HEAD
             "ALTER TABLE poems    ADD COLUMN poet_id INTEGER DEFAULT NULL",
+=======
+>>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
         ]:
             try: db.execute(migration)
             except: pass
@@ -493,7 +499,10 @@ def index():
         'poems':    (query("SELECT COUNT(*) as c FROM poems WHERE is_draft=0", one=True) or {'c':0})['c'],
         'users':    (query("SELECT COUNT(*) as c FROM users", one=True) or {'c':0})['c'],
         'poets':    (query("SELECT COUNT(*) as c FROM users WHERE role='user'", one=True) or {'c':0})['c'],
+<<<<<<< HEAD
         'poets_listed': (query("SELECT COUNT(*) as c FROM poets", one=True) or {'c':0})['c'],
+=======
+>>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
         'likes':    (query("SELECT COUNT(*) as c FROM likes", one=True) or {'c':0})['c'],
         'comments': (query("SELECT COUNT(*) as c FROM comments", one=True) or {'c':0})['c'],
     }
@@ -1246,6 +1255,7 @@ def admin_analytics():
                            daily_poems=daily_poems, daily_users=daily_users, cat_stats=cat_stats)
 
 
+<<<<<<< HEAD
 @app.route('/poets')
 def poets():
     lang = request.args.get('lang', '').strip()
@@ -1274,6 +1284,8 @@ def poet(slug):
     return render_template('user/poet.html', poet=p, works=works, poems=poems)
 
 
+=======
+>>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
 @app.route('/terms')
 def terms(): return render_template('user/terms.html')
 

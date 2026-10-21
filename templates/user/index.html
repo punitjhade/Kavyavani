@@ -27,7 +27,11 @@
 <!-- STAT BAR -->
 {% if stats %}
 <div class="stat-bar">
+<<<<<<< HEAD
   <div class="sb-stat"><span class="sb-n">{{ stats.poets_listed + stats.poets }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Poets{% else %}शायर{% endif %}</div></div>
+=======
+  <div class="sb-stat"><span class="sb-n">{{ stats.users }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Poets{% else %}शायर{% endif %}</div></div>
+>>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
   <div class="sb-stat"><span class="sb-n">{{ stats.poems }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Poems{% else %}कविताएँ{% endif %}</div></div>
   <div class="sb-stat"><span class="sb-n">{{ stats.likes }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Likes{% else %}लाइक्स{% endif %}</div></div>
   <div class="sb-stat"><span class="sb-n">{{ stats.comments }}+</span><div class="sb-l">{% if session.get('lang')=='en' %}Comments{% else %}टिप्पणियाँ{% endif %}</div></div>
