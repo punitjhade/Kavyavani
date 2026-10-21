@@ -1,0 +1,29 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.about }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="static-page">
+  <h1>{% if session.get('lang')=='en' %}About Kavyavani{% else %}Kavyavani के बारे में{% endif %}</h1>
+  <p class="lead" style="direction:rtl;font-family:var(--urdu);font-size:1.4rem">"کاویاوانی — جہاں ہر لفظ دل سے نکلتا ہے"</p>
+  <div class="div-ornament">✦</div>
+  <h2>{% if session.get('lang')=='en' %}Our Mission{% else %}हमारा मिशन{% endif %}</h2>
+  <p>{% if session.get('lang')=='en' %}Kavyavani is a digital home for poets and writers of Hindi, Urdu, Punjabi and other Indian languages. We carry forward the tradition where words held magic — the legacy of Mir, Ghalib, Kabir and Dushyant.{% else %}Kavyavani हिंदी, उर्दू, पंजाबी और अन्य भारतीय भाषाओं के शायरों और कवियों के लिए एक digital घर है। हम उस परंपरा को आगे बढ़ाते हैं जहाँ शब्दों में जादू होता था — Mir, Ghalib, Kabir और Dushyant की वह विरासत।{% endif %}</p>
+  <h2>{% if session.get('lang')=='en' %}Features{% else %}Features{% endif %}</h2>
+  <ul>
+    <li>🖋 {% if session.get('lang')=='en' %}Publish original poems in multiple languages{% else %}मौलिक कविता publish करें{% endif %}</li>
+    <li>🌐 {% if session.get('lang')=='en' %}Multilingual: Hindi, Urdu, Punjabi, English{% else %}बहुभाषी: हिंदी, उर्दू, पंजाबी{% endif %}</li>
+    <li>❤ {% if session.get('lang')=='en' %}Community of thousands of poets{% else %}हज़ारों शायरों का साथ{% endif %}</li>
+    <li>🎨 {% if session.get('lang')=='en' %}7 beautiful poem themes{% else %}7 सुंदर कविता themes{% endif %}</li>
+    <li>📲 {% if session.get('lang')=='en' %}WhatsApp & Twitter sharing{% else %}WhatsApp और Twitter share{% endif %}</li>
+    <li>🖼 {% if session.get('lang')=='en' %}Download poem as image card{% else %}Poem Card download (PNG){% endif %}</li>
+    <li>💌 {% if session.get('lang')=='en' %}Private messaging with file sharing{% else %}Private messaging with file sharing{% endif %}</li>
+    <li>👑 {% if session.get('lang')=='en' %}Poet of the Week{% else %}Poet of the Week{% endif %}</li>
+    <li>🔓 {% if session.get('lang')=='en' %}Completely free to read and write{% else %}पढ़ना और लिखना दोनों नि:शुल्क{% endif %}</li>
+  </ul>
+  <div class="div-ornament">✦</div>
+  <div style="text-align:center;padding:2.2rem;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r)">
+    <div style="font-family:var(--display);font-size:1.5rem;letter-spacing:4px;background:linear-gradient(135deg,var(--gold3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem">KAVYAVANI</div>
+    <p style="font-style:italic;color:var(--muted2)">{% if session.get('lang')=='en' %}Where every word emerges from the heart{% else %}जहाँ हर शब्द एक दिल से निकलता है{% endif %}</p>
+    <a href="{{ url_for('signup') }}" class="btn btn-primary btn-lg" style="margin-top:1.2rem">{{ t.join_now }}</a>
+  </div>
+</div>{% endblock %}

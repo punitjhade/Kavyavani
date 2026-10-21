@@ -1,0 +1,163 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ poem.title }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="poem-page">
+  <a href="javascript:history.back()" class="poem-back">← {{ t.back }}</a>
+  <h1 class="poem-full-title">{{ poem.title }}</h1>
+  {% if poem.dedicated_to %}<div class="poem-dedic">💌 {% if session.get('lang')=='en' %}Dedicated to{% else %}समर्पित{% endif %}: <em>{{ poem.dedicated_to }}</em></div>{% endif %}
+  <div class="poem-author-row">
+    <div class="par-av" onclick="{% if poem.profile_pic %}openLb('{{ url_for('static',filename='uploads/'+poem.profile_pic) }}'){% else %}window.location='{{ url_for('profile',username=poem.username) }}'{% endif %}">
+      {% if poem.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+poem.profile_pic) }}" alt=""/>{% else %}{{ poem.username[0]|upper }}{% endif %}
+    </div>
+    <div>
+      <a href="{{ url_for('profile',username=poem.username) }}" class="par-name">{{ poem.username }}</a>
+      <div class="par-sub">
+        <a href="{{ url_for('category',cat=poem.category) }}" class="tag">{{ poem.category }}</a>
+        &nbsp;·&nbsp; {{ poem.language }} &nbsp;·&nbsp; {{ poem.created_at|time_ago }} &nbsp;·&nbsp; 👁 {{ poem.views }}
+        {% if session.user_id == poem.user_id %}&nbsp;·&nbsp; <a href="{{ url_for('poem_stats',poem_id=poem.id) }}" style="color:var(--teal2);font-size:.7rem;font-family:var(--sans);font-weight:700">📊 Stats</a>{% endif %}
+      </div>
+    </div>
+    {% if session.user_id and session.user_id != poem.user_id %}
+    <div class="par-follow">
+      <form method="post" action="{{ url_for('follow',user_id=poem.user_id) }}">
+        <button type="submit" class="btn btn-outline btn-sm">{% if is_following %}{{ t.following }}{% else %}{{ t.follow }}{% endif %}</button>
+      </form>
+    </div>{% endif %}
+  </div>
+  <div class="poem-display th-{{ poem.theme or 'default' }} fn-{{ poem.font or 'garamond' }}" id="poem-body">{{ poem.content }}</div>
+  <div class="poem-acts">
+    {% if session.user_id %}
+    <form method="post" action="{{ url_for('like',poem_id=poem.id) }}" style="display:inline">
+      <button type="submit" class="act-btn act-like {% if liked %}on{% endif %}">♥ {{ poem.like_count }}</button>
+    </form>
+    <form method="post" action="{{ url_for('bookmark',poem_id=poem.id) }}" style="display:inline">
+      <button type="submit" class="act-btn act-bm {% if bookmarked %}on{% endif %}">{% if bookmarked %}🔖 Saved{% else %}🔖 Save{% endif %}</button>
+    </form>
+    {% if my_collections %}
+    <div style="position:relative" data-drop="col">
+      <button class="btn btn-ghost btn-sm" onclick="toggleDrop('col-drop')" data-drop="col">📂 ▾</button>
+      <div id="col-drop" class="dropdown-menu" style="display:none;position:absolute;top:110%;left:0;background:var(--ink2);border:1px solid var(--border2);border-radius:var(--r);min-width:170px;z-index:30;box-shadow:var(--sh2);overflow:hidden">
+        {% for col in my_collections %}
+        <form method="post" action="{{ url_for('add_to_collection',col_id=col.id,poem_id=poem.id) }}">
+          <button type="submit" style="background:none;border:none;color:var(--text2);cursor:pointer;padding:.55rem 1rem;width:100%;text-align:left;font-size:.78rem;font-family:var(--sans);transition:background .15s" onmouseover="this.style.background='var(--gold-dim)'" onmouseout="this.style.background='none'">📂 {{ col.name }}</button>
+        </form>{% endfor %}
+      </div>
+    </div>{% endif %}
+    {% if session.user_id != poem.user_id %}<a href="{{ url_for('conversation',other_id=poem.user_id) }}" class="btn btn-ghost btn-sm">{{ t.send_message }}</a>{% endif %}
+    {% else %}<span style="color:var(--muted);font-size:.88rem;font-style:italic">♥ {{ poem.like_count }}</span>{% endif %}
+    <div class="share-strip">
+      <a class="sh-btn sh-wa" href="https://wa.me/?text={{ (poem.title+' — '+poem.username)|urlencode }}%0A{{ request.url|urlencode }}" target="_blank">{{ t.share_wa }}</a>
+      <a class="sh-btn sh-tw" href="https://twitter.com/intent/tweet?text={{ (poem.title+' by '+poem.username)|urlencode }}&url={{ request.url|urlencode }}" target="_blank">{{ t.share_tw }}</a>
+      <button class="sh-btn sh-copy" onclick="copyLink()">{{ t.copy_link }}</button>
+      <button class="sh-btn sh-img" onclick="makeCard()">{{ t.download_card }}</button>
+    </div>
+    {% if session.user_id and session.user_id != poem.user_id %}
+    <div style="position:relative;margin-left:auto" data-drop="rep">
+      <button class="btn btn-danger btn-xs" onclick="toggleDrop('rep-drop')" data-drop="rep">{{ t.report }}</button>
+      <div id="rep-drop" class="dropdown-menu" style="display:none;position:absolute;top:110%;right:0;background:var(--ink2);border:1px solid var(--border2);border-radius:var(--r);padding:.85rem;z-index:30;box-shadow:var(--sh2);min-width:250px">
+        <form method="post" action="{{ url_for('report_poem',poem_id=poem.id) }}" style="display:flex;flex-direction:column;gap:.5rem">
+          <input type="text" name="reason" placeholder="{% if session.get('lang')=='en' %}Reason for report…{% else %}Report का कारण लिखें…{% endif %}" style="font-size:.84rem"/>
+          <button type="submit" class="btn btn-danger btn-sm">{{ t.report }}</button>
+        </form>
+      </div>
+    </div>{% endif %}
+    {% if session.user_id == poem.user_id %}
+    <a href="{{ url_for('edit_poem',poem_id=poem.id) }}" class="btn btn-ghost btn-sm" style="margin-left:auto">✏ {{ t.edit_poem }}</a>
+    <form method="post" action="{{ url_for('delete_poem',poem_id=poem.id) }}" style="display:inline" onsubmit="return confirm('Delete?')">
+      <button type="submit" class="btn btn-danger btn-sm">{{ t.delete }}</button>
+    </form>{% endif %}
+  </div>
+  <!-- COMMENTS -->
+  <div class="comments-sec" id="comments">
+    <div class="cmnt-heading">💬 {% if session.get('lang')=='en' %}Comments{% else %}टिप्पणियाँ{% endif %} <span class="cmnt-count-badge">{{ all_comments|length }}</span></div>
+    {% if session.user_id %}
+    <div class="cmnt-box">
+      <form method="post" action="{{ url_for('comment',poem_id=poem.id) }}">
+        <input type="hidden" name="parent_id" value=""/>
+        <textarea class="cmnt-ta" name="content" placeholder="{% if session.get('lang')=='en' %}Write your thoughts…{% else %}इस कविता पर अपने विचार लिखें…{% endif %}" required></textarea>
+        <div style="display:flex;justify-content:flex-end;margin-top:.5rem">
+          <button type="submit" class="btn btn-burg btn-sm">{{ t.comment }}</button>
+        </div>
+      </form>
+    </div>
+    {% else %}
+    <div class="login-prompt">
+      {% if session.get('lang')=='en' %}<a href="{{ url_for('login') }}">Login</a> to comment — reading is free for all 📖
+      {% else %}टिप्पणी के लिए <a href="{{ url_for('login') }}">Login करें</a> — पढ़ना सबके लिए नि:शुल्क है 📖{% endif %}
+    </div>{% endif %}
+    {% if top_comments %}{% for c in top_comments %}
+    <div class="cmnt-item">
+      <div class="c-av" {% if c.profile_pic %}onclick="openLb('{{ url_for('static',filename='uploads/'+c.profile_pic) }}')"{% else %}onclick="window.location='{{ url_for('profile',username=c.username) }}'"{% endif %}>
+        {% if c.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+c.profile_pic) }}" alt=""/>{% else %}{{ c.username[0]|upper }}{% endif %}
+      </div>
+      <div class="c-body">
+        <div class="c-head"><a href="{{ url_for('profile',username=c.username) }}" class="c-name">{{ c.username }}</a><span class="c-time">{{ c.created_at|time_ago }}</span></div>
+        <div class="c-text">{{ c.content }}</div>
+        <div class="c-acts">
+          {% if session.user_id %}<button class="c-btn" onclick="toggleReply('rf{{ c.id }}')">{{ t.reply }}</button>{% endif %}
+          {% if session.user_id == c.user_id %}
+          <form method="post" action="{{ url_for('delete_comment',cid=c.id) }}" style="display:inline" onsubmit="return confirm('Delete?')">
+            <button type="submit" class="c-btn c-del">🗑</button></form>{% endif %}
+        </div>
+        {% if session.user_id %}
+        <div class="reply-form" id="rf{{ c.id }}">
+          <form method="post" action="{{ url_for('comment',poem_id=poem.id) }}" style="display:flex;gap:.4rem;width:100%">
+            <input type="hidden" name="parent_id" value="{{ c.id }}"/>
+            <input class="reply-input" type="text" name="content" placeholder="{% if session.get('lang')=='en' %}Write reply…{% else %}जवाब लिखें…{% endif %}" required/>
+            <button type="submit" class="btn btn-burg btn-sm">↵</button>
+          </form>
+        </div>{% endif %}
+        {% if replies_map.get(c.id) %}
+        <div class="replies">{% for r in replies_map[c.id] %}
+        <div class="r-item">
+          <div class="c-av" style="width:26px;height:26px;font-size:.68rem;flex-shrink:0" {% if r.profile_pic %}onclick="openLb('{{ url_for('static',filename='uploads/'+r.profile_pic) }}')"{% else %}onclick="window.location='{{ url_for('profile',username=r.username) }}'"{% endif %}>
+            {% if r.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+r.profile_pic) }}" alt=""/>{% else %}{{ r.username[0]|upper }}{% endif %}
+          </div>
+          <div class="c-body">
+            <div class="c-head"><a href="{{ url_for('profile',username=r.username) }}" class="c-name">{{ r.username }}</a><span class="c-time">{{ r.created_at|time_ago }}</span></div>
+            <div class="c-text">{{ r.content }}</div>
+            {% if session.user_id == r.user_id %}
+            <form method="post" action="{{ url_for('delete_comment',cid=r.id) }}" style="display:inline" onsubmit="return confirm('Delete?')">
+              <button type="submit" class="c-btn c-del" style="margin-top:.25rem">🗑</button></form>{% endif %}
+          </div>
+        </div>{% endfor %}</div>{% endif %}
+      </div>
+    </div>{% endfor %}
+    {% else %}<div class="empty" style="padding:2rem"><p style="font-style:italic">{% if session.get('lang')=='en' %}No comments yet. Be first!{% else %}अभी कोई टिप्पणी नहीं{% endif %} 💬</p></div>{% endif %}
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>{const b=document.querySelector('.sh-copy');b.textContent='✅ Copied!';setTimeout(()=>b.textContent='{{ t.copy_link }}',2000);})}
+function makeCard(){
+  const canvas=document.getElementById('poem-canvas'),ctx=canvas.getContext('2d'),W=900,H=540;
+  canvas.width=W;canvas.height=H;
+  const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#0e0b08');g.addColorStop(.5,'#1a0508');g.addColorStop(1,'#08060e');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.globalAlpha=.07;ctx.fillStyle='#c9971c';ctx.beginPath();ctx.arc(W*.1,H*.2,180,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#6b1a22';ctx.beginPath();ctx.arc(W*.9,H*.8,140,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+  ctx.strokeStyle='rgba(201,151,28,.5)';ctx.lineWidth=2;ctx.strokeRect(14,14,W-28,H-28);
+  ctx.strokeStyle='rgba(201,151,28,.18)';ctx.lineWidth=1;ctx.strokeRect(24,24,W-48,H-48);
+  const ag=ctx.createLinearGradient(0,40,0,H-40);ag.addColorStop(0,'#c9971c');ag.addColorStop(.5,'#6b1a22');ag.addColorStop(1,'#c9971c');
+  ctx.fillStyle=ag;ctx.fillRect(42,42,3,H-84);
+  ctx.fillStyle='rgba(201,151,28,.06)';ctx.font='italic 150px serif';ctx.fillText('")',46,190);
+  ctx.fillStyle='#c9971c';ctx.font='bold 28px "Cinzel",serif';ctx.letterSpacing='2px';
+  ctx.fillText('{{ poem.title|replace("'","\'")|truncate(40,true,"…") }}',58,80);
+  ctx.fillStyle='#7a6848';ctx.font='12px Raleway,sans-serif';ctx.letterSpacing='1px';
+  ctx.fillText('— {{ poem.username }}  ·  Kavyavani',60,104);
+  ctx.strokeStyle='rgba(201,151,28,.18)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(58,118);ctx.lineTo(W-48,118);ctx.stroke();
+  ctx.fillStyle='#ccb888';ctx.font='17px "IM Fell English",serif';ctx.letterSpacing='0px';
+  const lines='{{ poem.content|replace("\n","\\n")|replace("'","\'")|replace('"','\\"') }}'.split('\n');
+  let y=150,shown=0;
+  for(let i=0;i<lines.length&&y<H-70;i++){if(!lines[i].trim()&&shown===0)continue;ctx.fillText(lines[i].trim().substring(0,54),58,y);y+=26;shown++;if(shown>=9){ctx.fillStyle='#504030';ctx.fillText('…',58,y);break;}}
+  ctx.strokeStyle='rgba(201,151,28,.15)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(48,H-46);ctx.lineTo(W-48,H-46);ctx.stroke();
+  ctx.fillStyle='rgba(201,151,28,.4)';ctx.font='bold 10px Raleway,sans-serif';ctx.letterSpacing='3px';
+  ctx.fillText('KAVYAVANI  ·  काव्यवाणी  ·  کاویاوانی',W-380,H-28);
+  canvas.style.display='block';const lnk=document.createElement('a');
+  lnk.download='{{ poem.title|replace(" ","_") }}.png';lnk.href=canvas.toDataURL('image/png',.95);lnk.click();
+  setTimeout(()=>canvas.style.display='none',200);
+}
+</script>
+{% endblock %}

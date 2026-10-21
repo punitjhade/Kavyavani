@@ -1,0 +1,20 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.bookmarks }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div><div class="sec-sub">Saved</div><div class="sec-title">🔖 {{ t.bookmarks }}</div></div></div>
+  {% if poems %}<div class="poems-feed">{% for p in poems %}
+  <article class="poem-card">
+    <div class="pc-top">
+      <div class="pc-av" onclick="window.location='{{ url_for('profile',username=p.username) }}'">{{ p.username[0]|upper }}</div>
+      <div class="pc-meta"><a href="{{ url_for('profile',username=p.username) }}" class="pc-author">{{ p.username }}</a></div>
+      <a href="{{ url_for('category',cat=p.category) }}" class="pc-cat">{{ p.category }}</a>
+    </div>
+    <div class="pc-body"><a href="{{ url_for('poem',poem_id=p.id) }}" class="pc-title">{{ p.title }}</a><pre class="pc-poem">{{ p.content }}</pre></div>
+    <div class="pc-foot"><span class="pc-btn">♥ {{ p.like_count }}</span><a href="{{ url_for('poem',poem_id=p.id) }}" class="btn btn-xs btn-ghost" style="margin-left:.3rem">{{ t.read_more }}</a>
+      <form method="post" action="{{ url_for('bookmark',poem_id=p.id) }}" style="margin-left:auto"><button type="submit" class="btn btn-xs btn-danger">🗑 Remove</button></form>
+    </div>
+  </article>{% endfor %}</div>
+  {% else %}<div class="empty"><h3>{% if session.get('lang')=='en' %}No bookmarks{% else %}कोई bookmark नहीं{% endif %}</h3></div>{% endif %}
+</div>{% endblock %}

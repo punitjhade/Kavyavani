@@ -1,0 +1,38 @@
+{% extends "admin/base.html" %}
+{% block title %}Analytics{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>📈 Analytics</h1></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem">
+  <div class="chart-card"><h4>DAILY POEMS — 30 DAYS</h4><canvas id="cDP" height="140"></canvas></div>
+  <div class="chart-card"><h4>DAILY USERS — 30 DAYS</h4><canvas id="cDU" height="140"></canvas></div>
+</div>
+<div class="chart-card" style="max-width:420px;margin-bottom:1.8rem">
+  <h4>POEMS BY CATEGORY</h4><canvas id="cCat" height="200"></canvas>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem">
+    <div style="font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:.85rem">TOP 10 POEMS</div>
+    {% for p in top_poems %}<div style="display:flex;align-items:center;gap:.5rem;padding:.38rem 0;border-bottom:1px solid var(--border)">
+      <span style="color:var(--muted);font-size:.72rem;width:18px;font-family:var(--sans)">{{ loop.index }}</span>
+      <a href="{{ url_for('poem',poem_id=p.id) }}" target="_blank" style="flex:1;font-size:.78rem;color:var(--text2);font-family:var(--sans)" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text2)'">{{ p.title[:28] }}…</a>
+      <span style="color:var(--rose);font-size:.72rem;font-family:var(--sans);font-weight:700">❤{{ p.like_count }}</span>
+    </div>{% endfor %}
+  </div>
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem">
+    <div style="font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:.85rem">TOP 10 SHAYAR</div>
+    {% for p in top_poets %}<div style="display:flex;align-items:center;gap:.5rem;padding:.38rem 0;border-bottom:1px solid var(--border)">
+      <span style="color:var(--muted);font-size:.72rem;width:18px;font-family:var(--sans)">{{ loop.index }}</span>
+      <a href="{{ url_for('profile',username=p.username) }}" target="_blank" style="flex:1;font-size:.78rem;color:var(--text2);font-family:var(--sans)" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text2)'">{{ p.username }}</a>
+      <span style="color:var(--rose);font-size:.72rem;font-family:var(--sans);font-weight:700">❤{{ p.total_likes }}</span>
+    </div>{% endfor %}
+  </div>
+</div>
+<script>
+const t={color:'#7a6a50',font:{size:10}},g={color:'rgba(200,150,30,.06)'};
+function lc(id,lab,d,col){new Chart(document.getElementById(id),{type:'line',data:{labels:lab,datasets:[{data:d,borderColor:col,backgroundColor:col.replace('rgb','rgba').replace(')',', .08)'),tension:.4,fill:true,pointRadius:2,pointBackgroundColor:col}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:t,grid:g},y:{ticks:{...t,stepSize:1},grid:g,beginAtZero:true}}}});}
+const dp={{ daily_poems|tojson }},du={{ daily_users|tojson }},cs={{ cat_stats|tojson }};
+lc('cDP',dp.map(r=>r.day),dp.map(r=>r.count),'rgb(200,150,30)');
+lc('cDU',du.map(r=>r.day),du.map(r=>r.count),'rgb(56,160,143)');
+new Chart(document.getElementById('cCat'),{type:'doughnut',data:{labels:cs.map(r=>r.category),datasets:[{data:cs.map(r=>r.count),backgroundColor:['#c8961e','#9e2a2b','#38a08f','#9b6cf0','#e8b832','#c4405a','#2a7c6f','#5b7ef0'],borderWidth:0}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{color:'#a89070',font:{size:11}}}}}});
+</script>
+{% endblock %}

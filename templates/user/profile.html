@@ -1,0 +1,79 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ user.username }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap">
+  <div class="profile-card">
+    <div class="p-cover">
+      {% if user.cover_pic %}<img src="{{ url_for('static',filename='uploads/'+user.cover_pic) }}" alt="cover" onclick="openLb(this.src)" style="cursor:pointer"/>{% endif %}
+      <div class="p-cover-ovl"></div>
+    </div>
+    <div class="p-body">
+      <div class="p-av-wrap">
+        <div class="p-av" {% if user.profile_pic %}onclick="openLb('{{ url_for('static',filename='uploads/'+user.profile_pic) }}')"{% endif %}>
+          {% if user.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+user.profile_pic) }}" alt=""/>{% else %}{{ user.username[0]|upper }}{% endif %}
+        </div>
+      </div>
+      <div class="p-info">
+        <div class="p-name">{{ user.username }}{% if user.poet_of_week %} 👑{% endif %}{% if is_mutual %}<span class="mutual-tag">{{ t.mutual }}</span>{% endif %}</div>
+        <p class="p-bio">{{ user.bio or ('No bio yet.' if session.get('lang')=='en' else 'अभी कोई परिचय नहीं।') }}</p>
+        {% if user_badges %}<div class="p-badges">{% for b in user_badges %}{% if b.badge_key in BADGES %}<span class="p-badge" title="{{ BADGES[b.badge_key].desc }}">{{ BADGES[b.badge_key].label }}</span>{% endif %}{% endfor %}</div>{% endif %}
+        <div class="p-stats">
+          <div class="p-stat"><span class="p-stat-n">{{ poems|length }}</span><span class="p-stat-l">{{ t.poems_count }}</span></div>
+          <div class="p-stat"><span class="p-stat-n">{{ total_likes }}</span><span class="p-stat-l">{{ t.likes_count }}</span></div>
+          <a href="{{ url_for('followers_page',username=user.username) }}" class="p-stat"><span class="p-stat-n">{{ followers_count }}</span><span class="p-stat-l">{{ t.followers }}</span></a>
+          <a href="{{ url_for('following_page',username=user.username) }}" class="p-stat"><span class="p-stat-n">{{ following_count }}</span><span class="p-stat-l">{% if session.get('lang')=='en' %}Following{% else %}Following{% endif %}</span></a>
+          {% if mutual_count %}<a href="{{ url_for('mutual_page',username=user.username) }}" class="p-stat"><span class="p-stat-n" style="color:var(--teal2)">{{ mutual_count }}</span><span class="p-stat-l" style="color:var(--teal2)">{{ t.mutual }}</span></a>{% endif %}
+        </div>
+        <p style="font-size:.7rem;color:var(--muted);font-family:var(--sans)">📅 {{ user.joined_at[:10] }}</p>
+        <div class="p-btns">
+          {% if session.user_id and session.user_id != user.id %}
+          <form method="post" action="{{ url_for('follow',user_id=user.id) }}" style="display:inline">
+            <button type="submit" class="btn {% if is_following %}btn-outline{% else %}btn-primary{% endif %} btn-sm">{% if is_following %}{{ t.following }}{% else %}{{ t.follow }}{% endif %}</button>
+          </form>
+          <a href="{{ url_for('conversation',other_id=user.id) }}" class="btn btn-outline btn-sm">{{ t.send_message }}</a>
+          {% endif %}
+          {% if session.username == user.username %}
+          <a href="{{ url_for('edit_profile',username=user.username) }}" class="btn btn-outline btn-sm">{{ t.edit_profile }}</a>
+          <a href="{{ url_for('write') }}" class="btn btn-primary btn-sm">{{ t.write_poem }}</a>
+          <a href="{{ url_for('bookmarks') }}" class="btn btn-ghost btn-sm">🔖 {{ t.bookmarks }}</a>
+          <a href="{{ url_for('collections') }}" class="btn btn-ghost btn-sm">📂 {{ t.collections }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if drafts %}
+  <div class="sec-hdr"><div><div class="sec-sub">Private</div><div class="sec-title">✏ {{ t.save_draft }}</div></div></div>
+  <div class="poems-feed" style="margin-bottom:2.5rem">{% for p in drafts %}
+  <article class="poem-card" style="border-color:rgba(201,151,28,.1)">
+    <div class="pc-top">
+      <div class="pc-meta"><span class="pc-author">{{ p.title }}</span><div class="pc-submeta">Draft · {{ p.created_at[:10] }}</div></div>
+      <a href="{{ url_for('edit_poem',poem_id=p.id) }}" class="btn btn-primary btn-xs">✏</a>
+    </div>
+    <div class="pc-body"><pre class="pc-poem">{{ p.content }}</pre></div>
+    <div class="pc-foot">
+      <form method="post" action="{{ url_for('delete_poem',poem_id=p.id) }}" onsubmit="return confirm('Delete?')">
+        <button type="submit" class="btn btn-danger btn-xs">{{ t.delete }}</button></form>
+    </div>
+  </article>{% endfor %}</div>{% endif %}
+  <div class="sec-hdr"><div><div class="sec-sub">{{ poems|length }}</div><div class="sec-title">{{ user.username }}{% if session.get('lang')=='en' %} — Poems{% else %} का कलाम{% endif %}</div></div></div>
+  {% if poems %}<div class="poems-feed">{% for p in poems %}
+  <article class="poem-card">
+    <div class="pc-top">
+      <div class="pc-av" onclick="window.location='{{ url_for('profile',username=user.username) }}'">{% if user.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+user.profile_pic) }}" alt=""/>{% else %}{{ user.username[0]|upper }}{% endif %}</div>
+      <div class="pc-meta"><span class="pc-author">{{ user.username }}</span><div class="pc-submeta">{{ p.created_at|time_ago }}</div></div>
+      <a href="{{ url_for('category',cat=p.category) }}" class="pc-cat">{{ p.category }}</a>
+    </div>
+    <div class="pc-body"><a href="{{ url_for('poem',poem_id=p.id) }}" class="pc-title">{{ p.title }}</a><pre class="pc-poem">{{ p.content }}</pre></div>
+    <div class="pc-foot">
+      <span class="pc-btn">♥ {{ p.like_count }}</span>
+      <a href="{{ url_for('poem',poem_id=p.id) }}" class="btn btn-xs btn-ghost" style="margin-left:.3rem">{{ t.read_more }}</a>
+      {% if session.username == user.username %}
+      <a href="{{ url_for('edit_poem',poem_id=p.id) }}" class="btn btn-xs btn-ghost">✏</a>
+      <form method="post" action="{{ url_for('delete_poem',poem_id=p.id) }}" style="display:inline" onsubmit="return confirm('Delete?')">
+        <button type="submit" class="btn btn-xs btn-danger">🗑</button></form>{% endif %}
+    </div>
+  </article>{% endfor %}</div>
+  {% else %}<div class="empty"><h3>{{ t.no_poems }}</h3>{% if session.username==user.username %}<a href="{{ url_for('write') }}" class="btn btn-primary" style="margin-top:1.2rem">{{ t.start_writing }}</a>{% endif %}</div>{% endif %}
+</div>{% endblock %}

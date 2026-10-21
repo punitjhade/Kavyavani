@@ -1,0 +1,32 @@
+{% extends "user/base.html" %}
+{% block title %}{{ poet.name }} — Kavyavani{% endblock %}
+{% block content %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div>
+    <div class="sec-sub">{{ poet.language }}{% if poet.born or poet.died %} · {{ poet.born }}–{{ poet.died }}{% endif %}</div>
+    <div class="sec-title">{{ poet.name }}{% if poet.name_native %} · {{ poet.name_native }}{% endif %}</div>
+  </div></div>
+
+  {% if poet.bio %}<p>{{ poet.bio }}</p>{% endif %}
+
+  {% if works %}
+  <h3 style="margin-top:1.2rem">Notable works</h3>
+  <ul>{% for w in works %}<li>{{ w }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  <h3 style="margin-top:1.2rem">Poems on Kavyavani ({{ poems|length }})</h3>
+  {% if poems %}
+  <div class="poems-feed">{% for p in poems %}
+    <article class="poem-card">
+      <div class="pc-body"><a href="{{ url_for('poem', poem_id=p.id) }}" class="pc-title">{{ p.title }}</a>
+      <pre class="pc-poem">{{ p.content[:240] }}{% if p.content|length > 240 %}…{% endif %}</pre></div>
+      <div class="pc-foot"><span class="pc-btn">♥ {{ p.like_count }}</span>
+      <a href="{{ url_for('poem', poem_id=p.id) }}" class="btn btn-xs btn-ghost" style="margin-left:.3rem">Read</a>
+      <span class="pc-views">👁 {{ p.views }}</span></div>
+    </article>{% endfor %}</div>
+  {% else %}
+  <div class="empty"><h3>No poems added yet</h3></div>
+  {% endif %}
+  <p style="margin-top:1.5rem"><a href="{{ url_for('poets') }}">← All poets</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+# poet-slug | wikisource language | Author page title
+# Only public-domain poets. Add more lines yourself; titles must match the Author: page on Wikisource.
+
+geoffrey-chaucer | en | Author:Geoffrey Chaucer
+edmund-spenser | en | Author:Edmund Spenser
+christopher-marlowe | en | Author:Christopher Marlowe
+william-shakespeare | en | Author:William Shakespeare
+ben-jonson | en | Author:Ben Jonson
+john-donne | en | Author:John Donne
+george-herbert | en | Author:George Herbert
+robert-herrick | en | Author:Robert Herrick
+andrew-marvell | en | Author:Andrew Marvell
+john-milton | en | Author:John Milton
+john-dryden | en | Author:John Dryden
+alexander-pope | en | Author:Alexander Pope
+thomas-gray | en | Author:Thomas Gray
+oliver-goldsmith | en | Author:Oliver Goldsmith
+william-cowper | en | Author:William Cowper
+robert-burns | en | Author:Robert Burns
+william-blake | en | Author:William Blake
+william-wordsworth | en | Author:William Wordsworth
+samuel-taylor-coleridge | en | Author:Samuel Taylor Coleridge
+lord-byron | en | Author:George Gordon Byron
+percy-bysshe-shelley | en | Author:Percy Bysshe Shelley
+john-keats | en | Author:John Keats
+john-clare | en | Author:John Clare
+alfred-lord-tennyson | en | Author:Alfred Tennyson
+robert-browning | en | Author:Robert Browning
+elizabeth-barrett-browning | en | Author:Elizabeth Barrett Browning
+matthew-arnold | en | Author:Matthew Arnold
+edward-lear | en | Author:Edward Lear
+lewis-carroll | en | Author:Charles Lutwidge Dodgson
+christina-rossetti | en | Author:Christina Georgina Rossetti
+dante-gabriel-rossetti | en | Author:Dante Gabriel Rossetti
+william-morris | en | Author:William Morris
+algernon-charles-swinburne | en | Author:Algernon Charles Swinburne
+gerard-manley-hopkins | en | Author:Gerard Manley Hopkins
+thomas-hardy | en | Author:Thomas Hardy
+a-e-housman | en | Author:Alfred Edward Housman
+oscar-wilde | en | Author:Oscar Wilde
+robert-louis-stevenson | en | Author:Robert Louis Stevenson
+rudyard-kipling | en | Author:Rudyard Kipling
+w-e-henley | en | Author:William Ernest Henley
+wilfred-owen | en | Author:Wilfred Owen
+rupert-brooke | en | Author:Rupert Brooke
+edward-thomas | en | Author:Edward Thomas
+isaac-rosenberg | en | Author:Isaac Rosenberg
+walt-whitman | en | Author:Walt Whitman
+emily-dickinson | en | Author:Emily Dickinson
+henry-wadsworth-longfellow | en | Author:Henry Wadsworth Longfellow
+edgar-allan-poe | en | Author:Edgar Allan Poe
+ralph-waldo-emerson | en | Author:Ralph Waldo Emerson
+william-cullen-bryant | en | Author:William Cullen Bryant
+john-greenleaf-whittier | en | Author:John Greenleaf Whittier
+paul-laurence-dunbar | en | Author:Paul Laurence Dunbar
+w-b-yeats | en | Author:William Butler Yeats
+rabindranath-tagore | en | Author:Rabindranath Tagore
+sarojini-naidu | en | Author:Sarojini Naidu
+toru-dutt | en | Author:Toru Dutt
+
+# Hindi (hi.wikisource.org) - author pages are found by the poet's native-script name
+
+kabir | hi | कबीर
+tulsidas | hi | तुलसीदास
+surdas | hi | सूरदास
+mirabai | hi | मीराबाई
+raskhan | hi | रसखान
+rahim | hi | रहीम
+malik-muhammad-jayasi | hi | मलिक मुहम्मद जायसी
+bihari | hi | बिहारी
+keshavdas | hi | केशवदास
+bhushan | hi | भूषण
+padmakar | hi | पद्माकर
+dev | hi | देव
+ghananand | hi | घनानंद
+nand-das | hi | नंददास
+dadu-dayal | hi | दादू दयाल
+ravidas | hi | रविदास
+namdev | hi | नामदेव
+guru-nanak | hi | गुरु नानक
+bharatendu-harishchandra | hi | भारतेन्दु हरिश्चन्द्र
+maithili-sharan-gupt | hi | मैथिलीशरण गुप्त
+ayodhya-singh-upadhyay-hariaudh | hi | अयोध्या सिंह उपाध्याय हरिऔध
+jaishankar-prasad | hi | जयशंकर प्रसाद
+suryakant-tripathi-nirala | hi | सूर्यकांत त्रिपाठी निराला
+subhadra-kumari-chauhan | hi | सुभद्रा कुमारी चौहान
+mahavir-prasad-dwivedi | hi | महावीर प्रसाद द्विवेदी
+shridhar-pathak | hi | श्रीधर पाठक
+ramnaresh-tripathi | hi | रामनरेश त्रिपाठी
+gopal-singh-nepali | hi | गोपाल सिंह नेपाली
+
+# Urdu (ur.wikisource.org)
+
+amir-khusro | ur | امیر خسرو
+wali-mohammad-wali-deccani | ur | ولی دکنی
+mir-taqi-mir | ur | میر تقی میر
+mirza-rafi-sauda | ur | مرزا رفیع سودا
+khwaja-mir-dard | ur | خواجہ میر درد
+nazeer-akbarabadi | ur | نظیر اکبرآبادی
+insha-allah-khan-insha | ur | انشاء اللہ خان انشا
+mushafi | ur | غلام ہمدانی مصحفی
+khwaja-haidar-ali-aatish | ur | حیدر علی آتش
+imam-bakhsh-nasikh | ur | امام بخش ناسخ
+mir-babar-ali-anis | ur | میر ببر علی انیس
+mirza-salamat-ali-dabeer | ur | مرزا سلامت علی دبیر
+mirza-asadullah-khan-ghalib | ur | مرزا اسد اللہ خان غالب
+momin-khan-momin | ur | مومن خان مومن
+sheikh-ibrahim-zauq | ur | شیخ ابراہیم ذوق
+bahadur-shah-zafar | ur | بہادر شاہ ظفر
+daagh-dehlvi | ur | داغ دہلوی
+altaf-hussain-hali | ur | الطاف حسین حالی
+akbar-allahabadi | ur | اکبر الہ آبادی
+allama-iqbal | ur | علامہ اقبال
+chakbast | ur | برج نارائن چکبست
+hasrat-mohani | ur | حسرت موہانی
+fani-badayuni | ur | فانی بدایونی
+asghar-gondvi | ur | اصغر گونڈوی
+ameer-minai | ur | امیر مینائی
+jalal-lakhnavi | ur | جلال لکھنوی

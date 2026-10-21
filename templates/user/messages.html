@@ -1,0 +1,16 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.messages }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-sm">
+  <div class="sec-hdr"><div><div class="sec-title">💌 {{ t.messages }}</div></div></div>
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+    {% if convos %}<div class="conv-list">{% for c in convos %}
+    <a href="{{ url_for('conversation',other_id=c.other_id) }}" class="conv-item">
+      <div class="co-av">{% if c.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+c.profile_pic) }}" alt=""/>{% else %}{{ c.username[0]|upper }}{% endif %}</div>
+      <div style="flex:1;min-width:0"><div class="co-name">{{ c.username }}</div>{% if c.unread %}<span class="unread-dot">{{ c.unread }} new</span>{% endif %}</div>
+      <div class="co-time">{{ c.last_time|time_ago }}</div>
+    </a>{% endfor %}</div>
+    {% else %}<div class="empty"><h3>{% if session.get('lang')=='en' %}No messages yet{% else %}कोई message नहीं{% endif %}</h3><p style="font-style:italic;margin-top:.5rem;color:var(--muted)">{% if session.get('lang')=='en' %}Visit a poet's profile to send a message{% else %}किसी शायर की profile पर जाकर message करें{% endif %}</p></div>{% endif %}
+  </div>
+</div>{% endblock %}

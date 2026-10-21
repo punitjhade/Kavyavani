@@ -1,0 +1,132 @@
+# Name | Native name | born | died | bio | notable works (; separated)
+Kabir | कबीर | 1440 | 1518 | Mystic poet-saint of the Bhakti movement known for his dohas | Bijak; Sakhi; Kabir Granthavali
+Tulsidas | तुलसीदास | 1532 | 1623 | Bhakti poet who retold the Ramayana in Awadhi | Ramcharitmanas; Vinaya Patrika; Kavitavali; Hanuman Chalisa
+Surdas | सूरदास | 1478 | 1583 | Blind devotional poet of Krishna bhakti in Braj Bhasha | Sur Sagar; Sur Saravali; Sahitya Lahari
+Mirabai | मीराबाई | 1498 | 1546 | Rajput princess and devotional poet of Krishna | Padavali; Narsi Ji ka Mayra
+Raskhan | रसखान | 1548 | 1628 | Muslim poet devoted to Krishna, writing in Braj Bhasha | Sujan Raskhan; Prem Vatika
+Rahim | रहीम | 1556 | 1627 | Courtier-poet of Akbar's court famous for his couplets | Rahim Dohavali; Madanashtak
+Malik Muhammad Jayasi | मलिक मुहम्मद जायसी | 1477 | 1542 | Sufi poet of the Awadhi Premakhyan tradition | Padmavat; Akhrawat; Akhiri Kalam
+Bihari | बिहारी | 1595 | 1664 | Riti-period poet celebrated for compact couplets | Bihari Satsai
+Keshavdas | केशवदास | 1555 | 1617 | Riti-kal poet and theorist of Hindi poetics | Rasikpriya; Kavipriya; Ramchandrika
+Ghananand | घनानंद | 1689 | 1739 | Riti-mukt poet of love and longing | Sujanhit; Ghananand Kavitt
+Bhushan | भूषण | 1613 | 1715 | Poet of heroic verse on Shivaji and Chhatrasal | Shivrajbhushan; Shivabavani; Chhatrasal Dashak
+Padmakar | पद्माकर | 1753 | 1833 | Riti-period poet of Braj Bhasha | Jagadvinod; Padmabharan
+Dev | देव | 1673 | 1767 | Riti-kal poet of Braj Bhasha | Bhavvilas; Rasvilas
+Nand Das | नंददास | 1533 | 1586 | Ashtachhap poet of the Pushtimarg tradition | Rasapanchadhyayi; Bhramar Geet
+Paramanand Das | परमानंद दास | 1493 | 1583 | Ashtachhap poet of Krishna devotion | Paramanand Sagar
+Guru Nanak | गुरु नानक | 1469 | 1539 | Founder of Sikhism whose hymns appear in Hindi-Punjabi verse | Japji Sahib; Asa di Var
+Dadu Dayal | दादू दयाल | 1544 | 1603 | Nirguna saint-poet of Rajasthan | Dadu Vani
+Ravidas | रविदास | 1450 | 1520 | Bhakti saint-poet whose verses appear in the Guru Granth Sahib | Ravidas ke Pad
+Namdev | नामदेव | 1270 | 1350 | Bhakti saint-poet of Maharashtra with Hindi padas | Namdev Gatha
+Charandas | चरणदास | 1703 | 1782 | Saint-poet of the Charandasi tradition | Bhakti Sagar; Gyan Swarodaya
+Sundardas | सुंदरदास | 1596 | 1689 | Nirguna saint-poet of the Dadu panth | Sundar Vilas
+Bharatendu Harishchandra | भारतेन्दु हरिश्चन्द्र | 1850 | 1885 | Father of modern Hindi literature | Bharat Durdasha; Andher Nagari; Prem Madhuri
+Maithili Sharan Gupt | मैथिलीशरण गुप्त | 1886 | 1964 | Rashtrakavi of Khari Boli poetry | Saket; Bharat-Bharati; Yashodhara; Panchavati; Jayadratha Vadh
+Ayodhya Singh Upadhyay Hariaudh | अयोध्या सिंह उपाध्याय हरिऔध | 1865 | 1947 | Poet of the Dwivedi era | Priyapravas; Vaidehi Vanvas; Chokhe Chaupade
+Jaishankar Prasad | जयशंकर प्रसाद | 1889 | 1937 | Pillar of Chhayavad poetry | Kamayani; Aansoo; Jharna; Lahar
+Suryakant Tripathi Nirala | सूर्यकांत त्रिपाठी निराला | 1896 | 1961 | Chhayavadi poet who pioneered free verse | Parimal; Anamika; Rag-Virag; Kukurmutta; Saroj Smriti; Ram ki Shakti Puja
+Sumitranandan Pant | सुमित्रानंदन पंत | 1900 | 1977 | Chhayavadi poet of nature | Pallav; Gunjan; Yugantar; Chidambara; Lokayatan
+Mahadevi Verma | महादेवी वर्मा | 1907 | 1987 | Chhayavadi poet and essayist | Nihar; Rashmi; Neerja; Sandhyageet; Deepshikha; Yama
+Ramdhari Singh Dinkar | रामधारी सिंह दिनकर | 1908 | 1974 | Rashtrakavi known for poetry of heroism | Rashmirathi; Kurukshetra; Urvashi; Hunkar; Parshuram ki Pratiksha
+Harivansh Rai Bachchan | हरिवंश राय बच्चन | 1907 | 2003 | Poet of Halavad and Uttar-Chhayavad | Madhushala; Madhubala; Madhukalash; Nisha Nimantran
+Makhanlal Chaturvedi | माखनलाल चतुर्वेदी | 1889 | 1968 | Poet of nationalist verse | Himkiritini; Himtarangini; Yug Charan; Pushp ki Abhilasha
+Subhadra Kumari Chauhan | सुभद्रा कुमारी चौहान | 1904 | 1948 | Poet and freedom-fighter | Jhansi ki Rani; Mukul; Trividha
+Ramnaresh Tripathi | रामनरेश त्रिपाठी | 1889 | 1962 | Poet of patriotic and romantic verse | Milan; Pathik; Swapna
+Sohanlal Dwivedi | सोहनलाल द्विवेदी | 1906 | 1988 | Gandhian poet | Bhairavi; Pujageet; Vasavdatta
+Gopal Singh Nepali | गोपाल सिंह नेपाली | 1911 | 1963 | Poet and film lyricist | Umang; Panchi; Navin
+Balkrishna Sharma Navin | बालकृष्ण शर्मा नवीन | 1897 | 1960 | Poet of nationalist and romantic verse | Kunkum; Rashmirekha; Apalak
+Shivmangal Singh Suman | शिवमंगल सिंह सुमन | 1915 | 2002 | Poet of progressive and romantic poetry | Hillol; Jeevan ke Gaan; Pralay Srijan
+Bhagwati Charan Verma | भगवतीचरण वर्मा | 1903 | 1981 | Poet and novelist | Madira; Mere Kavi ke Geet; Chitralekha
+Ramkumar Verma | रामकुमार वर्मा | 1905 | 1990 | Poet and one-act playwright | Chittaurkee Chita; Ekalavya
+Gajanan Madhav Muktibodh | गजानन माधव मुक्तिबोध | 1917 | 1964 | Major modernist poet of Nayi Kavita | Chand ka Munh Tedha Hai; Bhooree Bhooree Khak Dhool; Andhere Mein
+Agyeya | अज्ञेय | 1911 | 1987 | Pioneer of Prayogvad and Nayi Kavita | Hari Ghas par Kshan Bhar; Aangan ke Paar Dwar; Kitni Navon Mein Kitni Baar; Asadhya Veena
+Shamsher Bahadur Singh | शमशेर बहादुर सिंह | 1911 | 1993 | Poet of the Nayi Kavita movement | Kuchh Kavitayein; Chuka Nahin Hoon Main; Bat Bolegi
+Nagarjun | नागार्जुन | 1911 | 1998 | Poet of the people with political satire | Yugdhara; Satrange Pankhon Wali; Prem Kavitayein; Hazar Hazar Bahon Wali
+Trilochan | त्रिलोचन | 1917 | 2007 | Poet of the Pragatisheel tradition | Dharti; Diganth; Gulab aur Bulbul
+Kedarnath Agrawal | केदारनाथ अग्रवाल | 1911 | 2000 | Pragatisheel poet of rural life | Phool Nahin Rang Bolte Hain; Gunjan; Yug ki Ganga
+Kedarnath Singh | केदारनाथ सिंह | 1934 | 2018 | Poet of Nayi Kavita and Jnanpith laureate | Abhi Bilkul Abhi; Zameen Pak Rahi Hai; Baagh; Yahan se Dekho
+Dhoomil | धूमिल | 1936 | 1975 | Angry young poet of the 1960s | Sansad se Sadak Tak; Kal Sunna Mujhe; Sudama Pandey ka Prajatantra
+Raghuvir Sahay | रघुवीर सहाय | 1929 | 1990 | Poet and journalist of modern verse | Sidhiyon par Dhoop Mein; Aatmahatya ke Virudh; Log Bhool Gaye Hain
+Sarveshwar Dayal Saxena | सर्वेश्वर दयाल सक्सेना | 1927 | 1983 | Poet, playwright and Dinmaan editor | Kuano Mein Pani; Khoontiyon Par Tange Log; Jangal ka Dard
+Dushyant Kumar | दुष्यंत कुमार | 1933 | 1975 | Pioneer of Hindi ghazal | Saye Mein Dhoop; Suryaast ka Ek Din; Ek Kantha Vish Pee Gaya
+Bhawani Prasad Mishra | भवानी प्रसाद मिश्र | 1913 | 1985 | Poet of Dusra Saptak | Geet Farosh; Chakit Hai Dukh; Buni Hui Rassi
+Girija Kumar Mathur | गिरिजाकुमार माथुर | 1919 | 1994 | Poet of Tar Saptak | Nash aur Nirman; Dhoop ke Dhan; Shilapankh Chamke
+Dharamvir Bharati | धर्मवीर भारती | 1926 | 1997 | Poet, novelist and editor | Kanupriya; Thanda Loha; Andha Yug; Suraj ka Satvan Ghoda
+Nemichandra Jain | नेमिचंद्र जैन | 1919 | 2005 | Poet and critic of Tar Saptak | Ek Dushchintya
+Ramvilas Sharma | रामविलास शर्मा | 1912 | 2000 | Critic and poet | Rup-Tarang
+Vishnu Khare | विष्णु खरे | 1940 | 2018 | Poet, critic and translator | Ek Khali Jagah; Khud Apni Aankh Se; Sab ki Aawaz Parde Mein
+Ashok Vajpeyi | अशोक वाजपेयी | 1941 |  | Poet and cultural administrator | Shaher Abhi Bhi Sambhavna Hai; Tinka Tinka; Kahin Nahin Wahin
+Kunwar Narayan | कुँवर नारायण | 1927 | 2017 | Poet and Jnanpith laureate | Atmajayee; Koi Doosra Nahin; Kumaarjeev; Vajashrava ke Bahane
+Rajesh Joshi | राजेश जोशी | 1946 |  | Contemporary Hindi poet | 
+Manglesh Dabral | मंगलेश डबराल | 1948 | 2020 | Poet and journalist | Pahar Par Lalten; Ghar ka Rasta; Hum Jo Dekhte Hain
+Arun Kamal | अरुण कमल | 1954 |  | Poet and critic | Apni Kewal Dhar; Sabut; Naye Ilake Mein
+Alok Dhanwa | आलोक धन्वा | 1948 |  | Poet of the 1970s | Duniya Roz Banti Hai; Jile ke Log
+Vinod Kumar Shukla | विनोद कुमार शुक्ल | 1937 |  | Poet and novelist, Jnanpith laureate | Vah Aadmi Chala Gaya; Sab Kuch Hona Bacha Rahega
+Leeladhar Jagudi | लीलाधर जगूड़ी | 1944 |  | Poet of the Himalayas | 
+Gyanendrapati | ज्ञानेन्द्रपति | 1950 |  | Contemporary poet of Varanasi | 
+Kumar Vishwas | कुमार विश्वास | 1970 |  | Popular poet of love and kavi sammelans | Koi Deewana Kehta Hai; Phir Mera Intezaar Karna
+Gulzar | गुलज़ार | 1934 |  | Poet, lyricist and filmmaker | Raat Pashmine Ki; Chand Pukhraj ka; Pukhraj; Triveni
+Neeraj | गोपालदास नीरज | 1925 | 2018 | Poet and film lyricist | Dard Diya Hai; Neeraj ki Paati; Karvan Guzar Gaya
+Kaka Hathrasi | काका हाथरसी | 1906 | 1995 | Satirist and humour poet | 
+Ashok Chakradhar | अशोक चक्रधर | 1951 |  | Humorist poet and academic | 
+Hullad Moradabadi | हुल्लड़ मुरादाबादी | 1942 | 2014 | Satirical poet | 
+Surendra Sharma | सुरेंद्र शर्मा | 1945 |  | Humorist poet of kavi sammelans | 
+Gopal Prasad Vyas | गोपाल प्रसाद व्यास | 1915 | 2005 | Humorist and satirist | 
+Mahavir Prasad Dwivedi | महावीर प्रसाद द्विवेदी | 1864 | 1938 | Editor of Saraswati and architect of Khari Boli | Kavya Manjusha; Sampatti Shastra
+Shridhar Pathak | श्रीधर पाठक | 1858 | 1928 | Early Khari Boli poet | Ekantwasi Yogi; Ujad Gram; Kashmir Sushama
+Laxmi Narayan Mishra | लक्ष्मीनारायण मिश्र | 1903 | 1987 | Poet and playwright | 
+Jagannath Das Ratnakar | जगन्नाथ दास रत्नाकर | 1866 | 1932 | Braj Bhasha poet | Uddhav Shatak; Gangavataran
+Satyanarayan Kaviratna | सत्यनारायण कविरत्न | 1889 | 1918 | Early modern Braj poet | 
+Mukut Dhar Pandey | मुकुटधर पांडेय | 1895 | 1989 | Early Chhayavad pioneer | Heart Beats; Pooja Pushp
+Lochan Prasad Pandey | लोचन प्रसाद पांडेय | 1887 | 1959 | Chhattisgarh poet | 
+Vachaspati Pathak | वाचस्पति पाठक | 1905 | 1995 | Poet and critic | 
+Janaki Vallabh Shastri | जानकीवल्लभ शास्त्री | 1916 | 2011 | Poet of Chhayavad and Uttar-Chhayavad | Kaka Jaata; Meghgeet; Bandi Mandir
+Ramesh Chandra Shah | रमेशचंद्र शाह | 1937 |  | Poet, novelist and critic | 
+Vijaydev Narayan Sahi | विजयदेव नारायण साही | 1924 | 1982 | Poet and critic | Sakhi; Mere Mohal ka Chand
+Prabhakar Machwe | प्रभाकर माचवे | 1917 | 1991 | Poet and translator | 
+Jagdish Gupt | जगदीश गुप्त | 1924 | 2001 | Poet of Nayi Kavita | 
+Rameshwar Shukla Anchal | रामेश्वर शुक्ल अंचल | 1915 | 1995 | Lyric poet | 
+Narendra Sharma | नरेन्द्र शर्मा | 1913 | 1989 | Poet and film lyricist | 
+Bal Kavi Bairagi | बालकवि बैरागी | 1931 | 2018 | Poet of lyrical and children's verse | 
+Ramkumar Krishak | रामकुमार कृषक | 1943 |  | Poet of the people | 
+Tarapad Roy | तारापद राय |  |  | Poet | Kavitayein
+Rajkamal Choudhary | राजकमल चौधरी | 1929 | 1967 | Maithili and Hindi poet | Muktiprasang; Aadim Bansuri
+Dinesh Kumar Shukla | दिनेश कुमार शुक्ल | 1950 |  | Contemporary Hindi poet | 
+Savita Singh | सविता सिंह | 1962 |  | Feminist poet and scholar | 
+Anamika | अनामिका | 1961 |  | Contemporary Hindi poet and critic | 
+Kiran Agrawal | किरण अग्रवाल |  |  | Contemporary poet | 
+Nirmala Putul | निर्मला पुतुल | 1972 |  | Santhali-Hindi poet | 
+Uday Prakash | उदय प्रकाश | 1952 |  | Poet and fiction writer | 
+Ramashankar Yadav Vidrohi | रमाशंकर यादव विद्रोही | 1957 | 2015 | Revolutionary poet of JNU | Nai Kheti
+Hari Mridul | हरि मृदुल |  |  | Poet | 
+Ramdarash Mishra | रामदरश मिश्र | 1924 |  | Poet, novelist and critic | 
+Kailash Vajpeyi | कैलाश वाजपेयी | 1936 | 2015 | Poet of philosophical verse | 
+Kailash Gautam | कैलाश गौतम | 1944 | 2006 | Folk-based poet of Awadhi and Hindi | 
+Mahendra Bhatnagar | महेंद्र भटनागर | 1926 | 2020 | Pragatisheel poet | 
+Chandrakant Devtale | चंद्रकांत देवताले | 1936 | 2017 | Poet of rural and social concerns | Patthar ki Bench; Lakdi Ka Jungle; Bhoor ke Sapne
+Shrikant Verma | श्रीकांत वर्मा | 1931 | 1986 | Poet and politician | Magadh; Jalsaghar; Bhatka Megh
+Bharat Bhushan Agrawal | भारत भूषण अग्रवाल | 1919 | 1975 | Poet of Tar Saptak | Chhavi ke Moh Mein; Jo Anchhua Hai; Oot ke Sher
+Prabhakar Shrotriya | प्रभाकर श्रोत्रिय | 1938 | 2016 | Critic and poet | 
+Girdhar Rathi | गिरधर राठी | 1944 |  | Poet and translator | 
+Mohan Rana | मोहन राणा | 1964 |  | Contemporary poet | 
+Nand Kishore Acharya | नंदकिशोर आचार्य | 1946 |  | Poet and playwright | 
+Harish Chandra Pande | हरीशचंद्र पांडे | 1952 |  | Contemporary poet | 
+Naresh Saxena | नरेश सक्सेना | 1939 |  | Poet and engineer | 
+Jaiprakash Kardam | जयप्रकाश कर्दम | 1958 |  | Dalit literature poet | 
+Omprakash Valmiki | ओमप्रकाश वाल्मीकि | 1950 | 2013 | Dalit poet and writer | Sadiyon ka Santaap; Bas Bahut Ho Chuka; Joothan
+Malkhan Singh | मलखान सिंह | 1948 |  | Dalit poet | 
+Surajpal Chauhan | सूरजपाल चौहान | 1955 | 2021 | Dalit writer and poet | 
+Mohandas Naimishrai | मोहनदास नैमिशराय | 1949 |  | Dalit writer and poet | 
+Kanwal Bharti | कँवल भारती | 1953 |  | Dalit critic and poet | 
+Madan Kashyap | मदन कश्यप | 1954 |  | Contemporary Hindi poet | 
+Badri Narayan | बद्रीनारायण | 1965 |  | Poet and social historian | 
+Anuj Lugun | अनुज लुगुन | 1986 |  | Adivasi Hindi poet | 
+Jacinta Kerketta | जसिंता केरकेट्टा | 1983 |  | Adivasi Hindi poet | 
+Kumar Ambuj | कुमार अम्बुज | 1957 |  | Contemporary Hindi poet | 
+Shailesh Matiyani | शैलेश मटियानी | 1931 | 2001 | Writer and poet | 
+Shailendra | शैलेन्द्र | 1923 | 1966 | Poet and film lyricist | Sheeshon ki Chitthi; Teesri Kasam
+Pradeep | कवि प्रदीप | 1915 | 1998 | Patriotic poet and lyricist | Aye Mere Watan ke Logon
+Bharat Vyas | भरत व्यास | 1918 | 1982 | Poet and lyricist | 
+Indeevar | इंदीवर | 1924 | 1997 | Film lyricist and poet | 
+Anand Bakshi | आनंद बख्शी | 1930 | 2002 | Film lyricist and poet | 
+Pradeep Chaubey | प्रदीप चौबे | 1949 | 2020 | Humorist poet | 

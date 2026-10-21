@@ -1,0 +1,16 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ collection.name }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-md">
+  <a href="{{ url_for('collections') }}" style="color:var(--muted);font-size:.73rem;font-family:var(--sans);font-weight:700">← {{ t.collections }}</a>
+  <div class="sec-hdr" style="margin-top:1rem"><div><div class="sec-title">📂 {{ collection.name }}</div></div></div>
+  {% if poems %}<div class="poems-feed">{% for p in poems %}
+  <article class="poem-card">
+    <div class="pc-top"><div class="pc-av" onclick="window.location='{{ url_for('profile',username=p.username) }}'">{{ p.username[0]|upper }}</div>
+      <div class="pc-meta"><a href="{{ url_for('profile',username=p.username) }}" class="pc-author">{{ p.username }}</a></div></div>
+    <div class="pc-body"><a href="{{ url_for('poem',poem_id=p.id) }}" class="pc-title">{{ p.title }}</a><pre class="pc-poem">{{ p.content }}</pre></div>
+    <div class="pc-foot"><span class="pc-btn">♥ {{ p.like_count }}</span><a href="{{ url_for('poem',poem_id=p.id) }}" class="btn btn-xs btn-ghost" style="margin-left:.3rem">{{ t.read_more }}</a></div>
+  </article>{% endfor %}</div>
+  {% else %}<div class="empty"><h3>{% if session.get('lang')=='en' %}Empty collection{% else %}यह collection खाली है{% endif %}</h3></div>{% endif %}
+</div>{% endblock %}

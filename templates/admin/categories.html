@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>🏷 Categories</h1></div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;margin-bottom:1.5rem">
+  <div style="font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:1rem">ADD CATEGORY</div>
+  <form method="post" action="{{ url_for('admin_categories') }}">
+    <div class="row2"><div class="fg"><label>Category Name</label><input type="text" name="name" required placeholder="जैसे: नज़्म"/></div>
+      <div class="fg"><label>Description</label><input type="text" name="description" placeholder="Optional…"/></div></div>
+    <button type="submit" class="btn btn-primary">➕ Add</button>
+  </form>
+</div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow-x:auto">
+<table class="adm-tbl"><thead><tr><th>#</th><th>Name</th><th>Description</th><th>Poems</th><th>Action</th></tr></thead>
+<tbody>{% for c in categories %}
+<tr>
+  <td style="color:var(--muted)">{{ c.id }}</td>
+  <td><span class="ab ab-pend">{{ c.name }}</span></td>
+  <td style="color:var(--muted)">{{ c.description or '—' }}</td>
+  <td style="color:var(--gold);font-family:var(--sans);font-weight:700">{{ c.poem_count }}</td>
+  <td>{% if c.poem_count == 0 %}<form method="post" action="{{ url_for('admin_delete_category',cid=c.id) }}" onsubmit="return confirm('Delete?')">
+    <button type="submit" class="btn btn-xs btn-danger">🗑</button></form>
+    {% else %}<span style="color:var(--muted);font-size:.72rem;font-family:var(--sans)">Has poems</span>{% endif %}</td>
+</tr>{% endfor %}
+</tbody></table></div>{% endblock %}

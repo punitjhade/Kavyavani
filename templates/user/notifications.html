@@ -1,0 +1,15 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.notifications }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-sm">
+  <div class="sec-hdr"><div><div class="sec-title">🔔 {{ t.notifications }}</div></div></div>
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+    {% for n in notifications %}
+    <div class="notif-item {% if not n.is_read %}unread{% endif %}">
+      <div class="notif-ic">{% if 'like' in n.message %}♥{% elif 'follow' in n.message %}👤{% elif 'comment' in n.message %}💬{% elif 'message' in n.message %}💌{% elif 'Poet' in n.message %}👑{% else %}🔔{% endif %}</div>
+      <div style="flex:1"><div class="notif-msg">{% if n.link %}<a href="{{ n.link }}" style="color:inherit">{{ n.message }}</a>{% else %}{{ n.message }}{% endif %}</div><div class="notif-time">{{ n.created_at|time_ago }}</div></div>
+    </div>
+    {% else %}<div class="empty"><h3>{% if session.get('lang')=='en' %}No notifications{% else %}कोई notification नहीं{% endif %}</h3></div>{% endfor %}
+  </div>
+</div>{% endblock %}

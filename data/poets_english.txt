@@ -1,0 +1,285 @@
+# Name | Native name | born | died | bio | notable works (; separated)
+Geoffrey Chaucer |  | 1343 | 1400 | Father of English literature | The Canterbury Tales; Troilus and Criseyde; The Parliament of Fowls
+William Langland |  | 1332 | 1386 | Medieval English poet | Piers Plowman
+Sir Thomas Wyatt |  | 1503 | 1542 | Introduced the sonnet to English | Whoso List to Hunt; They Flee from Me
+Henry Howard Earl of Surrey |  | 1517 | 1547 | Pioneer of English blank verse | Translation of the Aeneid
+Edmund Spenser |  | 1552 | 1599 | Elizabethan epic poet | The Faerie Queene; The Shepheardes Calender; Amoretti
+Sir Philip Sidney |  | 1554 | 1586 | Courtier-poet and critic | Astrophil and Stella; The Defence of Poesy
+Christopher Marlowe |  | 1564 | 1593 | Elizabethan poet and dramatist | Hero and Leander; The Passionate Shepherd to His Love; Doctor Faustus
+William Shakespeare |  | 1564 | 1616 | Greatest English dramatist and sonneteer | Sonnets; Venus and Adonis; The Rape of Lucrece; Hamlet
+Ben Jonson |  | 1572 | 1637 | Poet and dramatist of the Jacobean era | To Penshurst; Epigrams; Volpone
+John Donne |  | 1572 | 1631 | Leading Metaphysical poet | Holy Sonnets; The Flea; The Sun Rising; Songs and Sonets
+George Herbert |  | 1593 | 1633 | Metaphysical devotional poet | The Temple; Easter Wings; Love III
+Robert Herrick |  | 1591 | 1674 | Cavalier poet | Hesperides; To the Virgins, to Make Much of Time
+Andrew Marvell |  | 1621 | 1678 | Metaphysical poet and satirist | To His Coy Mistress; The Garden; An Horatian Ode
+Henry Vaughan |  | 1621 | 1695 | Metaphysical poet | Silex Scintillans; The Retreat
+Richard Lovelace |  | 1617 | 1657 | Cavalier poet | To Althea, from Prison; To Lucasta, Going to the Wars
+Sir John Suckling |  | 1609 | 1642 | Cavalier poet | Ballad upon a Wedding; Why So Pale and Wan
+Edmund Waller |  | 1606 | 1687 | Poet of the Restoration era | Go, Lovely Rose
+John Milton |  | 1608 | 1674 | Epic poet of the English Renaissance | Paradise Lost; Paradise Regained; Lycidas; Samson Agonistes
+John Dryden |  | 1631 | 1700 | First Poet Laureate and critic | Absalom and Achitophel; Mac Flecknoe; Alexander's Feast
+John Wilmot Earl of Rochester |  | 1647 | 1680 | Restoration libertine poet | A Satyr Against Reason and Mankind
+Aphra Behn |  | 1640 | 1689 | First professional woman writer in English | Oroonoko; The Rover
+Anne Bradstreet |  | 1612 | 1672 | First published poet of the American colonies | The Tenth Muse; To My Dear and Loving Husband
+Edward Taylor |  | 1642 | 1729 | Colonial American Puritan poet | Preparatory Meditations
+Alexander Pope |  | 1688 | 1744 | Master of the heroic couplet | The Rape of the Lock; An Essay on Man; The Dunciad
+Jonathan Swift |  | 1667 | 1745 | Satirist and poet | A Description of a City Shower; Gulliver's Travels
+Thomas Gray |  | 1716 | 1771 | Pre-Romantic poet | Elegy Written in a Country Churchyard; The Bard
+Oliver Goldsmith |  | 1728 | 1774 | Poet and dramatist | The Deserted Village; The Traveller
+William Collins |  | 1721 | 1759 | Pre-Romantic odist | Ode to Evening
+Christopher Smart |  | 1722 | 1771 | Devotional poet | Jubilate Agno; A Song to David
+William Cowper |  | 1731 | 1800 | Pre-Romantic poet of nature and faith | The Task; John Gilpin; Olney Hymns
+George Crabbe |  | 1754 | 1832 | Poet of realistic village life | The Village; The Borough
+Robert Burns |  | 1759 | 1796 | National poet of Scotland | Auld Lang Syne; To a Mouse; Tam o' Shanter; A Red, Red Rose
+Phillis Wheatley |  | 1753 | 1784 | First published African American poet | Poems on Various Subjects, Religious and Moral
+William Blake |  | 1757 | 1827 | Poet, painter and visionary | Songs of Innocence and of Experience; The Marriage of Heaven and Hell; The Tyger
+William Wordsworth |  | 1770 | 1850 | Leading Romantic poet | The Prelude; Lyrical Ballads; Tintern Abbey; Daffodils
+Samuel Taylor Coleridge |  | 1772 | 1834 | Romantic poet and critic | The Rime of the Ancient Mariner; Kubla Khan; Christabel
+Robert Southey |  | 1774 | 1843 | Poet Laureate and Lake poet | The Battle of Blenheim; Thalaba the Destroyer
+Walter Scott |  | 1771 | 1832 | Poet and novelist | The Lady of the Lake; Marmion; Ivanhoe
+Lord Byron |  | 1788 | 1824 | Romantic poet of Byronic heroes | Don Juan; Childe Harold's Pilgrimage; She Walks in Beauty
+Percy Bysshe Shelley |  | 1792 | 1822 | Radical Romantic poet | Ozymandias; Ode to the West Wind; Prometheus Unbound; Adonais
+John Keats |  | 1795 | 1821 | Romantic poet of sensuous imagery | Ode to a Nightingale; Ode on a Grecian Urn; To Autumn; Endymion
+Leigh Hunt |  | 1784 | 1859 | Poet, critic and friend of Keats | Abou Ben Adhem; The Story of Rimini
+John Clare |  | 1793 | 1864 | Peasant poet of rural England | The Shepherd's Calendar; I Am
+Thomas Hood |  | 1799 | 1845 | Poet of comic and social verse | The Song of the Shirt; The Bridge of Sighs
+Thomas Moore |  | 1779 | 1852 | Irish national poet | Irish Melodies; Lalla Rookh
+Thomas Campbell |  | 1777 | 1844 | Scottish Romantic poet | Ye Mariners of England; Hohenlinden
+Felicia Hemans |  | 1793 | 1835 | Popular Romantic poet | Casabianca; The Homes of England
+Letitia Elizabeth Landon |  | 1802 | 1838 | Romantic poet known as L.E.L. | The Improvisatrice
+Walter Savage Landor |  | 1775 | 1864 | Poet and prose writer | Rose Aylmer; Imaginary Conversations
+Alfred Lord Tennyson |  | 1809 | 1892 | Poet Laureate of Victorian England | In Memoriam; The Lady of Shalott; Ulysses; Idylls of the King
+Robert Browning |  | 1812 | 1889 | Master of the dramatic monologue | My Last Duchess; The Ring and the Book; Men and Women
+Elizabeth Barrett Browning |  | 1806 | 1861 | Victorian poet | Sonnets from the Portuguese; Aurora Leigh
+Matthew Arnold |  | 1822 | 1888 | Poet and critic | Dover Beach; The Scholar-Gipsy; Culture and Anarchy
+Arthur Hugh Clough |  | 1819 | 1861 | Victorian poet | The Bothie of Tober-na-Vuolich; Amours de Voyage
+Edward Lear |  | 1812 | 1888 | Master of nonsense verse | The Owl and the Pussycat; A Book of Nonsense
+Lewis Carroll |  | 1832 | 1898 | Writer of nonsense verse and prose | Jabberwocky; The Hunting of the Snark; Alice in Wonderland
+Christina Rossetti |  | 1830 | 1894 | Victorian poet | Goblin Market; Remember; In the Bleak Midwinter
+Dante Gabriel Rossetti |  | 1828 | 1882 | Pre-Raphaelite poet and painter | The House of Life; The Blessed Damozel
+William Morris |  | 1834 | 1896 | Poet, designer and socialist | The Earthly Paradise; The Defence of Guenevere
+Algernon Charles Swinburne |  | 1837 | 1909 | Victorian poet of Aestheticism | Poems and Ballads; Atalanta in Calydon
+Gerard Manley Hopkins |  | 1844 | 1889 | Jesuit poet and innovator of sprung rhythm | The Wreck of the Deutschland; Pied Beauty; The Windhover
+Thomas Hardy |  | 1840 | 1928 | Novelist and poet | Wessex Poems; The Darkling Thrush; The Dynasts
+A. E. Housman |  | 1859 | 1936 | Poet and classical scholar | A Shropshire Lad; Last Poems
+Oscar Wilde |  | 1854 | 1900 | Poet, dramatist and wit | The Ballad of Reading Gaol; The Sphinx; The Importance of Being Earnest
+Francis Thompson |  | 1859 | 1907 | Catholic poet | The Hound of Heaven
+Ernest Dowson |  | 1867 | 1900 | Decadent poet | Cynara; Days of Wine and Roses
+Robert Louis Stevenson |  | 1850 | 1894 | Novelist and poet | A Child's Garden of Verses; Requiem; Treasure Island
+Rudyard Kipling |  | 1865 | 1936 | Nobel-winning poet and storyteller | If—; Gunga Din; The Jungle Book; Mandalay
+W. E. Henley |  | 1849 | 1903 | Poet and editor | Invictus; A Book of Verses
+Robert Bridges |  | 1844 | 1930 | Poet Laureate | The Testament of Beauty; London Snow
+Henry Newbolt |  | 1862 | 1938 | Poet of patriotic verse | Drake's Drum; Vitai Lampada
+John Masefield |  | 1878 | 1967 | Poet Laureate | Sea-Fever; Cargoes; Reynard the Fox
+Walter de la Mare |  | 1873 | 1956 | Poet of the uncanny | The Listeners; Peacock Pie
+W. H. Davies |  | 1871 | 1940 | Welsh tramp poet | Leisure; The Autobiography of a Super-Tramp
+Edward Thomas |  | 1878 | 1917 | Poet of the First World War | Adlestrop; Lights Out; Rain
+Rupert Brooke |  | 1887 | 1915 | War poet | The Soldier; The Old Vicarage, Grantchester
+Wilfred Owen |  | 1893 | 1918 | War poet | Dulce et Decorum Est; Anthem for Doomed Youth; Strange Meeting
+Siegfried Sassoon |  | 1886 | 1967 | War poet | Counter-Attack; Memoirs of a Fox-Hunting Man
+Isaac Rosenberg |  | 1890 | 1918 | War poet | Break of Day in the Trenches; Dead Man's Dump
+Ivor Gurney |  | 1890 | 1937 | War poet and composer | Severn and Somme; War's Embers
+Robert Graves |  | 1895 | 1985 | Poet and novelist | Goodbye to All That; I, Claudius
+Charlotte Mew |  | 1869 | 1928 | Modernist poet | The Farmer's Bride
+Edwin Arlington Robinson |  | 1869 | 1935 | American poet of small-town life | Richard Cory; Miniver Cheevy
+Walt Whitman |  | 1819 | 1892 | Father of American free verse | Leaves of Grass; Song of Myself; O Captain! My Captain!
+Emily Dickinson |  | 1830 | 1886 | American poet of compressed lyric | Because I Could Not Stop for Death; Hope Is the Thing with Feathers
+Henry Wadsworth Longfellow |  | 1807 | 1882 | Popular American poet | The Song of Hiawatha; Paul Revere's Ride; Evangeline
+Edgar Allan Poe |  | 1809 | 1849 | American poet and master of horror | The Raven; Annabel Lee; The Bells
+Ralph Waldo Emerson |  | 1803 | 1882 | Essayist and poet | Concord Hymn; Brahma; Nature
+Henry David Thoreau |  | 1817 | 1862 | Naturalist and poet | Walden; Civil Disobedience
+William Cullen Bryant |  | 1794 | 1878 | American Romantic poet | Thanatopsis; To a Waterfowl
+John Greenleaf Whittier |  | 1807 | 1892 | Poet of abolitionism | Snow-Bound; Barbara Frietchie
+James Russell Lowell |  | 1819 | 1891 | American poet and critic | The Biglow Papers; A Fable for Critics
+Oliver Wendell Holmes Sr |  | 1809 | 1894 | Poet and physician | Old Ironsides; The Chambered Nautilus
+Herman Melville |  | 1819 | 1891 | Novelist and poet | Battle-Pieces; Moby-Dick
+Sidney Lanier |  | 1842 | 1881 | Southern American poet | The Marshes of Glynn; Song of the Chattahoochee
+Paul Laurence Dunbar |  | 1872 | 1906 | African American poet | We Wear the Mask; Sympathy
+Robert Frost |  | 1874 | 1963 | Poet of New England | The Road Not Taken; Stopping by Woods on a Snowy Evening; Mending Wall; Fire and Ice
+Carl Sandburg |  | 1878 | 1967 | Poet of the American Midwest | Chicago; Fog; Cornhuskers
+Wallace Stevens |  | 1879 | 1955 | Modernist poet | Harmonium; The Emperor of Ice-Cream; Thirteen Ways of Looking at a Blackbird
+William Carlos Williams |  | 1883 | 1963 | Modernist poet and physician | The Red Wheelbarrow; Paterson; This Is Just to Say
+Ezra Pound |  | 1885 | 1972 | Modernist poet and critic | The Cantos; Hugh Selwyn Mauberley; In a Station of the Metro
+T. S. Eliot |  | 1888 | 1965 | Nobel-winning modernist poet | The Waste Land; The Love Song of J. Alfred Prufrock; Four Quartets
+H. D. Hilda Doolittle |  | 1886 | 1961 | Imagist poet | Sea Garden; Helen in Egypt; Oread
+Amy Lowell |  | 1874 | 1925 | Imagist poet | Patterns; Lilacs
+Marianne Moore |  | 1887 | 1972 | Modernist poet | Poetry; The Fish; Collected Poems
+Edna St. Vincent Millay |  | 1892 | 1950 | Lyric poet of the Jazz Age | Renascence; Second April; First Fig
+Robinson Jeffers |  | 1887 | 1962 | Poet of California coast | Roan Stallion; Tamar and Other Poems
+E. E. Cummings |  | 1894 | 1962 | Experimental modernist poet | Tulips and Chimneys; i carry your heart with me
+Hart Crane |  | 1899 | 1932 | Modernist poet | The Bridge; White Buildings
+Langston Hughes |  | 1901 | 1967 | Leading poet of the Harlem Renaissance | The Weary Blues; Harlem; The Negro Speaks of Rivers
+Claude McKay |  | 1889 | 1948 | Jamaican-American Harlem Renaissance poet | If We Must Die; Harlem Shadows
+Countee Cullen |  | 1903 | 1946 | Harlem Renaissance poet | Color; Heritage
+Jean Toomer |  | 1894 | 1967 | Harlem Renaissance writer | Cane
+Sterling Brown |  | 1901 | 1989 | African American poet and critic | Southern Road; Strong Men
+Archibald MacLeish |  | 1892 | 1982 | Poet and public official | Ars Poetica; J.B.
+Allen Tate |  | 1899 | 1979 | Poet and critic | Ode to the Confederate Dead
+John Crowe Ransom |  | 1888 | 1974 | Poet and critic | Blue Girls; Bells for John Whiteside's Daughter
+Conrad Aiken |  | 1889 | 1973 | American poet | Preludes for Memnon; Ushant
+Stephen Vincent Benet |  | 1898 | 1943 | Poet and novelist | John Brown's Body; The Devil and Daniel Webster
+Elizabeth Bishop |  | 1911 | 1979 | American poet of precision | One Art; The Fish; North and South
+Robert Lowell |  | 1917 | 1977 | Confessional poet | Life Studies; Lord Weary's Castle
+Randall Jarrell |  | 1914 | 1965 | Poet and critic | The Death of the Ball Turret Gunner
+John Berryman |  | 1914 | 1972 | Confessional poet | The Dream Songs; Homage to Mistress Bradstreet
+Theodore Roethke |  | 1908 | 1963 | American poet of nature and the self | The Waking; My Papa's Waltz
+Delmore Schwartz |  | 1913 | 1966 | American poet | In Dreams Begin Responsibilities
+Karl Shapiro |  | 1913 | 2000 | American poet | V-Letter and Other Poems
+Gwendolyn Brooks |  | 1917 | 2000 | First Black woman to win a Pulitzer | We Real Cool; Annie Allen; A Street in Bronzeville
+Robert Hayden |  | 1913 | 1980 | African American poet | Those Winter Sundays; Middle Passage
+Richard Wilbur |  | 1921 | 2017 | American poet of formal verse | Things of This World; The Beautiful Changes
+Howard Nemerov |  | 1920 | 1991 | Poet and critic | The Blue Swallows
+Anthony Hecht |  | 1923 | 2004 | American poet | The Hard Hours; The Venetian Vespers
+James Dickey |  | 1923 | 1997 | American poet and novelist | Buckdancer's Choice; Deliverance
+Allen Ginsberg |  | 1926 | 1997 | Beat generation poet | Howl; Kaddish
+Lawrence Ferlinghetti |  | 1919 | 2021 | Beat poet and publisher | A Coney Island of the Mind
+Gregory Corso |  | 1930 | 2001 | Beat poet | Gasoline; The Happy Birthday of Death
+Gary Snyder |  | 1930 |  | Poet of nature and Zen | Turtle Island; Riprap
+Frank O'Hara |  | 1926 | 1966 | New York School poet | Lunch Poems; Meditations in an Emergency
+John Ashbery |  | 1927 | 2017 | New York School poet | Self-Portrait in a Convex Mirror; Some Trees
+Kenneth Koch |  | 1925 | 2002 | New York School poet | Thank You and Other Poems
+Charles Olson |  | 1910 | 1970 | Black Mountain poet | The Maximus Poems; Projective Verse
+Robert Creeley |  | 1926 | 2005 | Black Mountain poet | For Love; Pieces
+Denise Levertov |  | 1923 | 1997 | British-American poet | The Jacob's Ladder; O Taste and See
+Adrienne Rich |  | 1929 | 2012 | Feminist poet and essayist | Diving into the Wreck; Of Woman Born
+Anne Sexton |  | 1928 | 1974 | Confessional poet | Live or Die; To Bedlam and Part Way Back
+Sylvia Plath |  | 1932 | 1963 | Confessional poet | Ariel; The Colossus; The Bell Jar
+W. S. Merwin |  | 1927 | 2019 | American poet | The Lice; The Carrier of Ladders
+Galway Kinnell |  | 1927 | 2014 | American poet | The Book of Nightmares; Body Rags
+Mark Strand |  | 1934 | 2014 | American poet | Blizzard of One; Dark Harbor
+Louise Gluck |  | 1943 | 2023 | Nobel-winning American poet | The Wild Iris; Averno; Ararat
+Mary Oliver |  | 1935 | 2019 | American poet of nature | Wild Geese; American Primitive
+Maya Angelou |  | 1928 | 2014 | Poet, memoirist and activist | Still I Rise; Phenomenal Woman; I Know Why the Caged Bird Sings
+Audre Lorde |  | 1934 | 1992 | Black feminist poet | The Black Unicorn; A Litany for Survival
+Lucille Clifton |  | 1936 | 2010 | American poet | Good Woman; The Book of Light
+Rita Dove |  | 1952 |  | Poet Laureate of the United States | Thomas and Beulah; Mother Love
+Sonia Sanchez |  | 1934 |  | Black Arts Movement poet | Homecoming; Does Your House Have Lions?
+Amiri Baraka |  | 1934 | 2014 | Black Arts Movement poet | Blues People; Dutchman
+Billy Collins |  | 1941 |  | American poet of accessible verse | Sailing Alone Around the Room; Picnic, Lightning
+Ted Kooser |  | 1939 |  | American poet | Delights and Shadows
+Charles Simic |  | 1938 | 2023 | Serbian-American poet | The World Doesn't End; Walking the Black Cat
+Charles Bukowski |  | 1920 | 1994 | American poet and novelist | Love Is a Dog from Hell; Post Office
+Philip Levine |  | 1928 | 2015 | American poet of working life | What Work Is; The Simple Truth
+Donald Hall |  | 1928 | 2018 | American Poet Laureate | Without; The Painted Bed
+W. H. Auden |  | 1907 | 1973 | Anglo-American poet | Funeral Blues; September 1, 1939; The Age of Anxiety
+Louis MacNeice |  | 1907 | 1963 | Anglo-Irish poet | Autumn Journal; Snow
+Stephen Spender |  | 1909 | 1995 | British poet | The Landscape Near an Aerodrome; I Think Continually of Those
+Cecil Day-Lewis |  | 1904 | 1972 | Poet Laureate | The Magnetic Mountain; Overtures to Death
+John Betjeman |  | 1906 | 1984 | Poet Laureate | Summoned by Bells; A Subaltern's Love-song
+William Empson |  | 1906 | 1984 | Poet and critic | Seven Types of Ambiguity; Missing Dates
+Dylan Thomas |  | 1914 | 1953 | Welsh poet | Do Not Go Gentle into That Good Night; Under Milk Wood; Fern Hill
+R. S. Thomas |  | 1913 | 2000 | Welsh poet-priest | Song at the Year's Turning; Pietà
+Edwin Muir |  | 1887 | 1959 | Scottish poet | The Horses; The Labyrinth
+Hugh MacDiarmid |  | 1892 | 1978 | Scottish poet of the Scottish Renaissance | A Drunk Man Looks at the Thistle
+Norman MacCaig |  | 1910 | 1996 | Scottish poet | Rings on a Tree; A Man in My Position
+Sorley MacLean |  | 1911 | 1996 | Scottish Gaelic poet | Dain do Eimhir
+Basil Bunting |  | 1900 | 1985 | British modernist poet | Briggflatts
+David Jones |  | 1895 | 1974 | Poet and painter | In Parenthesis; The Anathemata
+Edith Sitwell |  | 1887 | 1964 | Poet and critic | Façade; Still Falls the Rain
+Philip Larkin |  | 1922 | 1985 | Leading poet of the Movement | The Whitsun Weddings; High Windows; This Be the Verse
+Kingsley Amis |  | 1922 | 1995 | Novelist and poet | Lucky Jim; A Case of Samples
+Donald Davie |  | 1922 | 1995 | British poet and critic | Brides of Reason; Purity of Diction
+D. J. Enright |  | 1920 | 2002 | Poet and critic | The Laughing Hyena; Collected Poems
+Charles Causley |  | 1917 | 2003 | Cornish poet | Collected Poems; Timothy Winters
+Keith Douglas |  | 1920 | 1944 | War poet | Vergissmeinnicht; How to Kill
+Alun Lewis |  | 1915 | 1944 | Welsh war poet | Raiders' Dawn; Ha! Ha! Among the Trumpets
+Sidney Keyes |  | 1922 | 1943 | War poet | The Cruel Solstice; The Iron Laurel
+Ted Hughes |  | 1930 | 1998 | Poet Laureate | Crow; The Hawk in the Rain; Birthday Letters
+Thom Gunn |  | 1929 | 2004 | Anglo-American poet | The Sense of Movement; The Man with Night Sweats
+Geoffrey Hill |  | 1932 | 2016 | British poet | Mercian Hymns; Canaan
+Seamus Heaney |  | 1939 | 2013 | Nobel-winning Irish poet | Death of a Naturalist; North; Digging
+Tony Harrison |  | 1937 |  | British poet and dramatist | V; The School of Eloquence
+Andrew Motion |  | 1952 |  | Poet Laureate | The Pleasure Steamers; Public Property
+Simon Armitage |  | 1963 |  | Poet Laureate | Zoom!; Killing Time; Seeing Stars
+Carol Ann Duffy |  | 1955 |  | Poet Laureate | Mean Time; The World's Wife; Standing Female Nude
+Wendy Cope |  | 1945 |  | British poet of light verse | Making Cocoa for Kingsley Amis; Serious Concerns
+Roger McGough |  | 1937 |  | Liverpool poet | The Mersey Sound; Blazing Fruit
+Adrian Henri |  | 1932 | 2000 | Liverpool poet | The Mersey Sound
+Brian Patten |  | 1946 |  | Liverpool poet | Little Johnny's Confession
+Benjamin Zephaniah |  | 1958 | 2023 | Performance poet | Talking Turkeys; Propa Propaganda
+John Agard |  | 1949 |  | Guyanese-British poet | Half-Caste; Get Back Pimple
+Grace Nichols |  | 1950 |  | Guyanese-British poet | The Fat Black Woman's Poems
+Linton Kwesi Johnson |  | 1952 |  | Dub poet | Dread Beat an Blood
+Daljit Nagra |  | 1966 |  | British poet of Punjabi heritage | Look We Have Coming to Dover!
+W. B. Yeats |  | 1865 | 1939 | Nobel-winning Irish poet | The Second Coming; Sailing to Byzantium; The Wild Swans at Coole
+George William Russell AE |  | 1867 | 1935 | Irish poet and mystic | Homeward Songs by the Way
+Patrick Kavanagh |  | 1904 | 1967 | Irish poet | The Great Hunger; On Raglan Road
+Austin Clarke |  | 1896 | 1974 | Irish poet | The Sun Dances at Easter
+Eavan Boland |  | 1944 | 2020 | Irish poet | Object Lessons; In a Time of Violence
+Paul Muldoon |  | 1951 |  | Irish poet | Why Brownlee Left; Moy Sand and Gravel
+Michael Longley |  | 1939 |  | Irish poet | Gorse Fires; The Weather in Japan
+Derek Mahon |  | 1941 | 2020 | Irish poet | Night-Crossing; Lives
+Ciaran Carson |  | 1948 | 2019 | Northern Irish poet | The Irish for No; Belfast Confetti
+Medbh McGuckian |  | 1950 |  | Irish poet | The Flower Master
+Thomas Kinsella |  | 1928 | 2021 | Irish poet | Another September; Peppercanister Poems
+John Montague |  | 1929 | 2016 | Irish poet | The Rough Field
+Brendan Kennelly |  | 1936 | 2021 | Irish poet | Cromwell; The Book of Judas
+Les Murray |  | 1938 | 2019 | Australian poet | Subhuman Redneck Poems; Fredy Neptune
+Judith Wright |  | 1915 | 2000 | Australian poet | The Moving Image; Woman to Man
+A. D. Hope |  | 1907 | 2000 | Australian poet | The Wandering Islands
+Banjo Paterson |  | 1864 | 1941 | Australian bush poet | Waltzing Matilda; The Man from Snowy River
+Henry Lawson |  | 1867 | 1922 | Australian poet and writer | While the Billy Boils
+Oodgeroo Noonuccal |  | 1920 | 1993 | Aboriginal Australian poet | We Are Going; My People
+Dorothea Mackellar |  | 1885 | 1968 | Australian poet | My Country
+Bruce Dawe |  | 1930 | 2020 | Australian poet | Sometimes Gladness
+Margaret Atwood |  | 1939 |  | Canadian poet and novelist | The Circle Game; The Handmaid's Tale
+Leonard Cohen |  | 1934 | 2016 | Canadian poet and songwriter | Book of Mercy; Beautiful Losers; Hallelujah
+Michael Ondaatje |  | 1943 |  | Canadian poet and novelist | The Collected Works of Billy the Kid; The English Patient
+Earle Birney |  | 1904 | 1995 | Canadian poet | David and Other Poems
+P. K. Page |  | 1916 | 2010 | Canadian poet | The Metal and the Flower
+Anne Carson |  | 1950 |  | Canadian poet and classicist | Autobiography of Red; Plainwater
+Derek Walcott |  | 1930 | 2017 | Nobel-winning Caribbean poet | Omeros; In a Green Night; The Star-Apple Kingdom
+Kamau Brathwaite |  | 1930 | 2020 | Barbadian poet | The Arrivants; Born to Slow Horses
+Louise Bennett-Coverley |  | 1919 | 2006 | Jamaican poet in Patois | Jamaica Labrish; Selected Poems
+Wole Soyinka |  | 1934 |  | Nobel-winning Nigerian writer and poet | Idanre and Other Poems; Death and the King's Horseman
+Chinua Achebe |  | 1930 | 2013 | Nigerian novelist and poet | Things Fall Apart; Beware, Soul Brother
+Christopher Okigbo |  | 1932 | 1967 | Nigerian poet | Labyrinths; Heavensgate
+Okot p'Bitek |  | 1931 | 1982 | Ugandan poet | Song of Lawino
+Leopold Sedar Senghor |  | 1906 | 2001 | Senegalese poet and president | Chants d'ombre; Hosties noires
+Dennis Brutus |  | 1924 | 2009 | South African poet | Sirens, Knuckles, Boots
+Rabindranath Tagore |  | 1861 | 1941 | Nobel-winning Bengali poet | Gitanjali; The Gardener; Stray Birds
+Sri Aurobindo |  | 1872 | 1950 | Poet, philosopher and yogi | Savitri; Collected Poems
+Sarojini Naidu |  | 1879 | 1949 | Nightingale of India | The Golden Threshold; The Bird of Time; The Broken Wing
+Toru Dutt |  | 1856 | 1877 | Indian poet in English and French | Ancient Ballads and Legends of Hindustan; A Sheaf Gleaned in French Fields
+Henry Derozio |  | 1809 | 1831 | Early Indian poet in English | The Fakeer of Jungheera; To India My Native Land
+Michael Madhusudan Dutt |  | 1824 | 1873 | Bengali poet who also wrote in English | Meghnad Badh Kavya; The Captive Ladie
+Manmohan Ghose |  | 1869 | 1924 | Indian poet in English | Love Songs and Elegies; Songs of Love and Death
+Harindranath Chattopadhyay |  | 1898 | 1990 | Indian poet in English | The Feast of Youth; The Magic World
+Nissim Ezekiel |  | 1924 | 2004 | Founding figure of Indian English poetry | Night of the Scorpion; The Exact Name; Latter-Day Psalms
+A. K. Ramanujan |  | 1929 | 1993 | Indian poet and translator | The Striders; Speaking of Siva; Relations
+Dom Moraes |  | 1938 | 2004 | Indian poet in English | A Beginning; John Nobody
+R. Parthasarathy |  | 1934 |  | Indian poet in English | Rough Passage; Trial
+Jayanta Mahapatra |  | 1928 | 2023 | Indian poet in English | Relationship; Dispossessed Nests
+Kamala Das |  | 1934 | 2009 | Indian poet in English | Summer in Calcutta; The Descendants; My Story
+Keki N. Daruwalla |  | 1937 |  | Indian poet in English | Under Orion; The Keeper of the Dead
+Arun Kolatkar |  | 1932 | 2004 | Indian poet in Marathi and English | Jejuri; Kala Ghoda Poems
+Vikram Seth |  | 1952 |  | Indian poet and novelist | The Golden Gate; A Suitable Boy; Mappings
+Agha Shahid Ali |  | 1949 | 2001 | Kashmiri-American poet | The Country Without a Post Office; Rooms Are Never Finished
+Imtiaz Dharker |  | 1954 |  | Poet and artist | Purdah; I Speak for the Devil
+Meena Alexander |  | 1951 | 2018 | Indian-American poet | Illiterate Heart; Atmospheric Embroidery
+Tishani Doshi |  | 1975 |  | Indian poet and dancer | Countries of the Body; Everything Begins Elsewhere
+Jeet Thayil |  | 1959 |  | Indian poet and novelist | These Errors Are Correct; Narcopolis
+Sujata Bhatt |  | 1956 |  | Indian poet | Brunizem; Point No Point
+Eunice de Souza |  | 1940 | 2017 | Indian poet | Fix; Women in Dutch Painting
+Gieve Patel |  | 1940 | 2023 | Indian poet and painter | 
+Adil Jussawalla |  | 1940 |  | Indian poet | Missing Person; Land's End
+Mamang Dai |  | 1957 |  | Poet from Arunachal Pradesh | River Poems
+Bibhu Padhi |  | 1951 |  | Indian poet | Going to the Temple; A Great Sea
+Ocean Vuong |  | 1988 |  | Vietnamese-American poet | Night Sky with Exit Wounds
+Ada Limon |  | 1976 |  | US Poet Laureate | The Carrying; Bright Dead Things
+Tracy K. Smith |  | 1972 |  | US Poet Laureate | Life on Mars; Wade in the Water
+Natasha Trethewey |  | 1966 |  | US Poet Laureate | Native Guard; Beyond Katrina
+Joy Harjo |  | 1951 |  | US Poet Laureate and Muscogee Creek writer | An American Sunrise; She Had Some Horses
+Terrance Hayes |  | 1971 |  | American poet | Lighthead; American Sonnets for My Past and Future Assassin
+Claudia Rankine |  | 1963 |  | American poet and essayist | Citizen; Don't Let Me Be Lonely
+Sherman Alexie |  | 1966 |  | American writer and poet | The Business of Fancydancing
+Li-Young Lee |  | 1957 |  | American poet | Rose; The City in Which I Love You
+Jorie Graham |  | 1950 |  | American poet | The Dream of the Unified Field
+Rupi Kaur |  | 1992 |  | Instapoet | Milk and Honey; The Sun and Her Flowers
+Amanda Gorman |  | 1998 |  | American youth poet laureate | The Hill We Climb; Call Us What We Carry
+Warsan Shire |  | 1988 |  | Somali-British poet | Teaching My Mother How to Give Birth
+Kae Tempest |  | 1985 |  | British poet and rapper | Brand New Ancients; Let Them Eat Chaos
+Raymond Carver |  | 1938 | 1988 | Short story writer and poet | Where Water Comes Together with Other Water
+Jack Gilbert |  | 1925 | 2012 | American poet | Refusing Heaven; Monolithos
+Czeslaw Milosz |  | 1911 | 2004 | Polish-American poet and Nobel laureate | The Captive Mind; Selected Poems
+Joseph Brodsky |  | 1940 | 1996 | Russian-American poet and Nobel laureate | A Part of Speech; To Urania
