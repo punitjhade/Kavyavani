@@ -1,0 +1,43 @@
+{% extends "admin/base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>📊 Dashboard</h1><span style="color:var(--muted);font-size:.78rem;font-family:var(--sans);font-weight:600">Admin: {{ session.admin_name }}</span></div>
+<div class="stats-row">
+  <div class="stat-box"><span class="stat-n">{{ stats.users }}</span><div class="stat-l">Users</div></div>
+  <div class="stat-box"><span class="stat-n">{{ stats.poems }}</span><div class="stat-l">Poems</div></div>
+  <div class="stat-box"><span class="stat-n" style="color:var(--rose)">{{ stats.likes }}</span><div class="stat-l">Likes</div></div>
+  <div class="stat-box"><span class="stat-n" style="color:var(--teal2)">{{ stats.comments }}</span><div class="stat-l">Comments</div></div>
+  <div class="stat-box"><span class="stat-n" style="color:#e87070">{{ stats.reports }}</span><div class="stat-l">Reports</div></div>
+  <div class="stat-box"><span class="stat-n" style="color:var(--gold)">{{ stats.bookmarks }}</span><div class="stat-l">Bookmarks</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem">
+  <div class="chart-card"><h4>POEMS — LAST 7 DAYS</h4><canvas id="cP" height="130"></canvas></div>
+  <div class="chart-card"><h4>NEW USERS — LAST 7 DAYS</h4><canvas id="cU" height="130"></canvas></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem">
+    <div style="font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:.85rem">TOP POEMS</div>
+    {% for p in top_poems %}
+    <div style="padding:.38rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem">
+      <a href="{{ url_for('poem',poem_id=p.id) }}" target="_blank" style="flex:1;font-size:.8rem;color:var(--text2);font-family:var(--sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis"
+        onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text2)'">{{ p.title[:30] }}</a>
+      <span style="color:var(--rose);font-size:.75rem;font-family:var(--sans);font-weight:700;flex-shrink:0">❤ {{ p.like_count }}</span>
+    </div>{% endfor %}
+  </div>
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem">
+    <div style="font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:.85rem">TOP SHAYAR</div>
+    {% for poet in top_poets %}
+    <div style="padding:.38rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem">
+      <a href="{{ url_for('profile',username=poet.username) }}" target="_blank" style="flex:1;font-size:.8rem;color:var(--text2);font-family:var(--sans)"
+        onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text2)'">{{ poet.username }}</a>
+      <span style="color:var(--rose);font-size:.75rem;font-family:var(--sans);font-weight:700;flex-shrink:0">❤ {{ poet.total_likes }}</span>
+    </div>{% endfor %}
+  </div>
+</div>
+<script>
+const opts={responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#7a6a50',font:{size:10}},grid:{color:'rgba(200,150,30,.06)'}},y:{ticks:{color:'#7a6a50',font:{size:10},stepSize:1},grid:{color:'rgba(200,150,30,.06)'},beginAtZero:true}}};
+const pd={{ chart_poems|tojson }},ud={{ chart_users|tojson }};
+new Chart(document.getElementById('cP'),{type:'line',data:{labels:pd.map(r=>r.day),datasets:[{data:pd.map(r=>r.count),borderColor:'#c8961e',backgroundColor:'rgba(200,150,30,.08)',tension:.4,fill:true,pointRadius:3,pointBackgroundColor:'#c8961e'}]},options:opts});
+new Chart(document.getElementById('cU'),{type:'line',data:{labels:ud.map(r=>r.day),datasets:[{data:ud.map(r=>r.count),borderColor:'#38a08f',backgroundColor:'rgba(56,160,143,.08)',tension:.4,fill:true,pointRadius:3,pointBackgroundColor:'#38a08f'}]},options:opts});
+</script>
+{% endblock %}

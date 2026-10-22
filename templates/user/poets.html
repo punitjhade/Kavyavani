@@ -1,0 +1,34 @@
+{% extends "user/base.html" %}
+{% block title %}Poets — Kavyavani{% endblock %}
+{% block content %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div><div class="sec-sub">Library</div><div class="sec-title">📚 Poets <span style="font-size:.8rem;font-style:normal;color:var(--muted);font-family:var(--sans)">({{ poets|length }})</span></div></div></div>
+
+  <form method="get" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem">
+    <input type="text" name="q" value="{{ q }}" placeholder="Search poet name…" style="flex:1;min-width:180px"/>
+    <select name="lang" onchange="this.form.submit()">
+      <option value="">All languages</option>
+      {% for l in ['Hindi','Urdu','English'] %}
+      <option value="{{ l }}" {% if lang==l %}selected{% endif %}>{{ l }} ({{ counts.get(l,0) }})</option>
+      {% endfor %}
+    </select>
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+
+  {% if poets %}
+  <div class="poems-feed">
+    {% for p in poets %}
+    <article class="poem-card">
+      <div class="pc-body">
+        <a href="{{ url_for('poet', slug=p.slug) }}" class="pc-title">{{ p.name }}{% if p.name_native %} · {{ p.name_native }}{% endif %}</a>
+        <div class="pc-submeta">{{ p.language }}{% if p.born or p.died %} · {{ p.born }}–{{ p.died }}{% endif %}{% if p.poem_count %} · {{ p.poem_count }} poems{% endif %}</div>
+        {% if p.bio %}<p style="margin:.4rem 0 0">{{ p.bio }}</p>{% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty"><h3>No poets found</h3></div>
+  {% endif %}
+</div>
+{% endblock %}

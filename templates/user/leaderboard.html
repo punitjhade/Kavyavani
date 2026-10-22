@@ -1,0 +1,20 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.leaderboard }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div><div class="sec-sub">{% if session.get('lang')=='en' %}Hall of Fame{% else %}हॉल ऑफ फेम{% endif %}</div><div class="sec-title">{{ t.top_shayar }}</div></div></div>
+  {% for poet in poets %}
+  <div class="lb-row">
+    <div class="lb-rank {% if loop.index<=3 %}r{{ loop.index }}{% endif %}">{{ loop.index }}</div>
+    <div class="lb-av" onclick="{% if poet.profile_pic %}openLb('{{ url_for('static',filename='uploads/'+poet.profile_pic) }}'){% else %}window.location='{{ url_for('profile',username=poet.username) }}'{% endif %}">
+      {% if poet.profile_pic %}<img src="{{ url_for('static',filename='uploads/'+poet.profile_pic) }}" alt=""/>{% else %}{{ poet.username[0]|upper }}{% endif %}
+    </div>
+    <div style="flex:1;min-width:0">
+      <a href="{{ url_for('profile',username=poet.username) }}" class="lb-name">{{ poet.username }}{% if poet.poet_of_week %} 👑{% endif %}</a>
+      <div class="lb-sub">{{ poet.poem_count }} {% if session.get('lang')=='en' %}poems{% else %}poems{% endif %} · {{ poet.followers }} {{ t.followers }}</div>
+    </div>
+    <div class="lb-right"><div class="lb-likes">♥ {{ poet.total_likes }}</div><div class="lb-poems">{{ t.likes_count }}</div></div>
+  </div>
+  {% else %}<div class="empty"><h3>{{ t.no_poems }}</h3></div>{% endfor %}
+</div>{% endblock %}

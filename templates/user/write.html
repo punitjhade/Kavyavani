@@ -1,0 +1,116 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{% if poem %}{{ t.edit_poem }}{% else %}{{ t.write_poem }}{% endif %} — Kavyavani{% endblock %}
+{% block content %}
+{% set t = get_t() %}
+<div class="wrap-md">
+  <div class="sec-hdr"><div>
+    <div class="sec-sub">{{ 'Edit' if poem else 'New' }}</div>
+    <div class="sec-title">{% if poem %}{{ t.edit_poem }}{% else %}{{ t.write_poem }}{% endif %}</div>
+  </div></div>
+
+  <div class="form-card">
+    <form method="post" action="{{ url_for('edit_poem',poem_id=poem.id) if poem else url_for('write') }}">
+      <div class="fg">
+        <label>{{ t.title_label }} *</label>
+        <input type="text" name="title" value="{{ poem.title if poem else '' }}"
+          placeholder="{% if session.get('lang')=='en' %}e.g. The Night of Rain…{% else %}जैसे: बारिश की वो रात…{% endif %}" required/>
+      </div>
+      <div class="fg">
+        <label>{{ t.content_label }} *</label>
+        <textarea class="poem-ta" name="content" id="poem-content"
+          placeholder="{% if session.get('lang')=='en' %}Write your poem here…{% else %}यहाँ अपनी कविता लिखें…{% endif %}"
+          required oninput="updatePreview(this.value)">{{ poem.content if poem else '' }}</textarea>
+      </div>
+      <div class="fg">
+        <label>{{ t.preview }}</label>
+        <div class="preview-box th-default fn-garamond" id="preview-box">
+          {% if session.get('lang')=='en' %}Start writing to see preview…{% else %}कविता लिखना शुरू करें…{% endif %}
+        </div>
+      </div>
+      <div class="row2">
+        <div class="fg">
+          <label>{{ t.category_label }} *</label>
+          <select name="category" required>
+            {% for cat in cats %}
+            <option value="{{ cat.name }}" {% if poem and poem.category==cat.name %}selected{% endif %}>{{ cat.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="fg">
+          <label>{{ t.language_label }}</label>
+          <select name="language">
+            {% for lang in ['Hindi','Urdu','Punjabi','Sanskrit','English'] %}
+            <option value="{{ lang }}" {% if poem and poem.language==lang %}selected{% endif %}>{{ lang }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="fg">
+          <label>{{ t.theme_label }}</label>
+          <select name="theme" id="theme-sel" onchange="applyTheme(this.value)">
+            <option value="default" {% if not poem or poem.theme=='default' %}selected{% endif %}>🌙 Dark (Default)</option>
+            <option value="night"     {% if poem and poem.theme=='night'     %}selected{% endif %}>🔵 Night Blue</option>
+            <option value="parchment" {% if poem and poem.theme=='parchment' %}selected{% endif %}>📜 Parchment</option>
+            <option value="rose"      {% if poem and poem.theme=='rose'      %}selected{% endif %}>🌹 Rose</option>
+            <option value="forest"    {% if poem and poem.theme=='forest'    %}selected{% endif %}>🌿 Forest</option>
+            <option value="midnight"  {% if poem and poem.theme=='midnight'  %}selected{% endif %}>🟣 Midnight</option>
+            <option value="desert"    {% if poem and poem.theme=='desert'    %}selected{% endif %}>🏜 Desert</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>{{ t.font_label }}</label>
+          <select name="font" id="font-sel" onchange="applyFont(this.value)">
+            <option value="garamond" {% if not poem or poem.font=='garamond' %}selected{% endif %}>Libre Baskerville</option>
+            <option value="playfair" {% if poem and poem.font=='playfair'   %}selected{% endif %}>IM Fell English</option>
+            <option value="urdu"     {% if poem and poem.font=='urdu'       %}selected{% endif %}>Nastaliq Urdu</option>
+            <option value="mono"     {% if poem and poem.font=='mono'       %}selected{% endif %}>Monospace</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>{{ t.dedication_label }}</label>
+        <input type="text" name="dedicated_to" value="{{ poem.dedicated_to if poem else '' }}"
+          placeholder="{% if session.get('lang')=='en' %}e.g. To my mother, to my city…{% else %}जैसे: मेरी माँ को, मेरे शहर को…{% endif %}"/>
+      </div>
+      <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--border)">
+        <button type="submit" name="publish" class="btn btn-primary">{{ t.publish }}</button>
+        <button type="submit" name="save_draft" class="btn btn-outline">{{ t.save_draft }}</button>
+        <a href="{{ url_for('profile',username=session.username) }}" class="btn btn-ghost">
+          {% if session.get('lang')=='en' %}Cancel{% else %}रद्द करें{% endif %}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+function updatePreview(t){
+  const el=document.getElementById('preview-box');
+  el.textContent=t||'{% if session.get("lang")=="en" %}Start writing to see preview…{% else %}कविता लिखना शुरू करें…{% endif %}';
+  applyTheme(document.getElementById('theme-sel').value);
+  applyFont(document.getElementById('font-sel').value);
+}
+function applyTheme(t){
+  const el=document.getElementById('preview-box');
+  el.className='preview-box th-'+t+(el.className.match(/fn-\w+/)||[''])[0].replace(/^\s/,' ');
+  el.className='preview-box th-'+t;
+  applyFont(document.getElementById('font-sel').value);
+}
+function applyFont(f){
+  const el=document.getElementById('preview-box');
+  ['fn-garamond','fn-playfair','fn-urdu','fn-mono'].forEach(c=>el.classList.remove(c));
+  el.classList.add('fn-'+f);
+}
+const existing=document.getElementById('poem-content').value;
+if(existing){
+  updatePreview(existing);
+  {% if poem %}
+  applyTheme('{{ poem.theme or "default" }}');
+  applyFont('{{ poem.font or "garamond" }}');
+  {% endif %}
+}
+</script>
+{% endblock %}

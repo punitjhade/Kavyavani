@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% block title %}Users{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>👥 Users ({{ users|length }})</h1></div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow-x:auto">
+<form method="post" action="{{ url_for('admin_bulk_delete') }}">
+<input type="hidden" name="kind" value="users"/>
+<div style="padding:.6rem .85rem;border-bottom:1px solid var(--border)">
+  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete selected users?')">🗑 Delete Selected</button>
+</div>
+<table class="adm-tbl">
+<thead><tr>
+  <th><input type="checkbox" onchange="document.querySelectorAll('.rcb').forEach(c=>c.checked=this.checked)"/></th>
+  <th>#</th><th>Username</th><th>Email</th><th>Role</th><th>Poems</th><th>Joined</th><th>Status</th><th>Actions</th>
+</tr></thead><tbody>
+{% for u in users %}
+<tr>
+  <td><input type="checkbox" name="selected_ids" value="{{ u.id }}" class="rcb"/></td>
+  <td style="color:var(--muted)">{{ u.id }}</td>
+  <td><a href="{{ url_for('profile',username=u.username) }}" target="_blank" style="color:var(--text2);font-weight:700;font-family:var(--sans)" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text2)'">{{ u.username }}</a>{% if u.poet_of_week %} 👑{% endif %}</td>
+  <td style="color:var(--muted)">{{ u.email }}</td>
+  <td><span class="ab {{ 'ab-admin' if u.role=='admin' else 'ab-user' }}">{{ u.role }}</span></td>
+  <td style="color:var(--muted2)">{{ u.poem_count }}</td>
+  <td style="color:var(--muted)">{{ u.joined_at[:10] }}</td>
+  <td>{% if u.is_banned %}<span class="ab" style="background:rgba(196,64,90,.15);color:#e07090">Banned</span>{% else %}<span class="ab ab-ok">Active</span>{% endif %}</td>
+  <td><div style="display:flex;gap:.3rem;flex-wrap:wrap">
+    <form method="post" action="{{ url_for('admin_ban',uid=u.id) }}" style="display:inline">
+      <button type="submit" class="btn btn-xs {% if u.is_banned %}btn-ghost{% else %}btn-danger{% endif %}">{% if u.is_banned %}Unban{% else %}Ban{% endif %}</button></form>
+    <form method="post" action="{{ url_for('admin_poet_of_week',uid=u.id) }}" style="display:inline">
+      <button type="submit" class="btn btn-xs btn-ghost">👑 PoTW</button></form>
+    {% if u.role != 'admin' %}
+    <form method="post" action="{{ url_for('admin_delete_user',uid=u.id) }}" style="display:inline" onsubmit="return confirm('Delete {{ u.username }}?')">
+      <button type="submit" class="btn btn-xs btn-danger">🗑</button></form>{% endif %}
+  </div></td>
+</tr>{% endfor %}
+</tbody></table></form></div>{% endblock %}

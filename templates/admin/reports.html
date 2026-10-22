@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<div class="adm-h"><h1>🚨 Reports</h1></div>
+<div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow-x:auto">
+<table class="adm-tbl"><thead><tr><th>#</th><th>Reporter</th><th>Poem</th><th>Reason</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+<tbody>{% for r in reports %}
+<tr>
+  <td style="color:var(--muted)">{{ r.id }}</td>
+  <td style="font-family:var(--sans);font-size:.78rem">{{ r.reporter }}</td>
+  <td>{% if r.poem_title %}<a href="{{ url_for('poem',poem_id=r.poem_id) }}" target="_blank" style="color:var(--muted);font-family:var(--sans);font-size:.78rem">{{ r.poem_title[:22] }}…</a>{% else %}—{% endif %}</td>
+  <td style="color:var(--text2);max-width:200px">{{ r.reason[:55] }}</td>
+  <td><span class="ab {{ 'ab-pend' if r.status=='pending' else 'ab-ok' }}">{{ r.status }}</span></td>
+  <td style="color:var(--muted);font-size:.75rem">{{ r.created_at[:10] }}</td>
+  <td><div style="display:flex;gap:.3rem">
+    <form method="post" action="{{ url_for('admin_resolve_report',rid=r.id) }}" style="display:inline">
+      <button type="submit" class="btn btn-xs btn-ghost">✅ Resolve</button></form>
+    {% if r.poem_id %}<form method="post" action="{{ url_for('admin_report_delete_poem',rid=r.id) }}" style="display:inline" onsubmit="return confirm('Delete poem?')">
+      <button type="submit" class="btn btn-xs btn-danger">🗑 Poem</button></form>{% endif %}
+  </div></td>
+</tr>{% else %}<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:2rem">कोई pending report नहीं ✅</td></tr>
+{% endfor %}</tbody></table></div>{% endblock %}

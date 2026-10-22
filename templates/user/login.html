@@ -1,0 +1,38 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.login }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="auth-brand-en">KAVYAVANI</div>
+      <div class="auth-brand-sub">काव्यवाणी · کاویاوانی</div>
+    </div>
+    <div class="auth-title">{{ t.login }}</div>
+    <p class="auth-sub">{% if session.get('lang')=='en' %}Welcome back to your world of poetry{% else %}अपनी शायरी की दुनिया में वापस आएँ{% endif %}</p>
+    <form method="post" action="{{ url_for('login') }}">
+      <div class="fg">
+        <label>Username</label>
+        <input type="text" name="username" required autofocus placeholder="{% if session.get('lang')=='en' %}Your username{% else %}आपका username…{% endif %}"/>
+      </div>
+      <div class="fg">
+        <label>Password</label>
+        <input type="password" name="password" required placeholder="••••••••"/>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:.84rem;padding:.72rem">
+        {{ t.login }} →
+      </button>
+    </form>
+    <div class="auth-divider">{% if session.get('lang')=='en' %}or{% else %}या{% endif %}</div>
+    <p style="text-align:center;color:var(--muted);font-size:.86rem;font-family:var(--sans)">
+      {% if session.get('lang')=='en' %}Don't have an account?{% else %}अभी account नहीं?{% endif %}
+      <a href="{{ url_for('signup') }}" style="color:var(--gold);font-weight:700">{{ t.register }}</a>
+    </p>
+    <p style="text-align:center;margin-top:.8rem">
+      <a href="{{ url_for('terms') }}" style="color:var(--muted);font-size:.7rem;font-family:var(--sans)">{{ t.terms }}</a>
+      &nbsp;·&nbsp;
+      <a href="{{ url_for('privacy') }}" style="color:var(--muted);font-size:.7rem;font-family:var(--sans)">{{ t.privacy }}</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

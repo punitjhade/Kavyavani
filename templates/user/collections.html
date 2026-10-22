@@ -1,0 +1,26 @@
+{% extends "user/base.html" %}
+{% set t = get_t() %}
+{% block title %}{{ t.collections }} — Kavyavani{% endblock %}
+{% block content %}{% set t = get_t() %}
+<div class="wrap-md">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.7rem">
+    <div class="sec-hdr" style="margin:0;flex:1"><div><div class="sec-title">📂 {{ t.collections }}</div></div></div>
+    <form method="post" action="{{ url_for('create_collection') }}" style="display:flex;gap:.5rem">
+      <input type="text" name="name" placeholder="{% if session.get('lang')=='en' %}New collection name{% else %}Collection का नाम{% endif %}" required style="min-width:0"/>
+      <button type="submit" class="btn btn-primary btn-sm">➕ {% if session.get('lang')=='en' %}Create{% else %}बनाएँ{% endif %}</button>
+    </form>
+  </div>
+  {% if collections %}
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem">
+    {% for col in collections %}
+    <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;transition:all .22s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-family:var(--display);color:var(--gold);font-size:.95rem;margin-bottom:.28rem;font-weight:600;letter-spacing:1px">📂 {{ col.name }}</div>
+      <div style="font-size:.7rem;color:var(--muted);font-family:var(--sans);font-weight:700;margin-bottom:.9rem">{{ col.poem_count }} {% if session.get('lang')=='en' %}poems{% else %}poems{% endif %}</div>
+      <div style="display:flex;gap:.4rem">
+        <a href="{{ url_for('view_collection',col_id=col.id) }}" class="btn btn-outline btn-xs">View</a>
+        <form method="post" action="{{ url_for('delete_collection',col_id=col.id) }}" onsubmit="return confirm('Delete?')"><button type="submit" class="btn btn-danger btn-xs">🗑</button></form>
+      </div>
+    </div>{% endfor %}
+  </div>
+  {% else %}<div class="empty"><h3>{% if session.get('lang')=='en' %}No collections{% else %}कोई collection नहीं{% endif %}</h3></div>{% endif %}
+</div>{% endblock %}
