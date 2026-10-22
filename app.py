@@ -2,12 +2,20 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import sqlite3, os, json
+<<<<<<< HEAD
+=======
+from db_layer import connect, init_oracle, USE_ORACLE
+>>>>>>> origin/oracle-update
 from functools import wraps
 from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "sukhanSarai_secret_2024_!@#"
+<<<<<<< HEAD
 DATABASE = "sukhan.db"
+=======
+DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sukhan.db")   # used when Oracle is not configured
+>>>>>>> origin/oracle-update
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -18,8 +26,12 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
+<<<<<<< HEAD
         db = g._database = sqlite3.connect(DATABASE)
         db.row_factory = sqlite3.Row
+=======
+        db = g._database = connect(DATABASE)
+>>>>>>> origin/oracle-update
     return db
 
 @app.teardown_appcontext
@@ -43,9 +55,13 @@ def allowed_file(f):
 
 # ─── INIT DB ──────────────────────────────────────────────────────────────────
 
+<<<<<<< HEAD
 def init_db():
     with app.app_context():
         db = get_db()
+=======
+def _init_sqlite_schema(db):
+>>>>>>> origin/oracle-update
         db.executescript("""
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -167,6 +183,9 @@ def init_db():
                 viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/oracle-update
             CREATE TABLE IF NOT EXISTS poets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 slug TEXT UNIQUE NOT NULL,
@@ -178,8 +197,11 @@ def init_db():
                 bio TEXT DEFAULT '',
                 notable_works TEXT DEFAULT ''
             );
+<<<<<<< HEAD
 =======
 >>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
+=======
+>>>>>>> origin/oracle-update
         """)
         db.commit()
 
@@ -199,14 +221,28 @@ def init_db():
             "ALTER TABLE messages ADD COLUMN file_type TEXT DEFAULT ''",
             "ALTER TABLE users    ADD COLUMN language_pref TEXT DEFAULT 'hi'",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "ALTER TABLE poems    ADD COLUMN poet_id INTEGER DEFAULT NULL",
 =======
 >>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
+=======
+            "ALTER TABLE poems    ADD COLUMN poet_id INTEGER DEFAULT NULL",
+>>>>>>> origin/oracle-update
         ]:
             try: db.execute(migration)
             except: pass
         db.commit()
 
+<<<<<<< HEAD
+=======
+
+def init_db():
+    with app.app_context():
+        db = get_db()
+        if USE_ORACLE: init_oracle(db)        # tables + foreign keys: see db_layer.py
+        else:          _init_sqlite_schema(db)
+
+>>>>>>> origin/oracle-update
         for cat in ['प्रेम','सूफ़ी','दर्शन','प्रकृति','उदासी','क्रांति','आध्यात्म','सामान्य']:
             try: db.execute("INSERT OR IGNORE INTO categories (name) VALUES (?)", (cat,))
             except: pass
@@ -416,7 +452,11 @@ def get_unread_msg_count():
 
 def get_active_announcement():
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+<<<<<<< HEAD
     return query("SELECT * FROM announcements WHERE schedule_at IS NULL OR schedule_at <= ? ORDER BY created_at DESC LIMIT 1", (now,), one=True)
+=======
+    return query("SELECT * FROM announcements WHERE schedule_at IS NULL OR schedule_at <= ? ORDER BY created_at DESC, id DESC LIMIT 1", (now,), one=True)
+>>>>>>> origin/oracle-update
 
 def get_poet_of_week():
     return query("SELECT * FROM users WHERE poet_of_week=1 LIMIT 1", one=True)
@@ -500,9 +540,13 @@ def index():
         'users':    (query("SELECT COUNT(*) as c FROM users", one=True) or {'c':0})['c'],
         'poets':    (query("SELECT COUNT(*) as c FROM users WHERE role='user'", one=True) or {'c':0})['c'],
 <<<<<<< HEAD
+<<<<<<< HEAD
         'poets_listed': (query("SELECT COUNT(*) as c FROM poets", one=True) or {'c':0})['c'],
 =======
 >>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
+=======
+        'poets_listed': (query("SELECT COUNT(*) as c FROM poets", one=True) or {'c':0})['c'],
+>>>>>>> origin/oracle-update
         'likes':    (query("SELECT COUNT(*) as c FROM likes", one=True) or {'c':0})['c'],
         'comments': (query("SELECT COUNT(*) as c FROM comments", one=True) or {'c':0})['c'],
     }
@@ -709,9 +753,14 @@ def bookmarks():
 @app.route('/collections')
 @login_required
 def collections():
+<<<<<<< HEAD
     cols = query("""SELECT c.*, COUNT(cp.poem_id) as poem_count
         FROM collections c LEFT JOIN collection_poems cp ON c.id=cp.collection_id
         WHERE c.user_id=? GROUP BY c.id ORDER BY c.created_at DESC""", (session['user_id'],))
+=======
+    cols = query("""SELECT c.*, (SELECT COUNT(*) FROM collection_poems cp WHERE cp.collection_id=c.id) as poem_count
+        FROM collections c WHERE c.user_id=? ORDER BY c.created_at DESC""", (session['user_id'],))
+>>>>>>> origin/oracle-update
     return render_template('user/collections.html', collections=cols)
 
 @app.route('/collections/create', methods=['POST'])
@@ -779,6 +828,7 @@ def feed():
 @app.route('/messages')
 @login_required
 def messages():
+<<<<<<< HEAD
     convos = query("""SELECT DISTINCT
         CASE WHEN m.sender_id=? THEN m.receiver_id ELSE m.sender_id END as other_id,
         u.username, u.profile_pic,
@@ -788,6 +838,16 @@ def messages():
         JOIN users u ON u.id=CASE WHEN m.sender_id=? THEN m.receiver_id ELSE m.sender_id END
         WHERE m.sender_id=? OR m.receiver_id=?
         GROUP BY other_id ORDER BY last_time DESC""",
+=======
+    convos = query("""SELECT x.other_id, u.username, u.profile_pic, x.last_time, x.unread FROM (
+            SELECT CASE WHEN m.sender_id=? THEN m.receiver_id ELSE m.sender_id END as other_id,
+                   MAX(m.created_at) as last_time,
+                   SUM(CASE WHEN m.receiver_id=? AND m.is_read=0 THEN 1 ELSE 0 END) as unread
+            FROM messages m WHERE m.sender_id=? OR m.receiver_id=?
+            GROUP BY CASE WHEN m.sender_id=? THEN m.receiver_id ELSE m.sender_id END) x
+        JOIN users u ON u.id=x.other_id
+        ORDER BY x.last_time DESC""",
+>>>>>>> origin/oracle-update
         (session['user_id'],)*5)
     return render_template('user/messages.html', convos=convos)
 
@@ -844,9 +904,14 @@ def profile(username):
         they_follow  = bool(query("SELECT id FROM follows WHERE follower_id=? AND following_id=?",
                                   (user['id'], session['user_id']), one=True))
         is_mutual = is_following and they_follow
+<<<<<<< HEAD
     cols = query("""SELECT c.*, COUNT(cp.poem_id) as poem_count FROM collections c
         LEFT JOIN collection_poems cp ON c.id=cp.collection_id
         WHERE c.user_id=? GROUP BY c.id ORDER BY c.created_at DESC""", (user['id'],))
+=======
+    cols = query("""SELECT c.*, (SELECT COUNT(*) FROM collection_poems cp WHERE cp.collection_id=c.id) as poem_count
+        FROM collections c WHERE c.user_id=? ORDER BY c.created_at DESC""", (user['id'],))
+>>>>>>> origin/oracle-update
     user_badges = query("SELECT badge_key, earned_at FROM badges WHERE user_id=? ORDER BY earned_at", (user['id'],))
     mutual_count = query("""SELECT COUNT(*) as c FROM follows f1
         JOIN follows f2 ON f1.following_id=f2.follower_id AND f1.follower_id=f2.following_id
@@ -946,17 +1011,29 @@ def trending():
         (SELECT COUNT(*) FROM likes    WHERE poem_id=p.id) as like_count,
         (SELECT COUNT(*) FROM comments WHERE poem_id=p.id) as comment_count
         FROM poems p JOIN users u ON p.user_id=u.id WHERE p.is_draft=0
+<<<<<<< HEAD
         ORDER BY (like_count*2 + p.views + comment_count*3) DESC LIMIT 30""")
+=======
+        ORDER BY ((SELECT COUNT(*) FROM likes WHERE poem_id=p.id)*2 + p.views + (SELECT COUNT(*) FROM comments WHERE poem_id=p.id)*3) DESC LIMIT 30""")
+>>>>>>> origin/oracle-update
     return render_template('user/trending.html', poems=poems)
 
 @app.route('/leaderboard')
 def leaderboard():
     poets = query("""SELECT u.*,
+<<<<<<< HEAD
         COUNT(DISTINCT p.id) as poem_count,
         COALESCE((SELECT COUNT(*) FROM likes l JOIN poems pp ON l.poem_id=pp.id WHERE pp.user_id=u.id),0) as total_likes,
         (SELECT COUNT(*) FROM follows WHERE following_id=u.id) as followers
         FROM users u LEFT JOIN poems p ON u.id=p.user_id AND p.is_draft=0
         WHERE u.role='user' GROUP BY u.id ORDER BY total_likes DESC, poem_count DESC LIMIT 20""")
+=======
+        (SELECT COUNT(*) FROM poems p WHERE p.user_id=u.id AND p.is_draft=0) as poem_count,
+        COALESCE((SELECT COUNT(*) FROM likes l JOIN poems pp ON l.poem_id=pp.id WHERE pp.user_id=u.id),0) as total_likes,
+        (SELECT COUNT(*) FROM follows WHERE following_id=u.id) as followers
+        FROM users u
+        WHERE u.role='user' ORDER BY total_likes DESC, poem_count DESC LIMIT 20""")
+>>>>>>> origin/oracle-update
     return render_template('user/leaderboard.html', poets=poets)
 
 @app.route('/category/<cat>')
@@ -969,9 +1046,15 @@ def category(cat):
 
 @app.route('/categories')
 def categories_page():
+<<<<<<< HEAD
     cats = query("""SELECT c.name, c.description, COUNT(p.id) as poem_count
         FROM categories c LEFT JOIN poems p ON p.category=c.name AND p.is_draft=0
         GROUP BY c.name ORDER BY poem_count DESC""")
+=======
+    cats = query("""SELECT c.name, c.description,
+        (SELECT COUNT(*) FROM poems p WHERE p.category=c.name AND p.is_draft=0) as poem_count
+        FROM categories c ORDER BY poem_count DESC, c.name""")
+>>>>>>> origin/oracle-update
     return render_template('user/categories_page.html', categories=cats)
 
 @app.route('/search')
@@ -1038,9 +1121,15 @@ def admin_dashboard():
         'bookmarks': query("SELECT COUNT(*) as c FROM bookmarks",               one=True)['c'],
     }
     chart_poems = [dict(r) for r in reversed(query(
+<<<<<<< HEAD
         "SELECT DATE(created_at) as day, COUNT(*) as count FROM poems WHERE is_draft=0 GROUP BY day ORDER BY day DESC LIMIT 7"))]
     chart_users = [dict(r) for r in reversed(query(
         "SELECT DATE(joined_at) as day, COUNT(*) as count FROM users GROUP BY day ORDER BY day DESC LIMIT 7"))]
+=======
+        "SELECT DATE(created_at) as day, COUNT(*) as count FROM poems WHERE is_draft=0 GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 7"))]
+    chart_users = [dict(r) for r in reversed(query(
+        "SELECT DATE(joined_at) as day, COUNT(*) as count FROM users GROUP BY DATE(joined_at) ORDER BY DATE(joined_at) DESC LIMIT 7"))]
+>>>>>>> origin/oracle-update
     top_poems = query("""SELECT p.*, u.username,
         (SELECT COUNT(*) FROM likes WHERE poem_id=p.id) as like_count
         FROM poems p JOIN users u ON p.user_id=u.id WHERE p.is_draft=0
@@ -1058,9 +1147,14 @@ def admin_dashboard():
 @app.route('/admin/users')
 @admin_required
 def admin_users():
+<<<<<<< HEAD
     users = query("""SELECT u.*, COUNT(DISTINCT p.id) as poem_count
         FROM users u LEFT JOIN poems p ON u.id=p.user_id
         GROUP BY u.id ORDER BY u.joined_at DESC""")
+=======
+    users = query("""SELECT u.*, (SELECT COUNT(*) FROM poems p WHERE p.user_id=u.id) as poem_count
+        FROM users u ORDER BY u.joined_at DESC""")
+>>>>>>> origin/oracle-update
     return render_template('admin/users.html', users=users)
 
 @app.route('/admin/user/<int:uid>/delete', methods=['POST'])
@@ -1206,9 +1300,15 @@ def admin_categories():
             try: execute("INSERT INTO categories (name,description) VALUES (?,?)", (name,desc)); flash(f'Category "{name}" जोड़ी गई!','success')
             except: flash('यह category पहले से मौजूद है।','error')
         return redirect(url_for('admin_categories'))
+<<<<<<< HEAD
     cats = query("""SELECT c.*, COUNT(p.id) as poem_count
         FROM categories c LEFT JOIN poems p ON p.category=c.name AND p.is_draft=0
         GROUP BY c.id ORDER BY poem_count DESC""")
+=======
+    cats = query("""SELECT c.*,
+        (SELECT COUNT(*) FROM poems p WHERE p.category=c.name AND p.is_draft=0) as poem_count
+        FROM categories c ORDER BY poem_count DESC, c.id""")
+>>>>>>> origin/oracle-update
     return render_template('admin/categories.html', categories=cats)
 
 @app.route('/admin/category/<int:cid>/delete', methods=['POST'])
@@ -1240,6 +1340,7 @@ def admin_analytics():
         FROM poems p JOIN users u ON p.user_id=u.id WHERE p.is_draft=0
         ORDER BY like_count DESC LIMIT 10""")
     top_poets  = query("""SELECT u.*,
+<<<<<<< HEAD
         COUNT(DISTINCT p.id) as poem_count,
         COALESCE((SELECT COUNT(*) FROM likes l JOIN poems pp ON l.poem_id=pp.id WHERE pp.user_id=u.id),0) as total_likes,
         (SELECT COUNT(*) FROM follows WHERE following_id=u.id) as followers
@@ -1251,11 +1352,27 @@ def admin_analytics():
         "SELECT DATE(joined_at) as day, COUNT(*) as count FROM users GROUP BY day ORDER BY day DESC LIMIT 30"))]
     cat_stats   = [dict(r) for r in query(
         "SELECT category, COUNT(*) as count FROM poems WHERE is_draft=0 GROUP BY category ORDER BY count DESC")]
+=======
+        (SELECT COUNT(*) FROM poems p WHERE p.user_id=u.id AND p.is_draft=0) as poem_count,
+        COALESCE((SELECT COUNT(*) FROM likes l JOIN poems pp ON l.poem_id=pp.id WHERE pp.user_id=u.id),0) as total_likes,
+        (SELECT COUNT(*) FROM follows WHERE following_id=u.id) as followers
+        FROM users u
+        WHERE u.role='user' ORDER BY total_likes DESC LIMIT 10""")
+    daily_poems = [dict(r) for r in reversed(query(
+        "SELECT DATE(created_at) as day, COUNT(*) as count FROM poems WHERE is_draft=0 GROUP BY DATE(created_at) ORDER BY DATE(created_at) DESC LIMIT 30"))]
+    daily_users = [dict(r) for r in reversed(query(
+        "SELECT DATE(joined_at) as day, COUNT(*) as count FROM users GROUP BY DATE(joined_at) ORDER BY DATE(joined_at) DESC LIMIT 30"))]
+    cat_stats   = [dict(r) for r in query(
+        "SELECT category, COUNT(*) as count FROM poems WHERE is_draft=0 GROUP BY category ORDER BY COUNT(*) DESC")]
+>>>>>>> origin/oracle-update
     return render_template('admin/analytics.html', top_poems=top_poems, top_poets=top_poets,
                            daily_poems=daily_poems, daily_users=daily_users, cat_stats=cat_stats)
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/oracle-update
 @app.route('/poets')
 def poets():
     lang = request.args.get('lang', '').strip()
@@ -1267,7 +1384,11 @@ def poets():
         sql += " AND p.language=?"; args.append(lang)
     if q:
         sql += " AND (p.name LIKE ? OR p.name_native LIKE ?)"; args += [f'%{q}%', f'%{q}%']
+<<<<<<< HEAD
     sql += " ORDER BY p.name COLLATE NOCASE"
+=======
+    sql += " ORDER BY UPPER(p.name)"
+>>>>>>> origin/oracle-update
     counts = {r['language']: r['n'] for r in query("SELECT language, COUNT(*) n FROM poets GROUP BY language")}
     return render_template('user/poets.html', poets=query(sql, args), lang=lang, q=q, counts=counts)
 
@@ -1284,8 +1405,11 @@ def poet(slug):
     return render_template('user/poet.html', poet=p, works=works, poems=poems)
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> b5ccbbf7dc92af0e991c90d12c3611d7a59b33d6
+=======
+>>>>>>> origin/oracle-update
 @app.route('/terms')
 def terms(): return render_template('user/terms.html')
 

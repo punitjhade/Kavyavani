@@ -4,72 +4,120 @@ source: en.wikisource.org/wiki/An_Ode_to_Himself
 ---
 Where dost thou careless lie
 
+<<<<<<< HEAD
     Buried in ease and sloth?
+=======
+Buried in ease and sloth?
+>>>>>>> origin/oracle-update
 
 Knowledge that sleeps, doth die
 
 And this security,
 
+<<<<<<< HEAD
     It is the common moth
+=======
+It is the common moth
+>>>>>>> origin/oracle-update
 
 That eats on wits and arts, and that destroys them both.
 
 Are all the Aonian springs
 
+<<<<<<< HEAD
     Dried up? lies Thespia waste?
+=======
+Dried up? lies Thespia waste?
+>>>>>>> origin/oracle-update
 
 Doth Clarius’ harp want strings,
 
 That not a nymph now sings;
 
+<<<<<<< HEAD
     Or droop they as disgraced,
+=======
+Or droop they as disgraced,
+>>>>>>> origin/oracle-update
 
 To see their seats and bowers by chattering pies defaced?
 
 If hence thy silence be,
 
+<<<<<<< HEAD
     As ’tis too just a cause,
+=======
+As ’tis too just a cause,
+>>>>>>> origin/oracle-update
 
 Let this thought quicken thee:
 
 Minds that are great and free
 
+<<<<<<< HEAD
     Should not on fortune pause;
+=======
+Should not on fortune pause;
+>>>>>>> origin/oracle-update
 
 ’Tis crown enough to virtue still, her own applause.
 
 What though the greedy fry
 
+<<<<<<< HEAD
     Be taken with false baits
+=======
+Be taken with false baits
+>>>>>>> origin/oracle-update
 
 Of worded balladry,
 
 And think it poesy?
 
+<<<<<<< HEAD
     They die with their conceits,
+=======
+They die with their conceits,
+>>>>>>> origin/oracle-update
 
 And only piteous scorn upon their folly waits.
 
 Then take in hand thy lyre;
 
+<<<<<<< HEAD
     Strike in thy proper strain;
+=======
+Strike in thy proper strain;
+>>>>>>> origin/oracle-update
 
 With Japhet’s line aspire
 
 Sol’s chariot, for new fire
 
+<<<<<<< HEAD
     To give the world again:
+=======
+To give the world again:
+>>>>>>> origin/oracle-update
 
 Who aided him, will thee, the issue of Jove’s brain.
 
 And, since our dainty age
 
+<<<<<<< HEAD
     Cannot endure reproof,
+=======
+Cannot endure reproof,
+>>>>>>> origin/oracle-update
 
 Make not thyself a page
 
 To that strumpet the stage;
 
+<<<<<<< HEAD
     But sing high and aloof,
+=======
+But sing high and aloof,
+>>>>>>> origin/oracle-update
 
 Safe from the wolf’s black jaw, and the dull ass’s hoof.

@@ -6,6 +6,7 @@ Sonnet LXVII
 
 Like as a huntsman after weary chase,
 
+<<<<<<< HEAD
   Seeing the game from him escaped away,
 
   sits down to rest him in some shady place,
@@ -31,3 +32,30 @@ There she, beholding me with milder look,
 Strange thing, me seemed, to see a beast so wild,
 
   so goodly won, with her own will beguiled.
+=======
+Seeing the game from him escaped away,
+
+sits down to rest him in some shady place,
+
+with panting hounds, beguiled of their prey:
+
+So, after long pursuit and vain assay,
+
+when I all weary had the chase forsook,
+
+the gentle deer returned the self-same way,
+
+thinking to quench her thirst at the next brooke.
+
+There she, beholding me with milder look,
+
+sought not to fly, but fearless still did bide,
+
+till I in hand her yet half trembling took,
+
+and with her own good will her firmly tied.
+
+Strange thing, me seemed, to see a beast so wild,
+
+so goodly won, with her own will beguiled.
+>>>>>>> origin/oracle-update
