@@ -129,7 +129,13 @@ def _get_pool():
         user, pw = os.environ.get("ORACLE_USER"), os.environ.get("ORACLE_PASSWORD")
         if not user or not pw:
             raise RuntimeError("Set ORACLE_USER and ORACLE_PASSWORD (and ORACLE_DSN) to use Oracle.")
-        _pool = ora.create_pool(user=user, password=pw, dsn=ORACLE_DSN, min=1, max=8, increment=1)
+        kw = {}
+        wallet = os.environ.get("ORACLE_WALLET_DIR")      # Autonomous DB with a wallet (mTLS)
+        if wallet:
+            kw = dict(config_dir=wallet, wallet_location=wallet,
+                      wallet_password=os.environ.get("ORACLE_WALLET_PASSWORD"))
+        pmax = int(os.environ.get("ORACLE_POOL_MAX", "8"))   # keep small on serverless hosts
+        _pool = ora.create_pool(user=user, password=pw, dsn=ORACLE_DSN, min=1, max=pmax, increment=1, **kw)
     return _pool
 
 
