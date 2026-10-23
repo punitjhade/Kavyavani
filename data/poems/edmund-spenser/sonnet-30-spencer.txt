@@ -6,6 +6,33 @@ Sonnet XXX
 
 MY loue is lyke to yse, and I to fyre;
 
+<<<<<<< HEAD
+  how comes it then that this her cold so great
+
+  is not dissolu'd through my so hot desyre,
+
+  but harder growes the more I her intreat?
+
+Or how comes it that my exceeding heat
+
+  is not delayd by her hart frosen cold:
+
+  but that I burne much more in boyling sweat,
+
+  and feel my flames augmented manifold?
+
+What more miraculous thing may be told
+
+  that fire which all things melts, should harden yse:
+
+  and yse which is congeald with sencelesse cold,
+
+  should kindle fyre by wonderfull deuyse.
+
+Such is the powre of loue in gentle mind,
+
+  that it can alter all the course of kynd.
+=======
 how comes it then that this her cold so great
 
 is not dissolu'd through my so hot desyre,
@@ -31,11 +58,39 @@ should kindle fyre by wonderfull deuyse.
 Such is the powre of loue in gentle mind,
 
 that it can alter all the course of kynd.
+>>>>>>> origin/oracle-update
 
 <Publ. 1595>
 
 My love is like to ice, and I to fire:
 
+<<<<<<< HEAD
+  how comes it then that this her cold so great
+
+  is not dissolv'd through my so hot desire,
+
+  but harder grows, the more I her entreat?
+
+Or how comes it that my exceeding heat
+
+  is not delayed by her heart frozen cold,
+
+  but that I burn much more in boiling sweat,
+
+  and feel my flames augmented manifold?
+
+What more miraculous thing may be told
+
+  that fire, which all thing melts, should harden ice:
+
+  and ice which is congealed with senseless cold,
+
+  should kindle fire by wonderful device?
+
+Such is the pow'r of love in gentle mind
+
+  that it can alter all the course of kind.
+=======
 how comes it then that this her cold so great
 
 is not dissolv'd through my so hot desire,
@@ -61,3 +116,4 @@ should kindle fire by wonderful device?
 Such is the pow'r of love in gentle mind
 
 that it can alter all the course of kind.
+>>>>>>> origin/oracle-update

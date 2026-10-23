@@ -6,6 +6,33 @@ Sonnet XXIX
 
 See how the stubborne damzell doth depraue
 
+<<<<<<< HEAD
+  my simple meaning with disdaynfull scorne:
+
+  and by the bay which I vnto her gaue,
+
+  accoumpts my selfe her captiue quite forlorne.
+
+The bay (quoth she) is of the victours borne,
+
+  yielded them by the vanquisht as theyr meeds,
+
+  and they therewith doe poetes heads adorne,
+
+  to sing the glory of their famous deedes.
+
+But sith she will the conquest challeng needs
+
+  let her accept me as her faithfull thrall,
+
+  that her great triumph which my skill exceeds,
+
+  I may in trump of fame blaze ouer all.
+
+Then would I decke her head with glorious bayes,
+
+  and fill the world with her victorious prayse.
+=======
 my simple meaning with disdaynfull scorne:
 
 and by the bay which I vnto her gaue,
@@ -31,11 +58,39 @@ I may in trump of fame blaze ouer all.
 Then would I decke her head with glorious bayes,
 
 and fill the world with her victorious prayse.
+>>>>>>> origin/oracle-update
 
 <Publ. 1595>
 
 See how the stubborn damsel doth deprave
 
+<<<<<<< HEAD
+  my simple meaning with disdainful scorn:
+
+  and by the bay which I unto her gave,
+
+  accompts my self her captive quite forlorn.
+
+The bay (quoth she) is of the victors borne,
+
+  yielded them by the vanquished as their meeds,
+
+  and they therewith do poets' heads adorn,
+
+  to sing the glory of their famous deeds.
+
+But sith she will the conquest challenge needs
+
+  let her accept me as her faithfull thrall,
+
+  that her great triumph which my skill exceeds,
+
+  I may in trump of fame blaze over all.
+
+Then would I deck her head with glorious bays,
+
+  and fill the world with her victorious praise.
+=======
 my simple meaning with disdainful scorn:
 
 and by the bay which I unto her gave,
@@ -61,3 +116,4 @@ I may in trump of fame blaze over all.
 Then would I deck her head with glorious bays,
 
 and fill the world with her victorious praise.
+>>>>>>> origin/oracle-update

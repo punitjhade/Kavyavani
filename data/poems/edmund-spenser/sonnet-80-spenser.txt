@@ -6,6 +6,33 @@ Sonnet LXXX
 
 AFTER so long a race as I haue run
 
+<<<<<<< HEAD
+  Through Faery land, which those six books compile
+
+  giue leaue to rest me, being halfe fordonne,
+
+  and gather to my selfe new breath awhile.
+
+When as a steed refreshed after toyle,
+
+  out of my prison I will breake anew:
+
+  and stoutly will that second worke assoyle,
+
+  with strong endeuour and attention dew.
+
+Till then giue leaue to me in pleasant mew,
+
+  to sport my muse and sing my loues sweet praise:
+
+  the contemplation of whose heauenly hew,
+
+  my spirit to an higher pitch will rayse.
+
+But let her prayses yet be low and meane,
+
+  fit for the handmayd of the Faery Queene.
+=======
 Through Faery land, which those six books compile
 
 giue leaue to rest me, being halfe fordonne,
@@ -31,3 +58,4 @@ my spirit to an higher pitch will rayse.
 But let her prayses yet be low and meane,
 
 fit for the handmayd of the Faery Queene.
+>>>>>>> origin/oracle-update

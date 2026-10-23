@@ -7,12 +7,17 @@ from functools import wraps
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = "sukhanSarai_secret_2024_!@#"
+app.secret_key = os.environ.get("SECRET_KEY", "sukhanSarai_secret_2024_!@#")  # set SECRET_KEY in production
 DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sukhan.db")   # used when Oracle is not configured
-UPLOAD_FOLDER = os.path.join('static', 'uploads')
+if os.environ.get("VERCEL") and not os.environ.get("ORACLE_DSN"):
+    DATABASE = "/tmp/sukhan.db"   # Vercel's disk is read-only except /tmp; the demo database is rebuilt on cold start
+UPLOAD_FOLDER = '/tmp/uploads' if os.environ.get('VERCEL') else os.path.join('static', 'uploads')  # Vercel disk is read-only except /tmp
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+try:
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+except OSError:
+    pass
 
 # ─── DB ───────────────────────────────────────────────────────────────────────
 
@@ -1293,8 +1298,26 @@ def set_language():
     return redirect(request.referrer or url_for('index'))
 
 
+def _bootstrap_demo():
+    """Serverless demo: fill an empty /tmp database with the poet library (and poems, if present)."""
+    try:
+        with app.app_context():
+            have = query("SELECT COUNT(*) AS c FROM poets", one=True)["c"]
+        if have == 0:
+            import seed_poets, import_poems
+            seed_poets.main()
+            try:
+                import_poems.main()
+            except SystemExit:
+                pass
+    except Exception as exc:          # never stop the site from starting
+        print("demo bootstrap skipped:", exc)
+
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
 else:
     init_db()
+    if os.environ.get("VERCEL") and not os.environ.get("ORACLE_DSN"):
+        _bootstrap_demo()

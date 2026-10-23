@@ -116,5 +116,9 @@ hasrat-mohani | ur | حسرت موہانی
 fani-badayuni | ur | فانی بدایونی
 asghar-gondvi | ur | اصغر گونڈوی
 ameer-minai | ur | امیر مینائی
+<<<<<<< HEAD
+jalal-lakhnavi | ur | جلال لکھنوی
+=======
 jalal-lakhnavi | ur | جلال لکھنوی
 
+>>>>>>> origin/oracle-update

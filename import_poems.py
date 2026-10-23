@@ -12,10 +12,18 @@ Run:  python import_poems.py          (add --dry-run to only check)
 Re-running is safe: a poem with the same poet and title is skipped.
 Poems are published under a 'library' user so they don't mix with member poems.
 """
+<<<<<<< HEAD
+import glob, os, sqlite3, sys
+from werkzeug.security import generate_password_hash
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+DB   = os.path.join(BASE, "sukhan.db")
+=======
 import glob, os, sys
 from werkzeug.security import generate_password_hash
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+>>>>>>> origin/oracle-update
 
 
 def parse(path):
@@ -36,6 +44,38 @@ def parse(path):
 
 def main():
     dry = "--dry-run" in sys.argv
+<<<<<<< HEAD
+    import app
+    app.init_db()
+    db = sqlite3.connect(DB)
+    row = db.execute("SELECT id FROM users WHERE username='library'").fetchone()
+    if not row and not dry:
+        db.execute("INSERT INTO users (username,email,password_hash,role,bio) VALUES (?,?,?,?,?)",
+                   ("library", "library@kavyavani.local", generate_password_hash(os.urandom(16).hex()),
+                    "user", "Poems from the Kavyavani library"))
+        db.commit()
+        row = db.execute("SELECT id FROM users WHERE username='library'").fetchone()
+    uid = row[0] if row else 0
+
+    added = skipped = bad = 0
+    for path in sorted(glob.glob(os.path.join(BASE, "data", "poems", "*", "*.txt"))):
+        slug = os.path.basename(os.path.dirname(path))
+        poet = db.execute("SELECT id, language FROM poets WHERE slug=?", (slug,)).fetchone()
+        if not poet:
+            print(f"unknown poet folder '{slug}' -> run seed_poets.py or fix the folder name"); bad += 1; continue
+        try:
+            title, category, content = parse(path)
+        except ValueError as e:
+            print(f"{path}: {e}"); bad += 1; continue
+        if db.execute("SELECT 1 FROM poems WHERE poet_id=? AND title=?", (poet[0], title)).fetchone():
+            skipped += 1; continue
+        if not dry:
+            db.execute("INSERT INTO poems (title,content,category,language,user_id,poet_id) VALUES (?,?,?,?,?,?)",
+                       (title, content, category, poet[1], uid, poet[0]))
+        added += 1
+    if not dry:
+        db.commit()
+=======
     import app  # picks SQLite or Oracle exactly like the website does
     app.init_db()
     added = skipped = bad = 0
@@ -63,6 +103,7 @@ def main():
                 app.execute("INSERT INTO poems (title,content,category,language,user_id,poet_id) VALUES (?,?,?,?,?,?)",
                             (title, content, category, poet["language"], uid, poet["id"]))
             added += 1
+>>>>>>> origin/oracle-update
     print(f"{'would add' if dry else 'added'} {added}, skipped {skipped}, problems {bad}")
 
 
