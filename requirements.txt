@@ -1,7 +1,4 @@
 flask
 werkzeug
 gunicorn
-<<<<<<< HEAD
-=======
 oracledb
->>>>>>> origin/oracle-update

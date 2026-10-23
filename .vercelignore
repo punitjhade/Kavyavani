@@ -1,8 +1,8 @@
 __pycache__
 *.pyc
-sukhan.db
-data
+data/sources.txt
+data/poems/**/*.html
 oracle_tests.py
 fetch_public_domain.py
-import_poems.py
 migrate_sqlite_to_oracle.py
+sukhan.db
